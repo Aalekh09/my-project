@@ -1,0 +1,460 @@
+:root {
+    /* Light theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --border-color: #e0e0e0;
+    --nav-bg: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    --card-bg: #ffffff;
+    --footer-bg: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    --footer-text: #ffffff;
+    --footer-link: #ffffff;
+    --footer-link-hover: #818cf8;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --gradient-primary: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    --gradient-secondary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.navbar {
+    background: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+}
+
+.card {
+    background: var(--gradient-secondary);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    background: var(--footer-bg) !important;
+    color: var(--footer-text) !important;
+}
+
+footer a {
+    color: var(--footer-link) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--footer-link-hover) !important;
+    text-decoration: underline;
+}
+
+footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+    color: var(--footer-text) !important;
+}
+
+footer .list-unstyled li a {
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+
+/* Course list specific styles */
+footer h4 {
+    color: var(--footer-text) !important;
+    margin-bottom: 1rem;
+}
+
+footer .list-unstyled {
+    color: var(--footer-text) !important;
+}
+
+footer .list-unstyled li {
+    color: var(--footer-text) !important;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+footer .list-unstyled li:hover {
+    opacity: 1;
+}
+
+/* Adjust other elements */
+section {
+    background: var(--gradient-primary);
+    border-color: var(--border-color);
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero section adjustments */
+header.bg-dark {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('https://img.freepik.com/free-photo/education-day-arrangement-table-with-books_23-2149041205.jpg') no-repeat center center !important;
+    background-size: cover !important;
+}
+
+/* Additional modern touches */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    color: var(--text-primary);
+}
+
+ul li:before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+ul li:hover:before {
+    transform: scale(1.5);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* B.Ed Section Styles */
+.bed-section {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 2rem 0;
+    padding: 4rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bed-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bed-content h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bed-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Additional background images for different sections */
+.bed-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://img.freepik.com/free-photo/students-with-graduation-caps_23-2148857975.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.bed-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(99, 102, 241, 0.8), rgba(79, 70, 229, 0.8));
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bed-section {
+        padding: 3rem 1rem;
+    }
+
+    .bed-content h2 {
+        font-size: 2rem;
+    }
+
+    .bed-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Floating Animation for Elements */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll Loading Animations */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Different animation directions */
+.reveal-left {
+    transform: translateX(-50px);
+}
+
+.reveal-right {
+    transform: translateX(50px);
+}
+
+.reveal-up {
+    transform: translateY(50px);
+}
+
+.reveal-down {
+    transform: translateY(-50px);
+}
+
+.reveal-zoom {
+    transform: scale(0.9);
+}
+
+/* Active states for different directions */
+.reveal-left.active {
+    transform: translateX(0);
+}
+
+.reveal-right.active {
+    transform: translateX(0);
+}
+
+.reveal-up.active {
+    transform: translateY(0);
+}
+
+.reveal-down.active {
+    transform: translateY(0);
+}
+
+.reveal-zoom.active {
+    transform: scale(1);
+}
+
+/* Staggered animation delays */
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* List item animations */
+.reveal-list li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+}
+
+.reveal-list.active li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Add staggered delays to list items */
+.reveal-list li:nth-child(1) { transition-delay: 0.1s; }
+.reveal-list li:nth-child(2) { transition-delay: 0.2s; }
+.reveal-list li:nth-child(3) { transition-delay: 0.3s; }
+.reveal-list li:nth-child(4) { transition-delay: 0.4s; }
+.reveal-list li:nth-child(5) { transition-delay: 0.5s; }
+.reveal-list li:nth-child(6) { transition-delay: 0.6s; }
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Scale animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.8s ease forwards;
+}
+
+/* Button Hover Effects */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Add this to your existing JavaScript file or create a new one */
+document.addEventListener('DOMContentLoaded', function() {
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    
+    function reveal() {
+        reveals.forEach(element => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', reveal);
+    
+    // Add animation classes to sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.classList.add('animate-in');
+    });
+}); 
