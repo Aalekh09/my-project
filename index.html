@@ -47,13 +47,75 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="bg-dark text-white text-center py-5" style="background: url('https://img.freepik.com/free-photo/education-day-arrangement-table-with-books_23-2149041205.jpg') no-repeat center center; background-size: cover;">
+    <header id="home" class="bg-dark text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.freepik.com/free-photo/education-day-arrangement-table-with-books_23-2149041205.jpg') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1 class="display-4 text-white">B.Ed Admission 2025-2027</h1>
+            <h1 class="display-4">B.Ed Admission 2025-2027</h1>
             <p class="lead">B.ed Admission (MDU/CRSU/KUK/DCRUST)</p>
-            <a href="#" class="btn btn-primary btn-lg mt-3">Apply Online</a>
+            <button class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#enquiryModal">Apply Online</button>
         </div>
     </header>
+
+    <!-- Enquiry Modal -->
+    <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enquiryModalLabel">Enquiry Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="enquiryForm" onsubmit="submitForm(event)">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name*</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fatherName" class="form-label">Father's Name*</label>
+                            <input type="text" class="form-control" id="fatherName" name="fatherName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Contact Number*</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+                            <div class="form-text">Enter 10-digit mobile number</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Full Address*</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="course" class="form-label">Course Interested In*</label>
+                            <select class="form-select" id="course" name="course" required>
+                                <option value="">Select Course</option>
+                                <option value="B.Ed">B.Ed</option>
+                                <option value="D.Ed">D.Ed</option>
+                                <option value="M.Ed">M.Ed</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Your enquiry has been submitted successfully!
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="container my-5">
@@ -137,5 +199,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/form-handler.js"></script>
 </body>
 </html> 
