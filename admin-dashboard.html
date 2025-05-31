@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Saha Institute</title>
+    <!-- jQuery first -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Excel Export -->
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --background-color: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--primary-color), #0a58ca) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .logout-btn {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .dashboard-header {
+            background: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .dashboard-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .table-container h2 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .dataTables_wrapper {
+            padding: 0.5rem;
+        }
+
+        .dataTables_filter input {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 0.375rem 0.75rem;
+        }
+
+        .dataTables_length select {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 0.375rem 2rem 0.375rem 0.75rem;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody td {
+            vertical-align: middle;
+            color: #495057;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0,0,0,0.02);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(13,110,253,0.05);
+        }
+
+        .badge {
+            padding: 0.5em 0.75em;
+            font-weight: 500;
+        }
+
+        .badge-course {
+            background-color: #e3f2fd;
+            color: #0d6efd;
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        .alert-heading {
+            font-weight: 600;
+        }
+
+        .dataTables_info {
+            color: var(--secondary-color);
+            padding-top: 1rem !important;
+        }
+
+        .dataTables_paginate {
+            padding-top: 1rem !important;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .page-link {
+            color: var(--primary-color);
+        }
+
+        .page-link:hover {
+            color: #0a58ca;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                padding: 1.5rem 0;
+            }
+            
+            .table-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>
+                Saha Institute - Admin Panel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <span class="nav-link logout-btn" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="dashboard-title">Enquiry Management</h1>
+                    <p class="dashboard-subtitle">View and manage all student enquiries</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-inline-block bg-light rounded-pill px-3 py-2">
+                        <i class="fas fa-clock me-2 text-primary"></i>
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="table-container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    <i class="fas fa-table me-2"></i>
+                    Enquiry Data
+                </h2>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary" onclick="refreshData()">
+                        <i class="fas fa-sync-alt me-2"></i>Refresh
+                    </button>
+                    <button class="btn btn-outline-success" onclick="exportToExcel()">
+                        <i class="fas fa-file-excel me-2"></i>Export
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table id="enquiryTable" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variable to store the DataTable instance
+        let enquiryTable = null;
+
+        // Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9pTvw8jarD9cOP0gslTTEAWC3twFZmraXdX8se1Z33CvvRvYCw3CwZCdBg70MkE9M/exec';
+
+        // Update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString();
+        }
+        setInterval(updateCurrentTime, 1000);
+        updateCurrentTime();
+
+        // Check authentication
+        function checkAuth() {
+            if (!sessionStorage.getItem('adminAuthenticated')) {
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                sessionStorage.removeItem('adminAuthenticated');
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // Initialize DataTable
+        function initializeDataTable(data) {
+            try {
+                // Destroy existing table if it exists
+                if (enquiryTable) {
+                    enquiryTable.destroy();
+                    enquiryTable = null;
+                }
+
+                // Clear the table body
+                $('#enquiryTable tbody').empty();
+
+                // Create new DataTable instance
+                enquiryTable = $('#enquiryTable').DataTable({
+                    data: data,
+                    columns: [
+                        { 
+                            data: 'date/time',
+                            title: 'Date & Time',
+                            width: '180px',
+                            defaultContent: ''
+                        },
+                        { 
+                            data: 'name',
+                            title: 'Name',
+                            width: '200px',
+                            defaultContent: ''
+                        },
+                        { 
+                            data: 'fathersname',
+                            title: "Father's Name",
+                            width: '200px',
+                            defaultContent: ''
+                        },
+                        { 
+                            data: 'phoneno',
+                            title: 'Phone',
+                            width: '150px',
+                            defaultContent: ''
+                        },
+                        { 
+                            data: 'course',
+                            title: 'Course',
+                            width: '150px',
+                            defaultContent: '',
+                            render: function(data) {
+                                return data ? `<span class="badge badge-course">${data}</span>` : '';
+                            }
+                        }
+                    ],
+                    order: [[0, 'desc']],
+                    pageLength: 25,
+                    responsive: true,
+                    language: {
+                        search: "Search records:",
+                        lengthMenu: "Show _MENU_ records per page",
+                        info: "Showing _START_ to _END_ of _TOTAL_ records",
+                        infoEmpty: "No records available",
+                        infoFiltered: "(filtered from _MAX_ total records)"
+                    },
+                    dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rtip',
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fas fa-file-excel me-2"></i>Export to Excel',
+                            className: 'btn btn-success',
+                            title: 'Enquiry Data - ' + new Date().toLocaleDateString(),
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4]
+                            }
+                        }
+                    ],
+                    createdRow: function(row, data, dataIndex) {
+                        if (!data['date/time'] || !data['name']) {
+                            $(row).addClass('table-warning');
+                        }
+                    }
+                });
+
+                console.log('DataTable initialized successfully');
+                return true;
+            } catch (error) {
+                console.error('Error initializing DataTable:', error);
+                return false;
+            }
+        }
+
+        // Fetch and display data
+        function fetchData() {
+            const callbackName = 'jsonpCallback_' + Math.round(Math.random() * 1000000);
+            let scriptLoadTimeout;
+            
+            // Function to handle script load failure
+            function handleScriptLoadError(error) {
+                console.error('Script load error:', error);
+                clearTimeout(scriptLoadTimeout);
+                
+                // Remove the script element if it exists
+                const script = document.querySelector(`script[src*="${callbackName}"]`);
+                if (script) {
+                    document.body.removeChild(script);
+                }
+                delete window[callbackName];
+                
+                // Try alternative fetch method
+                fetchDataAlternative();
+            }
+
+            // Alternative fetch method using fetch API
+            function fetchDataAlternative() {
+                console.log('Attempting alternative fetch method...');
+                fetch(`${GOOGLE_SCRIPT_URL}?action=getData&username=${encodeURIComponent('aalekh')}&password=${encodeURIComponent('0001')}`)
+                    .then(response => {
+                        console.log('Fetch response status:', response.status);
+                        if (!response.ok) {
+                            // Try reading response text for more details on non-OK status
+                            return response.text().then(text => {
+                                throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Data received via fetch:', data);
+                        processData(data);
+                    })
+                    .catch(error => {
+                        console.error('Alternative fetch failed:', error);
+                        showError('Failed to load data via alternative method. Please check the console for details.');
+                    });
+            }
+
+            // Function to process data regardless of fetch method
+            function processData(data) {
+                try {
+                    if (data.result === 'error') {
+                        throw new Error(data.message);
+                    }
+                    
+                    if (!Array.isArray(data)) {
+                        throw new Error('Invalid data format received from server');
+                    }
+                    
+                    // Filter and clean the data
+                    data = data.filter(entry => {
+                        return Object.values(entry).some(value => 
+                            value !== null && 
+                            value !== undefined && 
+                            value !== '' && 
+                            value !== ' '
+                        );
+                    }).map(entry => ({
+                        'date/time': entry['date/time'] ? new Date(entry['date/time']).toLocaleString() : '',
+                        'name': entry['name']?.trim() || '',
+                        'fathersname': entry['fathersname']?.trim() || '',
+                        'phoneno': entry['phoneno'] ? String(entry['phoneno']).replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '',
+                        'course': entry['course']?.trim() || ''
+                    }));
+                    
+                    if (data.length === 0) {
+                        showNoData();
+                        return;
+                    }
+
+                    // Initialize the table with the processed data
+                    if (!initializeDataTable(data)) {
+                        throw new Error('Failed to initialize DataTable with processed data');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error processing data:', error);
+                    showError('Error processing received data: ' + error.message);
+                }
+            }
+
+            // Function to show error message
+            function showError(message) {
+                const tableContainer = document.querySelector('.table-container');
+                tableContainer.innerHTML = `
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Error Loading Data</h4>
+                        <p>${message}</p>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-primary" onclick="fetchData()">
+                                <i class="fas fa-sync-alt me-2"></i>Try Again
+                            </button>
+                            <small class="text-muted">Last attempted: ${new Date().toLocaleString()}</small>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Function to show no data message
+            function showNoData() {
+                const tableContainer = document.querySelector('.table-container');
+                tableContainer.innerHTML = `
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading"><i class="fas fa-info-circle me-2"></i>No Data Available</h4>
+                        <p>There are no enquiry records in the database yet.</p>
+                        <hr>
+                        <button class="btn btn-outline-primary" onclick="fetchData()">
+                            <i class="fas fa-sync-alt me-2"></i>Refresh
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Define the JSONP callback
+            window[callbackName] = function(data) {
+                clearTimeout(scriptLoadTimeout);
+                const script = document.querySelector(`script[src*="${callbackName}"]`);
+                if (script) {
+                    document.body.removeChild(script);
+                }
+                delete window[callbackName];
+                processData(data);
+            };
+            
+            // Create and add the script element
+            const script = document.createElement('script');
+            script.src = `${GOOGLE_SCRIPT_URL}?action=getData&username=${encodeURIComponent('aalekh')}&password=${encodeURIComponent('0001')}&callback=${callbackName}`;
+            
+            // Set timeout for script loading
+            scriptLoadTimeout = setTimeout(() => {
+                handleScriptLoadError(new Error('Script load timeout'));
+            }, 15000); // Increased timeout to 15 seconds
+            
+            script.onerror = handleScriptLoadError;
+            
+            // Show loading state
+            const tableContainer = document.querySelector('.table-container');
+            tableContainer.innerHTML = `
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Loading data...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(script);
+        }
+
+        // Refresh data
+        function refreshData() {
+            fetchData();
+        }
+
+        // Export to Excel
+        function exportToExcel() {
+            if (enquiryTable) {
+                enquiryTable.button('.buttons-excel').trigger();
+            }
+        }
+
+        // Initialize when document is ready
+        $(document).ready(function() {
+            checkAuth();
+            fetchData();
+        });
+    </script>
+</body>
+</html> 
