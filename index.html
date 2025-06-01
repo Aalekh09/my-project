@@ -34,13 +34,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#courses">D.Ed Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#bed">Regular B.Ed</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#med">Regular M.Ed</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#distance">Distance Learning</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i> Admin Login</a></li>
                 </ul>
             </div>
@@ -50,7 +47,7 @@
     <!-- Hero Section -->
     <header id="home" class="bg-dark text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.freepik.com/free-photo/education-day-arrangement-table-with-books_23-2149041205.jpg') no-repeat center center; background-size: cover;">
         <div class="container">
-            <h1 class="display-4">B.Ed Admission 2025-2027</h1>
+            <h1 class="display-4" style="color: white;">B.Ed Admission 2025-2027</h1>
             <p class="lead">B.ed Admission (MDU/CRSU/KUK/DCRUST)</p>
             <button class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#enquiryModal">Apply Online</button>
         </div>
@@ -92,6 +89,24 @@
                             <button type="submit" class="btn btn-primary">Submit Enquiry</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><i class="fas fa-phone"></i> +91 9871261719</p>
+                    <p><i class="fas fa-phone"></i> 0129-4055280</p>
+                    <p><i class="fas fa-envelope"></i> sahaedu@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> H.No 2219 sector 3 faridabad Near pani tanki</p>
                 </div>
             </div>
         </div>

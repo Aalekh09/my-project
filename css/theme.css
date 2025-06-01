@@ -90,6 +90,8 @@ footer .list-unstyled li {
     color: var(--footer-text) !important;
     opacity: 0.9;
     transition: opacity 0.3s ease;
+    list-style: disc;
+    margin-left: 20px;
 }
 
 footer .list-unstyled li:hover {
@@ -169,18 +171,6 @@ ul li {
 ul li:hover {
     transform: translateX(10px);
     color: var(--text-primary);
-}
-
-ul li:before {
-    content: "•";
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-    transition: all 0.3s ease;
-}
-
-ul li:hover:before {
-    transform: scale(1.5);
 }
 
 /* Smooth scrolling */
