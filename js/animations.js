@@ -51,4 +51,46 @@ document.addEventListener('DOMContentLoaded', function() {
     scaleElements.forEach((element, index) => {
         element.style.animationDelay = `${index * 0.2}s`;
     });
+
+    // Card expansion functionality
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Close other expanded cards
+            cards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current card
+            this.classList.toggle('expanded');
+            
+            // Smooth scroll to expanded card if it's not fully visible
+            if (this.classList.contains('expanded')) {
+                const cardRect = this.getBoundingClientRect();
+                const isFullyVisible = (
+                    cardRect.top >= 0 &&
+                    cardRect.bottom <= window.innerHeight
+                );
+                
+                if (!isFullyVisible) {
+                    this.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }
+            }
+        });
+    });
+
+    // Close expanded cards when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.card')) {
+            cards.forEach(card => {
+                card.classList.remove('expanded');
+            });
+        }
+    });
 }); 

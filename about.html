@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i> Admin Login</a></li>
                 </ul>
@@ -54,14 +54,16 @@
     <section class="container my-5">
         <div class="row">
             <div class="col-md-6">
-                <h2>Our Story</h2>
-                <p>Saha institute of Management & Technology (SIMT) is an authorized study centre of Maharshi Dayanand University, Rohtak. It is inspired for students who aspire to be real professionals. SIMT was established with the main objective of providing best quality of education. Our dedicated faculty strives to help the students for achieving their aim. SIMT is an amalgamation of proficient Academicians, Technocrats, Financial experts and other professionals from various fields with proven credentials and rich experience. By being with number of organizations and acquired practical exposure, SIMT team has visualized the quality and caliber of future. Our main focus is to provide 100% job assistance to our students. More than thousands students are enrolled under various categories.</p>
+                <div class="reveal">
+                    <h2>Our Story</h2>
+                    <p>Saha institute of Management & Technology (SIMT) was an authorized study centre of Maharshi Dayanand University, Rohtak. It is inspired for students who aspire to be real professionals. SIMT was established with the main objective of providing best quality of education. Our dedicated faculty strives to help the students for achieving their aim. SIMT is an amalgamation of proficient Academicians, Technocrats, Financial experts and other professionals from various fields with proven credentials and rich experience. By being with number of organizations and acquired practical exposure, SIMT team has visualized the quality and caliber of future. Our main focus is to provide 100% job assistance to our students. More than thousands students are enrolled under various categories.</p>
+                </div>
                 
-                <h3 class="mt-4">Our Journey</h3>
-                <p>Established in 1995, Saha Institute of Management & Technology (SIMT) a global leader in shis and talent development, offers multi disciplinary looding management and training delivery solution 16 corporation. institutions and individual.</p>
+                <h3 class="mt-4 reveal">Our Journey</h3>
+                <p class="reveal">Established in 1994, Saha Institute of Management & Technology (SIMT) a global leader in shis and talent development, offers multi disciplinary looding management and training delivery solution 16 corporation. institutions and individual.</p>
                 
-                <h3 class="mt-4">Key Milestones</h3>
-                <ul class="list-unstyled">
+                <h3 class="mt-4 reveal">Key Milestones</h3>
+                <ul class="list-unstyled reveal">
                     <li><i class="fas fa-check-circle text-primary me-2"></i> Saha Computer Education Year 2006 - Authorised Study Center of Maharshi Dayanand University, Rohtak for IT and Management Course (Code -02266)</li>
                     <li><i class="fas fa-check-circle text-primary me-2"></i> Saha Kids Planet: Year 2015 - Saha Kids Planet, Faridabad and English Medium Co-educational play school was established in the year 2015 by Saha Education Society (Regd.) by Govt. of Haryana under society Act</li>
                 </ul>
@@ -69,13 +71,13 @@
             <div class="col-md-6">
                 <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Modern educational institution building" class="img-fluid rounded shadow mb-4">
                 <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Students in modern classroom" class="img-fluid rounded shadow mb-4">
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-body">
                         <h4 class="card-title">Our Mission</h4>
                         <p class="card-text">To provide quality education and create professionals who can contribute effectively to society through their knowledge and skills.</p>
                     </div>
                 </div>
-                <div class="card mt-4">
+                <div class="card mt-4 reveal">
                     <div class="card-body">
                         <h4 class="card-title">Our Vision</h4>
                         <p class="card-text">To be a leading educational institution that nurtures talent and shapes future leaders through innovative teaching methods and practical exposure.</p>
@@ -114,9 +116,9 @@
                 <div class="col-md-4 mb-3">
                     <h4>Courses</h4>
                     <ul class="list-unstyled">
-                        <li>B.ed Admission</li>
-                        <li>D.ed Admission</li>
-                        <li>M.ed Admission</li>
+                        <li><a href="courses.html" class="text-white">Computer Courses</a></li>
+                        <li><a href="courses.html" class="text-white">University Courses</a></li>
+                        <li><a href="courses.html" class="text-white">B.ed Admission</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -138,5 +140,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    <script>
+        // Initialize all modals
+        document.addEventListener('DOMContentLoaded', function() {
+            var contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+            
+            // Add click event listener to contact us link
+            document.querySelector('a[data-bs-target="#contactModal"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                contactModal.show();
+            });
+        });
+    </script>
 </body>
 </html> 

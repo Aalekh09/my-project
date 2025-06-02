@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Saha Institute of Management and Technology</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        /* Add any specific styles for the courses page here */
+        .course-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .course-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        .course-info li {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .course-info li i {
+            margin-right: 5px;
+        }
+        .course-table th, .course-table td {
+            vertical-align: middle;
+        }
+        .course-filter-buttons .btn {
+            margin: 5px;
+        }
+        .card-body {
+            min-height: 180px; /* Increased minimum height to help align cards */
+        }
+
+        /* New styles for interactive cards */
+        .card {
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card-content {
+            overflow: hidden;
+        }
+
+        .card-summary {
+            /* Styles for the always visible part */
+            padding: 1.25rem;
+        }
+
+        .course-details {
+            max-height: 0;
+            padding: 0 1.25rem;
+            opacity: 0;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .card.expanded .course-details {
+            max-height: 500px; /* Adjust based on expected content length */
+            padding: 1rem 1.25rem;
+            opacity: 1;
+        }
+
+        .card.expanded .card-summary {
+             padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Contact Bar -->
+    <div class="bg-primary text-white py-2">
+        <div class="container">
+            <div class="d-flex justify-content-around flex-wrap">
+                <span><i class="fas fa-phone"></i> +91 9871261719</span>
+                <span><i class="fas fa-phone"></i> 0129-4055280</span>
+                <span><i class="fas fa-envelope"></i> sahaedu@gmail.com</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Saha Institute</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i> Admin Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Hero Section -->
+    <header class="bg-dark text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.freepik.com/free-photo/students-holding-books-walking-university-campus_23-2148214516.jpg') no-repeat center center; background-size: cover;">
+        <div class="container">
+            <h1 class="display-4" style="color: white;">Our Courses</h1>
+            <p class="lead">Explore the programs offered at Saha Institute</p>
+        </div>
+    </header>
+
+    <!-- Main Courses Content Area -->
+    <main class="container my-5">
+
+        <!-- Course Categories Filter -->
+        <section class="text-center mb-4 course-filter-buttons">
+            <h2>Explore Courses</h2>
+            <button class="btn btn-primary" data-filter="all">COMPUTER COURSES</button>
+            <!-- <button class="btn btn-outline-primary" data-filter="computer">COMPUTER COURSES</button>
+            <button class="btn btn-outline-primary" data-filter="professional">PROFESSIONAL COURSES</button> -->
+            <button class="btn btn-outline-primary" data-filter="university">UNIVERSITY COURSES</button>
+        </section>
+
+        <!-- Course Cards Section -->
+        <section id="course-cards" class="row">
+            <!-- Computer Courses -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer professional">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Tally Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">Tally</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 2 Month</li>
+                                    <li><i class="fas fa-book"></i> 50 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 06 pm - 10 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for Tally Course:</strong></p>
+                            <p>Learn comprehensive accounting and financial management using Tally ERP 9. This course covers:</p>
+                            <ul>
+                                <li>Basic and Advanced Accounting</li>
+                                <li>Inventory Management</li>
+                                <li>Taxation (GST, TDS)</li>
+                                <li>Financial Reports</li>
+                            </ul>
+                            <p>Contact us for more information!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer professional">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Web Designing Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">Web Designing</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 45 Days</li>
+                                    <li><i class="fas fa-book"></i> 45 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 06 pm - 10 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for Web Designing Course:</strong></p>
+                            <p>Master modern web design with this comprehensive course covering:</p>
+                            <ul>
+                                <li>HTML5 & CSS3</li>
+                                <li>JavaScript & jQuery</li>
+                                <li>Responsive Design</li>
+                                <li>UI/UX Principles</li>
+                            </ul>
+                            <p>Contact us for more information!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Courses -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="professional">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Digital Marketing Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">Digital Marketing</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 3 Months</li>
+                                    <li><i class="fas fa-book"></i> 60 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 06 pm - 10 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for Digital Marketing Course:</strong></p>
+                            <p>Learn the complete digital marketing ecosystem:</p>
+                            <ul>
+                                <li>Social Media Marketing</li>
+                                <li>SEO & SEM</li>
+                                <li>Content Marketing</li>
+                                <li>Email Marketing</li>
+                            </ul>
+                            <p>Contact us for more information!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Courses -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="university">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="B.Ed Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">B.Ed</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 2 Years</li>
+                                    <li><i class="fas fa-book"></i> Regular Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> Full Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for B.Ed Course:</strong></p>
+                            <p>Bachelor of Education program affiliated with:</p>
+                            <ul>
+                                <li>MDU Rohtak</li>
+                                <li>CRSU Jind</li>
+                                <li>KUK Kurukshetra</li>
+                                <li>DCRUST Murthal</li>
+                            </ul>
+                            <p>Contact us for admission details!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add new cards here -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer">
+                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="C++ Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">C++</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 45 Days</li>
+                                    <li><i class="fas fa-book"></i> 45 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 06 pm - 10 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for C++ Course:</strong></p>
+                            <p>Learn the fundamentals of C++ programming.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="professional">
+                    <img src="./uploads/spoken.jpg" class="card-img-top" alt="Spoken English Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">Spoken English</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 90 Days</li>
+                                    <li><i class="fas fa-book"></i> 75 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 10 am - 11 am Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for Spoken English Course:</strong></p>
+                            <p>Improve your spoken English skills.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="C Language Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">C- Language</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 45 Days</li>
+                                    <li><i class="fas fa-book"></i> 45 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 08 pm - 9 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for C- Language Course:</strong></p>
+                            <p>Learn the basics of C programming.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer">
+                    <img src="./uploads/java2.png" class="card-img-top" alt="JAVA Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">JAVA</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 3 Months</li>
+                                    <li><i class="fas fa-book"></i> 75 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 10 am - 11 am Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for JAVA Course:</strong></p>
+                            <p>Master Java programming.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="professional">
+                    <img src="./uploads/autocad.jpg" class="card-img-top" alt="AutoCAD Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">AutoCAD</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 3 Months</li>
+                                    <li><i class="fas fa-book"></i> 75 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 10 am - 11 am Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for AutoCAD Course:</strong></p>
+                            <p>Learn computer-aided design using AutoCAD.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card course-card-item" data-category="computer basic">
+                    <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="Computer Basic Course">
+                    <div class="card-content">
+                        <div class="card-summary">
+                            <h5 class="card-title">Computer Basic</h5>
+                            <div class="course-info">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 45 Days</li>
+                                    <li><i class="fas fa-book"></i> 45 Classes</li>
+                                    <li><i class="far fa-calendar-alt"></i> 6 pm - 10 pm Time</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-details">
+                            <p><strong>Details for Computer Basic Course:</strong></p>
+                            <p>Get started with fundamental computer skills.</p>
+                            <!-- Add more details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- University Courses Table Section -->
+        <section id="university-courses-table" class="my-5">
+            <h2 class="text-center mb-4">From UGC, DEC & AICTE Approved University</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped course-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Course Name</th>
+                            <th>Duration</th>
+                            <th>Eligibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Diploma in Computer Application</td>
+                            <td>1 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bachelor of Business Administration (BBA)</td>
+                            <td>3 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Bachelor of Computer Application (BCA)</td>
+                            <td>3 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>P.G. Diploma in Computer Application (PGDCA)</td>
+                            <td>1 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Master of Business Administration (MBA)</td>
+                            <td>2 Year</td>
+                            <td>Bachelor</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Master of Computer Application (MCA)</td>
+                            <td>3 Year</td>
+                            <td>Bachelor</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>B.A</td>
+                            <td>3 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>B.Com</td>
+                            <td>3 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>B.Sc</td>
+                            <td>3 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>M.A</td>
+                            <td>2 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>M.Com</td>
+                            <td>2 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>M.Sc</td>
+                            <td>2 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Diploma</td>
+                            <td>3 Year</td>
+                            <td>10th</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>B.Tech</td>
+                            <td>4 Year</td>
+                            <td>10+2</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>B.Ed</td>
+                            <td>2 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>LLB</td>
+                            <td>3 Year</td>
+                            <td>Graduate</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>10th</td>
+                            <td>1 Year</td>
+                            <td>9th Pass</td>
+                        </tr>
+                         <tr>
+                            <td>18</td>
+                            <td>12th</td>
+                            <td>2 Year</td>
+                            <td>10th Pass</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><center> After Examination Marksheet Certificate Diploma will be provided by UGC/DEC AICTE Approved University.</p>
+            </div>
+        </section>
+
+        <!-- Add JavaScript for course filtering -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.course-filter-buttons .btn');
+            const courseCards = document.querySelectorAll('.course-card-item');
+            const courseCardsSection = document.getElementById('course-cards');
+            const universityTableSection = document.getElementById('university-courses-table');
+
+            // Initially show course cards and hide table
+            courseCardsSection.style.display = 'flex'; // Use flex since it's a row
+            universityTableSection.style.display = 'none';
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('btn-primary'));
+                    filterButtons.forEach(btn => btn.classList.add('btn-outline-primary'));
+                    this.classList.remove('btn-outline-primary');
+                    this.classList.add('btn-primary');
+
+                    // Filter content based on the selected category
+                    if (filter === 'university') {
+                        courseCardsSection.style.display = 'none';
+                        universityTableSection.style.display = 'block';
+                    } else {
+                        courseCardsSection.style.display = 'flex'; // Use flex for cards layout
+                        universityTableSection.style.display = 'none';
+
+                        // Apply card filtering logic (existing)
+                        courseCards.forEach(card => {
+                            if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+
+             // Ensure initial display matches the active button (if any)
+             const initialActiveButton = document.querySelector('.course-filter-buttons .btn-primary');
+             if (initialActiveButton) {
+                 const initialFilter = initialActiveButton.getAttribute('data-filter');
+                 if (initialFilter === 'university') {
+                    courseCardsSection.style.display = 'none';
+                    universityTableSection.style.display = 'block';
+                 } else {
+                    courseCardsSection.style.display = 'flex';
+                    universityTableSection.style.display = 'none';
+                    // Also apply initial card filtering if needed (e.g., if 'ALL' is not default active)
+                    courseCards.forEach(card => {
+                         if (initialFilter === 'all' || card.getAttribute('data-category').includes(initialFilter)) {
+                             card.style.display = 'block';
+                         } else {
+                             card.style.display = 'none';
+                         }
+                     });
+                 }
+             }
+        });
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h4>About US</h4>
+                    <p>Welcome to Saha Institute of Management and Technology, a unique name in professional education offering a genuine choice of pathways for students. We value diversity, creativity, innovation, relationships and achievement.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h4>Courses</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="courses.html" class="text-white">Computer Courses</a></li>
+                        <li><a href="courses.html" class="text-white">University Courses</a></li>
+                        <li><a href="courses.html" class="text-white">B.ed Admission</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#terms" class="text-white">TERMS OF USE</a></li>
+                        <li><a href="#privacy" class="text-white">PRIVACY POLICY</a></li>
+                        <li><a href="#news" class="text-white">Latest News</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-3 pt-3 border-top border-secondary">
+                <p>&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        // Initialize all modals
+        document.addEventListener('DOMContentLoaded', function() {
+            var contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+            
+            // Add click event listener to contact us link
+            document.querySelector('a[data-bs-target="#contactModal"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                contactModal.show();
+            });
+        });
+    </script>
+</body>
+</html>
