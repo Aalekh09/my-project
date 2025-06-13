@@ -279,17 +279,9 @@
         // Google Apps Script Web App URL
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9pTvw8jarD9cOP0gslTTEAWC3twFZmraXdX8se1Z33CvvRvYCw3CwZCdBg70MkE9M/exec';
 
-        // Update current time
-        function updateCurrentTime() {
-            const now = new Date();
-            document.getElementById('currentTime').textContent = now.toLocaleString();
-        }
-        setInterval(updateCurrentTime, 1000);
-        updateCurrentTime();
-
-        // Check authentication
+        // Check authentication on page load
         function checkAuth() {
-            if (!sessionStorage.getItem('adminAuthenticated')) {
+            if (!localStorage.getItem('adminAuthenticated')) {
                 window.location.href = 'admin-login.html';
             }
         }
@@ -297,10 +289,24 @@
         // Handle logout
         function handleLogout() {
             if (confirm('Are you sure you want to logout?')) {
-                sessionStorage.removeItem('adminAuthenticated');
+                localStorage.removeItem('adminAuthenticated');
                 window.location.href = 'admin-login.html';
             }
         }
+
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString();
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            updateTime();
+            setInterval(updateTime, 1000);
+            fetchData();
+        });
 
         // Initialize DataTable
         function initializeDataTable(data) {
@@ -557,12 +563,6 @@
                 enquiryTable.button('.buttons-excel').trigger();
             }
         }
-
-        // Initialize when document is ready
-        $(document).ready(function() {
-            checkAuth();
-            fetchData();
-        });
     </script>
 </body>
 </html> 
