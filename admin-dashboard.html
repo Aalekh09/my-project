@@ -209,16 +209,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="index.html">
                             <i class="fas fa-home me-2"></i> Home
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="https://aalekh09.github.io/student-notes/" target="_blank">
                             <i class="fas fa-sticky-note me-2"></i> Notes
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <span class="nav-link logout-btn" onclick="handleLogout()">
                             <i class="fas fa-sign-out-alt me-2"></i> Logout
@@ -262,6 +262,9 @@
                     <button class="btn btn-outline-success" onclick="exportToExcel()">
                         <i class="fas fa-file-excel me-2"></i>Export
                     </button>
+                    <button class="btn btn-outline-info" onclick="testConnection()">
+                        <i class="fas fa-plug me-2"></i>Test Connection
+                    </button>
                 </div>
             </div>
             <div class="table-responsive">
@@ -270,6 +273,7 @@
                         <tr>
                             <th>Date & Time</th>
                             <th>Name</th>
+                            <th>Father's Name</th>
                             <th>Phone</th>
                             <th>Course</th>
                         </tr>
@@ -287,7 +291,7 @@
         let enquiryTable = null;
 
         // Google Apps Script Web App URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9pTvw8jarD9cOP0gslTTEAWC3twFZmraXdX8se1Z33CvvRvYCw3CwZCdBg70MkE9M/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzePvbevf6WUmFHAoZfrCqwW0e3aswmWeMDWXfsIGoH2uOcmNByblArwr9Hh7fhMecG/exec';
 
         // Check authentication on page load
         function checkAuth() {
@@ -335,10 +339,13 @@
                     data: data,
                     columns: [
                         { 
-                            data: 'date/time',
+                            data: 'timestamp',
                             title: 'Date & Time',
                             width: '180px',
-                            defaultContent: ''
+                            defaultContent: '',
+                            render: function(data) {
+                                return data ? new Date(data).toLocaleString() : '';
+                            }
                         },
                         { 
                             data: 'name',
@@ -347,16 +354,19 @@
                             defaultContent: ''
                         },
                         { 
-                            data: 'fathersname',
+                            data: 'fatherName',
                             title: "Father's Name",
                             width: '200px',
                             defaultContent: ''
                         },
                         { 
-                            data: 'phoneno',
+                            data: 'phone',
                             title: 'Phone',
                             width: '150px',
-                            defaultContent: ''
+                            defaultContent: '',
+                            render: function(data) {
+                                return data ? String(data).replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '';
+                            }
                         },
                         { 
                             data: 'course',
@@ -391,7 +401,8 @@
                         }
                     ],
                     createdRow: function(row, data, dataIndex) {
-                        if (!data['date/time'] || !data['name']) {
+                        console.log('Creating row for data:', data);
+                        if (!data.timestamp || !data.name) {
                             $(row).addClass('table-warning');
                         }
                     }
@@ -453,39 +464,53 @@
             // Function to process data regardless of fetch method
             function processData(data) {
                 try {
-                    if (data.result === 'error') {
+                    console.log('Raw data received:', data);
+                    
+                    if (data && data.result === 'error') {
                         throw new Error(data.message);
                     }
                     
                     if (!Array.isArray(data)) {
-                        throw new Error('Invalid data format received from server');
+                        console.log('Data is not an array, attempting to convert...');
+                        if (data && typeof data === 'object') {
+                            // If it's an object, try to extract array from it
+                            data = Object.values(data);
+                        } else {
+                            throw new Error('Invalid data format received from server');
+                        }
                     }
                     
+                    console.log('Processing array data:', data);
+                    
                     // Filter and clean the data
-                    data = data.filter(entry => {
-                        return Object.values(entry).some(value => 
+                    const processedData = data.filter(entry => {
+                        return entry && Object.values(entry).some(value => 
                             value !== null && 
                             value !== undefined && 
                             value !== '' && 
                             value !== ' '
                         );
-                    }).map(entry => ({
-                        'date/time': entry['date/time'] ? new Date(entry['date/time']).toLocaleString() : '',
-                        'name': entry['name']?.trim() || '',
-                        'fathersname': entry['fathersname']?.trim() || '',
-                        'phoneno': entry['phoneno'] ? String(entry['phoneno']).replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '',
-                        'course': entry['course']?.trim() || ''
-                    }));
+                    }).map(entry => {
+                        console.log('Processing entry:', entry);
+                        return {
+                            'timestamp': entry.timestamp || entry['date/time'] || '',
+                            'name': (entry.name || '')?.toString().trim(),
+                            'fatherName': (entry.fatherName || entry.fathersname || entry["father'sname"] || entry["father's name"] || '')?.toString().trim(),
+                            'phone': (entry.phone || entry.phoneno || '')?.toString().trim(),
+                            'course': (entry.course || '')?.toString().trim()
+                        };
+                    });
                     
-                    if (data.length === 0) {
+                    console.log('Processed data:', processedData);
+                    
+                    if (processedData.length === 0) {
                         showNoData();
                         return;
                     }
 
-                    // Initialize the table with the processed data
-                    if (!initializeDataTable(data)) {
-                        throw new Error('Failed to initialize DataTable with processed data');
-                    }
+                    // FORCE DISPLAY: Always use simple table first to ensure data shows
+                    console.log('Forcing simple table display to ensure data visibility...');
+                    displaySimpleTable(processedData);
                     
                 } catch (error) {
                     console.error('Error processing data:', error);
@@ -572,6 +597,102 @@
             if (enquiryTable) {
                 enquiryTable.button('.buttons-excel').trigger();
             }
+        }
+
+        // Simple table display function (fallback)
+        function displaySimpleTable(data) {
+            console.log('Displaying simple table with data:', data);
+            console.log('Data length:', data.length);
+            
+            const tableContainer = document.querySelector('.table-container');
+            
+            // Clear any existing content first
+            tableContainer.innerHTML = '';
+            
+            let tableHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">
+                        <i class="fas fa-table me-2"></i>
+                        Enquiry Data (${data.length} records)
+                    </h2>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary" onclick="refreshData()">
+                            <i class="fas fa-sync-alt me-2"></i>Refresh
+                        </button>
+                        <button class="btn btn-outline-info" onclick="testConnection()">
+                            <i class="fas fa-plug me-2"></i>Test Connection
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Name</th>
+                                <th>Father's Name</th>
+                                <th>Phone</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            data.forEach((entry, index) => {
+                console.log(`Rendering row ${index + 1}:`, entry);
+                tableHTML += `
+                    <tr>
+                        <td>${entry.timestamp || 'N/A'}</td>
+                        <td>${entry.name || 'N/A'}</td>
+                        <td>${entry.fatherName || 'N/A'}</td>
+                        <td>${entry.phone || 'N/A'}</td>
+                        <td><span class="badge badge-course">${entry.course || 'N/A'}</span></td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += `
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-success mt-3">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Data loaded successfully! Showing ${data.length} enquiry records.
+                </div>
+            `;
+            
+            console.log('Setting table HTML...');
+            tableContainer.innerHTML = tableHTML;
+            console.log('Table HTML set successfully');
+        }
+
+        // Test connection function
+        function testConnection() {
+            console.log('Testing connection to Google Apps Script...');
+            console.log('URL:', GOOGLE_SCRIPT_URL);
+            
+            // Test with a simple fetch first
+            fetch(`${GOOGLE_SCRIPT_URL}?action=getData&username=aalekh&password=0001`)
+                .then(response => {
+                    console.log('Test response status:', response.status);
+                    console.log('Test response headers:', response.headers);
+                    return response.text();
+                })
+                .then(text => {
+                    console.log('Test response text:', text);
+                    try {
+                        const data = JSON.parse(text);
+                        console.log('Test parsed data:', data);
+                        alert('Connection test successful! Check console for details.');
+                    } catch (e) {
+                        console.log('Response is not JSON:', e);
+                        alert('Connection successful but response is not JSON. Check console for details.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Test connection failed:', error);
+                    alert('Connection test failed. Check console for details.');
+                });
         }
     </script>
 </body>
