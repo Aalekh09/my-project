@@ -1,5 +1,5 @@
 // Google Apps Script Web App URL - Updated to latest deployment
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjL4VzUXBun_npZawIrLpe7SQ-sZVCZCR2fcOVQzA1xuIljvdyL7Mc0KcgyLiuMblg/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz5FtYbvX5LH2QJVddOtoMN2h0DTjSivyeDEcXRcZUuFQkseR0spcR4ckwvzKnT6_I/exec';
 
 // Multi-step form management
 class ProfessionalFormManager {
@@ -181,7 +181,7 @@ class ProfessionalFormManager {
     }
 
     setupPercentageCalculators() {
-        const qualifications = ['tenth', 'twelfth', 'graduation'];
+        const qualifications = ['tenth', 'twelfth', 'graduation', 'postgraduation'];
         
         qualifications.forEach(qual => {
             const obtainedField = document.getElementById(`${qual}_obtained`);
@@ -189,9 +189,11 @@ class ProfessionalFormManager {
             const percentageDiv = document.getElementById(`${qual}_percentage`);
 
             [obtainedField, totalField].forEach(field => {
-                field.addEventListener('input', () => {
-                    this.calculatePercentage(qual, obtainedField, totalField, percentageDiv);
-                });
+                if (field) {
+                    field.addEventListener('input', () => {
+                        this.calculatePercentage(qual, obtainedField, totalField, percentageDiv);
+                    });
+                }
             });
         });
     }
@@ -261,7 +263,8 @@ class ProfessionalFormManager {
         const qualifications = [
             { key: 'tenth', label: '10th Standard' },
             { key: 'twelfth', label: '12th Standard' },
-            { key: 'graduation', label: 'Graduation' }
+            { key: 'graduation', label: 'Graduation' },
+            { key: 'postgraduation', label: 'Post Graduation' }
         ];
 
         let academicHTML = '';
@@ -269,15 +272,38 @@ class ProfessionalFormManager {
             const obtained = this.formData[`${qual.key}_obtained`];
             const total = this.formData[`${qual.key}_total`];
             const year = this.formData[`${qual.key}_year`];
-            const percentage = obtained && total ? ((obtained / total) * 100).toFixed(2) : 'N/A';
             
+            // Only show if at least one field has data
+            if (obtained || total || year) {
+                const percentage = obtained && total ? ((obtained / total) * 100).toFixed(2) : 'N/A';
+                
+                academicHTML += `
+                    <div class="review-item">
+                        <span class="review-label">${qual.label}:</span>
+                        <span class="review-value">${obtained || 'N/A'}/${total || 'N/A'} (${percentage}%) - ${year || 'N/A'}</span>
+                    </div>
+                `;
+            }
+        });
+
+        // Add additional qualification if provided
+        if (this.formData.additional_qualification || this.formData.additional_details) {
             academicHTML += `
                 <div class="review-item">
-                    <span class="review-label">${qual.label}:</span>
-                    <span class="review-value">${obtained || 'N/A'}/${total || 'N/A'} (${percentage}%) - ${year || 'N/A'}</span>
+                    <span class="review-label">Additional Qualification:</span>
+                    <span class="review-value">${this.formData.additional_qualification || 'Not specified'}</span>
                 </div>
             `;
-        });
+            if (this.formData.additional_details) {
+                academicHTML += `
+                    <div class="review-item">
+                        <span class="review-label">Additional Details:</span>
+                        <span class="review-value">${this.formData.additional_details}</span>
+                    </div>
+                `;
+            }
+        }
+
         academicReview.innerHTML = academicHTML;
     }
 

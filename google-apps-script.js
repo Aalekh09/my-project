@@ -136,7 +136,7 @@ function doPost(e) {
     // Get the active spreadsheet
     const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
-    // Prepare the row data with qualification fields
+    // Prepare the row data with all qualification fields including new ones
     const rowData = [
       new Date().toLocaleString(), // Timestamp
       data.name || '',
@@ -152,6 +152,11 @@ function doPost(e) {
       data.graduation_year || '',
       data.graduation_obtained || '',
       data.graduation_total || '',
+      data.postgraduation_year || '',
+      data.postgraduation_obtained || '',
+      data.postgraduation_total || '',
+      data.additional_qualification || '',
+      data.additional_details || '',
       'No' // Default converted status
     ];
 
@@ -214,10 +219,19 @@ function getSheetData() {
           else if (key.includes('obtained')) key = '12thobtained';
           else if (key.includes('total')) key = '12thtotal';
         }
-        if (key.includes('graduation')) {
+        if (key.includes('graduation') && !key.includes('post')) {
           if (key.includes('year')) key = 'graduationyear';
           else if (key.includes('obtained')) key = 'graduationobtained';
           else if (key.includes('total')) key = 'graduationtotal';
+        }
+        if (key.includes('post') && key.includes('graduation')) {
+          if (key.includes('year')) key = 'postgraduationyear';
+          else if (key.includes('obtained')) key = 'postgraduationobtained';
+          else if (key.includes('total')) key = 'postgraduationtotal';
+        }
+        if (key.includes('additional')) {
+          if (key.includes('qualification')) key = 'additionalqualification';
+          else if (key.includes('details')) key = 'additionaldetails';
         }
 
         obj[key] = row[index] || ''; // Use empty string for null/undefined values
@@ -382,6 +396,11 @@ function setupSheet() {
         'Graduation Year',
         'Graduation Obtained',
         'Graduation Total',
+        'Post Graduation Year',
+        'Post Graduation Obtained',
+        'Post Graduation Total',
+        'Additional Qualification',
+        'Additional Details',
         'Converted'
       ];
       sheet.appendRow(headers);
