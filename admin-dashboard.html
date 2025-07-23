@@ -186,6 +186,292 @@
             color: #0a58ca;
         }
 
+        /* Professional Enquiry Card Styles */
+        .professional-enquiry-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .professional-card-header {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .professional-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-text h4 {
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .header-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .toggle-form {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-form:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .professional-card-body {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .professional-admin-form {
+            max-width: 100%;
+        }
+
+        /* Form Section Styles */
+        .form-section {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .section-title h5 {
+            color: #1e293b;
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .section-title p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        /* Qualification Subsection Styles */
+        .qualification-subsection {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .qualification-subsection:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .qualification-title {
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .qualification-title i {
+            color: #6366f1;
+        }
+
+        /* Professional Form Controls */
+        .professional-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .professional-label i {
+            color: #6366f1;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .professional-input {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .professional-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            outline: none;
+        }
+
+        .professional-input:valid {
+            border-color: #10b981;
+        }
+
+        .professional-input::placeholder {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        .form-text {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-text i {
+            color: #6366f1;
+        }
+
+        /* Form Actions */
+        .form-actions {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        .form-info {
+            color: #6b7280;
+        }
+
+        .form-info .required {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .action-buttons .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .action-buttons .btn-outline-secondary {
+            border-color: #e2e8f0;
+            color: #64748b;
+            background: white;
+        }
+
+        .action-buttons .btn-outline-secondary:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        .action-buttons .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: none;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .action-buttons .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Collapse Animation */
+        #enquiryFormCollapse {
+            transition: all 0.3s ease;
+        }
+
+        .toggle-form i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-form[aria-expanded="false"] i {
+            transform: rotate(180deg);
+        }
+
         @media (max-width: 768px) {
             .dashboard-header {
                 padding: 1.5rem 0;
@@ -193,6 +479,64 @@
 
             .table-container {
                 padding: 1rem;
+            }
+
+            .professional-card-header {
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .header-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .professional-card-body {
+                padding: 1.5rem;
+            }
+
+            .section-header {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .section-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .section-content {
+                padding: 1.5rem;
+            }
+
+            .qualification-subsection {
+                padding: 1rem;
+            }
+
+            .form-actions .d-flex {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .action-buttons {
+                width: 100%;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
             }
         }
     </style>
@@ -251,139 +595,237 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Add Enquiry Panel -->
+        <!-- Professional Add Enquiry Panel -->
         <div class="row mb-4">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">
-                            <i class="fas fa-plus-circle me-2"></i>
-                            Add New B.Ed Enquiry
-                        </h5>
+                <div class="professional-enquiry-card">
+                    <div class="professional-card-header">
+                        <div class="header-content">
+                            <div class="header-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="header-text">
+                                <h4 class="card-title mb-1">Add New Student Enquiry</h4>
+                                <p class="card-subtitle mb-0">Create a new admission enquiry record</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-light btn-sm toggle-form" type="button" data-bs-toggle="collapse" 
+                                data-bs-target="#enquiryFormCollapse" aria-expanded="true" aria-controls="enquiryFormCollapse">
+                            <i class="fas fa-chevron-up" id="toggleIcon"></i>
+                        </button>
                     </div>
-                    <div class="card-body">
-                        <form id="adminEnquiryForm" onsubmit="submitAdminEnquiry(event)">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="adminName" class="form-label">Full Name*</label>
-                                    <input type="text" class="form-control" id="adminName" name="name" required>
+                    
+                    <div class="collapse show" id="enquiryFormCollapse">
+                        <div class="professional-card-body">
+                            <form id="adminEnquiryForm" onsubmit="submitAdminEnquiry(event)" class="professional-admin-form">
+                                
+                                <!-- Personal Information Section -->
+                                <div class="form-section">
+                                    <div class="section-header">
+                                        <div class="section-icon">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class="section-title">
+                                            <h5>Personal Information</h5>
+                                            <p>Basic student details</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="section-content">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="adminName" class="professional-label">
+                                                    <i class="fas fa-user me-2"></i>Full Name <span class="required">*</span>
+                                                </label>
+                                                <input type="text" class="form-control professional-input" id="adminName" 
+                                                       name="name" placeholder="Enter student's full name" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="adminFatherName" class="professional-label">
+                                                    <i class="fas fa-male me-2"></i>Father's Name <span class="required">*</span>
+                                                </label>
+                                                <input type="text" class="form-control professional-input" id="adminFatherName" 
+                                                       name="fatherName" placeholder="Enter father's name" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="adminPhone" class="professional-label">
+                                                    <i class="fas fa-phone me-2"></i>Contact Number <span class="required">*</span>
+                                                </label>
+                                                <input type="tel" class="form-control professional-input" id="adminPhone" 
+                                                       name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+                                                <div class="form-text">
+                                                    <i class="fas fa-info-circle me-1"></i>Primary contact for admission updates
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="adminCourse" class="professional-label">
+                                                    <i class="fas fa-graduation-cap me-2"></i>Course of Interest <span class="required">*</span>
+                                                </label>
+                                                <select class="form-select professional-input" id="adminCourse" name="course" required>
+                                                    <option value="">Choose preferred course</option>
+                                                    <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                                    <option value="D.Ed">Diploma in Education (D.Ed)</option>
+                                                    <option value="M.Ed">Master of Education (M.Ed)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="adminFatherName" class="form-label">Father's Name*</label>
-                                    <input type="text" class="form-control" id="adminFatherName" name="fatherName"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="adminPhone" class="form-label">Contact Number*</label>
-                                    <input type="tel" class="form-control" id="adminPhone" name="phone"
-                                        pattern="[0-9]{10}" required>
-                                    <div class="form-text">Enter 10-digit mobile number</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="adminCourse" class="form-label">Course Interested In*</label>
-                                    <select class="form-select" id="adminCourse" name="course" required>
-                                        <option value="">Select Course</option>
-                                        <option value="B.Ed">B.Ed</option>
-                                        <option value="D.Ed">D.Ed</option>
-                                        <option value="M.Ed">M.Ed</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <!-- 10th Qualification -->
-                            <h6 class="text-primary mb-3 mt-4">10th Qualification (Optional)</h6>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_tenth_year" class="form-label">Year of Passing</label>
-                                    <input type="number" class="form-control" id="admin_tenth_year" name="tenth_year" min="1990" max="2030">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_tenth_obtained" class="form-label">Marks Obtained</label>
-                                    <input type="number" class="form-control" id="admin_tenth_obtained" name="tenth_obtained" min="0">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_tenth_total" class="form-label">Total Marks</label>
-                                    <input type="number" class="form-control" id="admin_tenth_total" name="tenth_total" min="0">
-                                </div>
-                            </div>
+                                <!-- Academic Qualifications Section -->
+                                <div class="form-section">
+                                    <div class="section-header">
+                                        <div class="section-icon">
+                                            <i class="fas fa-certificate"></i>
+                                        </div>
+                                        <div class="section-title">
+                                            <h5>Academic Qualifications</h5>
+                                            <p>Educational background details</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="section-content">
+                                        <!-- 10th Qualification -->
+                                        <div class="qualification-subsection">
+                                            <h6 class="qualification-title">
+                                                <i class="fas fa-school me-2"></i>10th Standard (Secondary) - Optional
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_tenth_year" class="professional-label">Year of Passing</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_tenth_year" 
+                                                           name="tenth_year" min="1990" max="2030" placeholder="e.g., 2020">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_tenth_obtained" class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_tenth_obtained" 
+                                                           name="tenth_obtained" min="0" placeholder="Marks scored">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_tenth_total" class="professional-label">Total Marks</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_tenth_total" 
+                                                           name="tenth_total" min="0" placeholder="Maximum marks">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <!-- 12th Qualification -->
-                            <h6 class="text-primary mb-3 mt-4">12th Qualification (Optional)</h6>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_twelfth_year" class="form-label">Year of Passing</label>
-                                    <input type="number" class="form-control" id="admin_twelfth_year" name="twelfth_year" min="1990" max="2030">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_twelfth_obtained" class="form-label">Marks Obtained</label>
-                                    <input type="number" class="form-control" id="admin_twelfth_obtained" name="twelfth_obtained" min="0">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_twelfth_total" class="form-label">Total Marks</label>
-                                    <input type="number" class="form-control" id="admin_twelfth_total" name="twelfth_total" min="0">
-                                </div>
-                            </div>
+                                        <!-- 12th Qualification -->
+                                        <div class="qualification-subsection">
+                                            <h6 class="qualification-title">
+                                                <i class="fas fa-graduation-cap me-2"></i>12th Standard (Higher Secondary) - Optional
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_twelfth_year" class="professional-label">Year of Passing</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_year" 
+                                                           name="twelfth_year" min="1990" max="2030" placeholder="e.g., 2022">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_twelfth_obtained" class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_obtained" 
+                                                           name="twelfth_obtained" min="0" placeholder="Marks scored">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_twelfth_total" class="professional-label">Total Marks</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_total" 
+                                                           name="twelfth_total" min="0" placeholder="Maximum marks">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <!-- Graduation Qualification -->
-                            <h6 class="text-primary mb-3 mt-4">Graduation Qualification</h6>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_graduation_year" class="form-label">Year of Passing</label>
-                                    <input type="number" class="form-control" id="admin_graduation_year" name="graduation_year" min="1990" max="2030">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_graduation_obtained" class="form-label">Marks Obtained</label>
-                                    <input type="number" class="form-control" id="admin_graduation_obtained" name="graduation_obtained" min="0">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_graduation_total" class="form-label">Total Marks</label>
-                                    <input type="number" class="form-control" id="admin_graduation_total" name="graduation_total" min="0">
-                                </div>
-                            </div>
+                                        <!-- Graduation Qualification -->
+                                        <div class="qualification-subsection">
+                                            <h6 class="qualification-title">
+                                                <i class="fas fa-university me-2"></i>Graduation (Bachelor's Degree) - Optional
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_graduation_year" class="professional-label">Year of Passing</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_graduation_year" 
+                                                           name="graduation_year" min="1990" max="2030" placeholder="e.g., 2024">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_graduation_obtained" class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_graduation_obtained" 
+                                                           name="graduation_obtained" min="0" placeholder="Marks scored">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_graduation_total" class="professional-label">Total Marks</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_graduation_total" 
+                                                           name="graduation_total" min="0" placeholder="Maximum marks">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <!-- Post Graduation Qualification -->
-                            <h6 class="text-primary mb-3 mt-4">Post Graduation Qualification (Optional)</h6>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_postgraduation_year" class="form-label">Year of Passing</label>
-                                    <input type="number" class="form-control" id="admin_postgraduation_year" name="postgraduation_year" min="1990" max="2030">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_postgraduation_obtained" class="form-label">Marks Obtained</label>
-                                    <input type="number" class="form-control" id="admin_postgraduation_obtained" name="postgraduation_obtained" min="0">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="admin_postgraduation_total" class="form-label">Total Marks</label>
-                                    <input type="number" class="form-control" id="admin_postgraduation_total" name="postgraduation_total" min="0">
-                                </div>
-                            </div>
+                                        <!-- Post Graduation Qualification -->
+                                        <div class="qualification-subsection">
+                                            <h6 class="qualification-title">
+                                                <i class="fas fa-user-graduate me-2"></i>Post Graduation (Master's Degree) - Optional
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_postgraduation_year" class="professional-label">Year of Passing</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_year" 
+                                                           name="postgraduation_year" min="1990" max="2030" placeholder="e.g., 2026">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_postgraduation_obtained" class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_obtained" 
+                                                           name="postgraduation_obtained" min="0" placeholder="Marks scored">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="admin_postgraduation_total" class="professional-label">Total Marks</label>
+                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_total" 
+                                                           name="postgraduation_total" min="0" placeholder="Maximum marks">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <!-- Additional Qualification -->
-                            <h6 class="text-primary mb-3 mt-4">Additional Qualification (Optional)</h6>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="admin_additional_qualification" class="form-label">Qualification Name</label>
-                                    <input type="text" class="form-control" id="admin_additional_qualification" name="additional_qualification" placeholder="e.g., B.Ed, M.Ed, Diploma, Certificate">
+                                        <!-- Additional Qualification -->
+                                        <div class="qualification-subsection">
+                                            <h6 class="qualification-title">
+                                                <i class="fas fa-award me-2"></i>Additional Qualification - Optional
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="admin_additional_qualification" class="professional-label">Qualification Name</label>
+                                                    <input type="text" class="form-control professional-input" id="admin_additional_qualification" 
+                                                           name="additional_qualification" placeholder="e.g., B.Ed, M.Ed, Diploma, Certificate">
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="admin_additional_details" class="professional-label">Details</label>
+                                                    <textarea class="form-control professional-input" id="admin_additional_details" 
+                                                              name="additional_details" rows="3" 
+                                                              placeholder="Institution, year, percentage, or any other relevant details"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="admin_additional_details" class="form-label">Details</label>
-                                    <textarea class="form-control" id="admin_additional_details" name="additional_details" rows="3" placeholder="Institution, year, percentage, or any other relevant details"></textarea>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-save me-2"></i>Add Enquiry
-                                    </button>
-                                    <button type="reset" class="btn btn-outline-secondary ms-2">
-                                        <i class="fas fa-undo me-2"></i>Reset Form
-                                    </button>
+                                <!-- Form Actions -->
+                                <div class="form-actions">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="form-info">
+                                            <small class="text-muted">
+                                                <i class="fas fa-info-circle me-1"></i>
+                                                Fields marked with <span class="required">*</span> are required
+                                            </small>
+                                        </div>
+                                        <div class="action-buttons">
+                                            <button type="reset" class="btn btn-outline-secondary me-2">
+                                                <i class="fas fa-undo me-2"></i>Reset Form
+                                            </button>
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-plus-circle me-2"></i>Add Enquiry
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
