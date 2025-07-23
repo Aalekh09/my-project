@@ -65,110 +65,250 @@
         </div>
     </header>
 
-    <!-- Enquiry Modal -->
+    <!-- Professional Enquiry Modal -->
     <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="enquiryModalLabel">Enquiry Form</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content professional-modal">
+                <div class="modal-header professional-header">
+                    <div class="header-content">
+                        <div class="header-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="header-text">
+                            <h4 class="modal-title mb-0" id="enquiryModalLabel">B.Ed Admission Application</h4>
+                            <p class="modal-subtitle mb-0">Start your teaching career journey with us</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close professional-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
-                    <form id="enquiryForm" onsubmit="submitForm(event)">
-                        <!-- Personal Information -->
-                        <h6 class="text-primary mb-3">Personal Information</h6>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="name" class="form-label">Full Name*</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="fatherName" class="form-label">Father's Name*</label>
-                                <input type="text" class="form-control" id="fatherName" name="fatherName" required>
-                            </div>
+
+                <div class="modal-body professional-body">
+                    <!-- Progress Indicator -->
+                    <div class="progress-container mb-4">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Personal Info</div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="phone" class="form-label">Contact Number*</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}"
-                                    required>
-                                <div class="form-text">Enter 10-digit mobile number</div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Academic Records</div>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Review & Submit</div>
+                        </div>
+                    </div>
+
+                    <form id="enquiryForm" onsubmit="submitForm(event)" class="professional-form">
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active" data-step="1">
+                            <div class="step-header">
+                                <h5 class="step-title">
+                                    <i class="fas fa-user-circle me-2"></i>
+                                    Personal Information
+                                </h5>
+                                <p class="step-description">Please provide your basic details</p>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="course" class="form-label">Course Interested In*</label>
-                                <select class="form-select" id="course" name="course" required>
-                                    <option value="">Select Course</option>
-                                    <option value="B.Ed">B.Ed</option>
-                                    <option value="D.Ed">D.Ed</option>
-                                    <option value="M.Ed">M.Ed</option>
-                                </select>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">
+                                        <i class="fas fa-user me-1"></i>
+                                        Full Name <span class="required">*</span>
+                                    </label>
+                                    <input type="text" class="form-control professional-input" id="name" name="name"
+                                        placeholder="Enter your full name" required>
+                                    <div class="invalid-feedback">Please provide your full name.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fatherName" class="form-label">
+                                        <i class="fas fa-male me-1"></i>
+                                        Father's Name <span class="required">*</span>
+                                    </label>
+                                    <input type="text" class="form-control professional-input" id="fatherName"
+                                        name="fatherName" placeholder="Enter father's name" required>
+                                    <div class="invalid-feedback">Please provide father's name.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">
+                                        <i class="fas fa-phone me-1"></i>
+                                        Contact Number <span class="required">*</span>
+                                    </label>
+                                    <input type="tel" class="form-control professional-input" id="phone" name="phone"
+                                        pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+                                    <div class="form-text">We'll use this number for admission updates</div>
+                                    <div class="invalid-feedback">Please provide a valid 10-digit mobile number.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="course" class="form-label">
+                                        <i class="fas fa-book me-1"></i>
+                                        Course of Interest <span class="required">*</span>
+                                    </label>
+                                    <select class="form-select professional-input" id="course" name="course" required>
+                                        <option value="">Choose your preferred course</option>
+                                        <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                        <option value="D.Ed">Diploma in Education (D.Ed)</option>
+                                        <option value="M.Ed">Master of Education (M.Ed)</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a course.</div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 10th Qualification -->
-                        <h6 class="text-primary mb-3 mt-4">10th Qualification</h6>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="tenth_year" class="form-label">Year of Passing*</label>
-                                <input type="number" class="form-control" id="tenth_year" name="tenth_year" min="1990"
-                                    max="2030" required>
+                        <!-- Step 2: Academic Qualifications -->
+                        <div class="form-step" data-step="2">
+                            <div class="step-header">
+                                <h5 class="step-title">
+                                    <i class="fas fa-certificate me-2"></i>
+                                    Academic Qualifications
+                                </h5>
+                                <p class="step-description">Please provide your educational background</p>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="tenth_obtained" class="form-label">Marks Obtained*</label>
-                                <input type="number" class="form-control" id="tenth_obtained" name="tenth_obtained"
-                                    min="0" required>
+
+                            <!-- 10th Qualification -->
+                            <div class="qualification-section">
+                                <h6 class="qualification-title">
+                                    <i class="fas fa-school me-2"></i>
+                                    10th Standard (Secondary)
+                                </h6>
+                                <div class="form-grid-3">
+                                    <div class="form-group">
+                                        <label for="tenth_year" class="form-label">Year of Passing <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input" id="tenth_year"
+                                            name="tenth_year" min="1990" max="2030" placeholder="e.g., 2020" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tenth_obtained" class="form-label">Marks Obtained <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input" id="tenth_obtained"
+                                            name="tenth_obtained" min="0" placeholder="Marks scored" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tenth_total" class="form-label">Total Marks <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input" id="tenth_total"
+                                            name="tenth_total" min="0" placeholder="Maximum marks" required>
+                                    </div>
+                                </div>
+                                <div class="percentage-display" id="tenth_percentage"></div>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="tenth_total" class="form-label">Total Marks*</label>
-                                <input type="number" class="form-control" id="tenth_total" name="tenth_total" min="0"
-                                    required>
+
+                            <!-- 12th Qualification -->
+                            <div class="qualification-section">
+                                <h6 class="qualification-title">
+                                    <i class="fas fa-graduation-cap me-2"></i>
+                                    12th Standard (Higher Secondary)
+                                </h6>
+                                <div class="form-grid-3">
+                                    <div class="form-group">
+                                        <label for="twelfth_year" class="form-label">Year of Passing <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input" id="twelfth_year"
+                                            name="twelfth_year" min="1990" max="2030" placeholder="e.g., 2022" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="twelfth_obtained" class="form-label">Marks Obtained <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input"
+                                            id="twelfth_obtained" name="twelfth_obtained" min="0"
+                                            placeholder="Marks scored" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="twelfth_total" class="form-label">Total Marks <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input" id="twelfth_total"
+                                            name="twelfth_total" min="0" placeholder="Maximum marks" required>
+                                    </div>
+                                </div>
+                                <div class="percentage-display" id="twelfth_percentage"></div>
+                            </div>
+
+                            <!-- Graduation Qualification -->
+                            <div class="qualification-section">
+                                <h6 class="qualification-title">
+                                    <i class="fas fa-university me-2"></i>
+                                    Graduation (Bachelor's Degree)
+                                </h6>
+                                <div class="form-grid-3">
+                                    <div class="form-group">
+                                        <label for="graduation_year" class="form-label">Year of Passing <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input"
+                                            id="graduation_year" name="graduation_year" min="1990" max="2030"
+                                            placeholder="e.g., 2024" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="graduation_obtained" class="form-label">Marks Obtained <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input"
+                                            id="graduation_obtained" name="graduation_obtained" min="0"
+                                            placeholder="Marks scored" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="graduation_total" class="form-label">Total Marks <span
+                                                class="required">*</span></label>
+                                        <input type="number" class="form-control professional-input"
+                                            id="graduation_total" name="graduation_total" min="0"
+                                            placeholder="Maximum marks" required>
+                                    </div>
+                                </div>
+                                <div class="percentage-display" id="graduation_percentage"></div>
                             </div>
                         </div>
 
-                        <!-- 12th Qualification -->
-                        <h6 class="text-primary mb-3 mt-4">12th Qualification</h6>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="twelfth_year" class="form-label">Year of Passing*</label>
-                                <input type="number" class="form-control" id="twelfth_year" name="twelfth_year"
-                                    min="1990" max="2030" required>
+                        <!-- Step 3: Review & Submit -->
+                        <div class="form-step" data-step="3">
+                            <div class="step-header">
+                                <h5 class="step-title">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    Review Your Application
+                                </h5>
+                                <p class="step-description">Please review your information before submitting</p>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="twelfth_obtained" class="form-label">Marks Obtained*</label>
-                                <input type="number" class="form-control" id="twelfth_obtained" name="twelfth_obtained"
-                                    min="0" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="twelfth_total" class="form-label">Total Marks*</label>
-                                <input type="number" class="form-control" id="twelfth_total" name="twelfth_total"
-                                    min="0" required>
-                            </div>
-                        </div>
 
-                        <!-- Graduation Qualification -->
-                        <h6 class="text-primary mb-3 mt-4">Graduation Qualification</h6>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="graduation_year" class="form-label">Year of Passing*</label>
-                                <input type="number" class="form-control" id="graduation_year" name="graduation_year"
-                                    min="1990" max="2030" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="graduation_obtained" class="form-label">Marks Obtained*</label>
-                                <input type="number" class="form-control" id="graduation_obtained"
-                                    name="graduation_obtained" min="0" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="graduation_total" class="form-label">Total Marks*</label>
-                                <input type="number" class="form-control" id="graduation_total" name="graduation_total"
-                                    min="0" required>
-                            </div>
-                        </div>
+                            <div class="review-section">
+                                <div class="review-card">
+                                    <h6 class="review-title">Personal Information</h6>
+                                    <div class="review-content" id="reviewPersonal"></div>
+                                </div>
 
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                                <div class="review-card">
+                                    <h6 class="review-title">Academic Qualifications</h6>
+                                    <div class="review-content" id="reviewAcademic"></div>
+                                </div>
+                            </div>
+
+                            <div class="terms-section">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="termsAccept" required>
+                                    <label class="form-check-label" for="termsAccept">
+                                        I agree to the <a href="#" class="text-primary">Terms and Conditions</a> and
+                                        <a href="#" class="text-primary">Privacy Policy</a>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </form>
+                </div>
+
+                <div class="modal-footer professional-footer">
+                    <div class="footer-buttons">
+                        <button type="button" class="btn btn-outline-secondary" id="prevBtn" style="display: none;">
+                            <i class="fas fa-arrow-left me-1"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next <i class="fas fa-arrow-right ms-1"></i>
+                        </button>
+                        <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;"
+                            form="enquiryForm">
+                            <i class="fas fa-paper-plane me-1"></i> Submit Application
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
