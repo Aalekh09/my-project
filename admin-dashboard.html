@@ -291,6 +291,58 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <!-- 10th Qualification -->
+                            <h6 class="text-primary mb-3 mt-4">10th Qualification</h6>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_tenth_year" class="form-label">Year of Passing*</label>
+                                    <input type="number" class="form-control" id="admin_tenth_year" name="tenth_year" min="1990" max="2030" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_tenth_obtained" class="form-label">Marks Obtained*</label>
+                                    <input type="number" class="form-control" id="admin_tenth_obtained" name="tenth_obtained" min="0" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_tenth_total" class="form-label">Total Marks*</label>
+                                    <input type="number" class="form-control" id="admin_tenth_total" name="tenth_total" min="0" required>
+                                </div>
+                            </div>
+
+                            <!-- 12th Qualification -->
+                            <h6 class="text-primary mb-3 mt-4">12th Qualification</h6>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_twelfth_year" class="form-label">Year of Passing*</label>
+                                    <input type="number" class="form-control" id="admin_twelfth_year" name="twelfth_year" min="1990" max="2030" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_twelfth_obtained" class="form-label">Marks Obtained*</label>
+                                    <input type="number" class="form-control" id="admin_twelfth_obtained" name="twelfth_obtained" min="0" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_twelfth_total" class="form-label">Total Marks*</label>
+                                    <input type="number" class="form-control" id="admin_twelfth_total" name="twelfth_total" min="0" required>
+                                </div>
+                            </div>
+
+                            <!-- Graduation Qualification -->
+                            <h6 class="text-primary mb-3 mt-4">Graduation Qualification</h6>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_graduation_year" class="form-label">Year of Passing*</label>
+                                    <input type="number" class="form-control" id="admin_graduation_year" name="graduation_year" min="1990" max="2030" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_graduation_obtained" class="form-label">Marks Obtained*</label>
+                                    <input type="number" class="form-control" id="admin_graduation_obtained" name="graduation_obtained" min="0" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="admin_graduation_total" class="form-label">Total Marks*</label>
+                                    <input type="number" class="form-control" id="admin_graduation_total" name="graduation_total" min="0" required>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">
@@ -337,6 +389,9 @@
                             <th>Father's Name</th>
                             <th>Phone</th>
                             <th>Course</th>
+                            <th>10th (%)</th>
+                            <th>12th (%)</th>
+                            <th>Graduation (%)</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -354,7 +409,7 @@
         let enquiryTable = null;
 
         // Google Apps Script Web App URL - Updated to latest deployment
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLGxqftjp364ZnQnO8EqgSFG6pUaFIRnoIcdG1H_vOpWr-IkiVxRhjXkYB5WcFnB4R/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjL4VzUXBun_npZawIrLpe7SQ-sZVCZCR2fcOVQzA1xuIljvdyL7Mc0KcgyLiuMblg/exec';
 
         // Debug function to test the updateStatus action
         function debugStatusUpdate() {
@@ -573,12 +628,26 @@
                         );
                     }).map(entry => {
                         console.log('Processing entry:', entry);
+                        // Calculate percentages for qualifications - using correct field names
+                        const tenthPercentage = entry['10thyear'] && entry['10thobtained'] && entry['10thtotal'] 
+                            ? ((parseFloat(entry['10thobtained']) / parseFloat(entry['10thtotal'])) * 100).toFixed(1) + '%'
+                            : 'N/A';
+                        const twelfthPercentage = entry['12thyear'] && entry['12thobtained'] && entry['12thtotal']
+                            ? ((parseFloat(entry['12thobtained']) / parseFloat(entry['12thtotal'])) * 100).toFixed(1) + '%'
+                            : 'N/A';
+                        const graduationPercentage = entry['graduationyear'] && entry['graduationobtained'] && entry['graduationtotal']
+                            ? ((parseFloat(entry['graduationobtained']) / parseFloat(entry['graduationtotal'])) * 100).toFixed(1) + '%'
+                            : 'N/A';
+
                         return {
                             'timestamp': entry.timestamp || entry['date/time'] || '',
                             'name': (entry.name || '')?.toString().trim(),
                             'fatherName': (entry.fatherName || entry.fathersname || entry["father'sname"] || entry["father's name"] || '')?.toString().trim(),
                             'phone': (entry.phone || entry.phoneno || '')?.toString().trim(),
                             'course': (entry.course || '')?.toString().trim(),
+                            'tenthPercentage': tenthPercentage,
+                            'twelfthPercentage': twelfthPercentage,
+                            'graduationPercentage': graduationPercentage,
                             'converted': entry.converted || 'No'
                         };
                     });
@@ -715,6 +784,9 @@
                                 <th>Father's Name</th>
                                 <th>Phone</th>
                                 <th>Course</th>
+                                <th>10th (%)</th>
+                                <th>12th (%)</th>
+                                <th>Graduation (%)</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -736,6 +808,9 @@
                         <td>${entry.fatherName || 'N/A'}</td>
                         <td>${entry.phone || 'N/A'}</td>
                         <td><span class="badge badge-course">${entry.course || 'N/A'}</span></td>
+                        <td>${entry.tenthPercentage || 'N/A'}</td>
+                        <td>${entry.twelfthPercentage || 'N/A'}</td>
+                        <td>${entry.graduationPercentage || 'N/A'}</td>
                         <td>${statusBadge}</td>
                         <td>
                             <button class="btn ${isConverted ? 'btn-warning' : 'btn-success'} btn-sm" 
@@ -776,10 +851,13 @@
             // Add timestamp
             data.timestamp = new Date().toLocaleString();
 
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML; // Move outside try block
+            
+            console.log('Admin form data being submitted:', data); // Debug log
+
             try {
-                // Show loading state
-                const submitButton = form.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
                 submitButton.disabled = true;
                 submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...';
 
@@ -809,7 +887,6 @@
                 showErrorToast('There was an error adding the enquiry. Please try again.');
             } finally {
                 // Reset button state
-                const submitButton = form.querySelector('button[type="submit"]');
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
             }

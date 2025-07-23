@@ -1,5 +1,5 @@
 // Google Apps Script Web App URL - Updated to latest deployment
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLGxqftjp364ZnQnO8EqgSFG6pUaFIRnoIcdG1H_vOpWr-IkiVxRhjXkYB5WcFnB4R/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjL4VzUXBun_npZawIrLpe7SQ-sZVCZCR2fcOVQzA1xuIljvdyL7Mc0KcgyLiuMblg/exec';
 
 // Form submission handler
 async function submitForm(event) {

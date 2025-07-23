@@ -136,13 +136,22 @@ function doPost(e) {
     // Get the active spreadsheet
     const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
-    // Prepare the row data
+    // Prepare the row data with qualification fields
     const rowData = [
       new Date().toLocaleString(), // Timestamp
       data.name || '',
       data.fatherName || '',
       data.phone || '',
       data.course || '',
+      data.tenth_year || '',
+      data.tenth_obtained || '',
+      data.tenth_total || '',
+      data.twelfth_year || '',
+      data.twelfth_obtained || '',
+      data.twelfth_total || '',
+      data.graduation_year || '',
+      data.graduation_obtained || '',
+      data.graduation_total || '',
       'No' // Default converted status
     ];
 
@@ -191,8 +200,26 @@ function getSheetData() {
     const jsonData = rows.map(row => {
       const obj = {};
       headers.forEach((header, index) => {
-        // Convert header to lowercase and remove spaces for consistency
-        const key = header.toString().toLowerCase().replace(/\s+/g, '');
+        // Convert header to lowercase and remove spaces/apostrophes for consistency
+        let key = header.toString().toLowerCase().replace(/\s+/g, '').replace(/'/g, '');
+
+        // Ensure consistent field names for qualification data
+        if (key.includes('10th')) {
+          if (key.includes('year')) key = '10thyear';
+          else if (key.includes('obtained')) key = '10thobtained';
+          else if (key.includes('total')) key = '10thtotal';
+        }
+        if (key.includes('12th')) {
+          if (key.includes('year')) key = '12thyear';
+          else if (key.includes('obtained')) key = '12thobtained';
+          else if (key.includes('total')) key = '12thtotal';
+        }
+        if (key.includes('graduation')) {
+          if (key.includes('year')) key = 'graduationyear';
+          else if (key.includes('obtained')) key = 'graduationobtained';
+          else if (key.includes('total')) key = 'graduationtotal';
+        }
+
         obj[key] = row[index] || ''; // Use empty string for null/undefined values
       });
       return obj;
@@ -346,6 +373,15 @@ function setupSheet() {
         'Father\'s Name',
         'Phone',
         'Course',
+        '10th Year',
+        '10th Obtained',
+        '10th Total',
+        '12th Year',
+        '12th Obtained',
+        '12th Total',
+        'Graduation Year',
+        'Graduation Obtained',
+        'Graduation Total',
         'Converted'
       ];
       sheet.appendRow(headers);
