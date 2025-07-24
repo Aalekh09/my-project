@@ -16,14 +16,14 @@
 </head>
 
 <body>
-    <!-- Top Contact Bar -->
-    <div class="bg-primary text-white py-2">
+    <!-- Professional Contact Bar -->
+    <div class="contact-bar">
         <div class="container">
-            <div class="d-flex justify-content-around flex-wrap">
+            <div class="d-flex justify-content-center justify-content-md-around flex-wrap gap-3">
                 <span><i class="fas fa-phone"></i> +91 9871261719</span>
                 <span><i class="fas fa-phone"></i> 0129-4055280</span>
-                <span><a href="mailto:sahaedu@gmail.com" class="text-white"><i class="fas fa-envelope"></i>
-                        sahaedu@gmail.com</a></span>
+                <span><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></span>
+                <span><i class="fas fa-map-marker-alt"></i> Faridabad, Haryana</span>
             </div>
         </div>
     </div>
@@ -54,16 +54,55 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="home" class="bg-dark text-white text-center py-5"
-        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.freepik.com/free-photo/education-day-arrangement-table-with-books_23-2149041205.jpg') no-repeat center center; background-size: cover;">
+    <!-- Professional Hero Section -->
+    <header id="home" class="hero-section">
         <div class="container">
-            <h1 class="display-4" style="color: white;">B.Ed Admission 2025-2027</h1>
-            <p class="lead">B.ed Admission (MDU/CRSU/KUK/DCRUST)</p>
-            <button class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#enquiryModal">Apply
-                Online</button>
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Future with B.Ed Admission 2025-2027</h1>
+                <p class="hero-subtitle">Join India's Leading Teacher Education Program - Affiliated with MDU, CRSU, KUK & DCRUST</p>
+                <div class="hero-cta">
+                    <button class="btn btn-hero btn-hero-primary" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                        <i class="fas fa-graduation-cap me-2"></i>Apply Now
+                    </button>
+                    <a href="#bed" class="btn btn-hero btn-hero-outline">
+                        <i class="fas fa-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Students Enrolled</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">University Affiliations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Professional Enquiry Modal -->
     <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
@@ -395,84 +434,249 @@
 
     <!-- Main Content -->
     <main class="container my-5">
-        <section id="bed" class="py-4 bed-section reveal-zoom">
-            <div class="bed-content">
-                <h2 class="fade-in">B.Ed Admission 2025 MDU CRSU KUK</h2>
-                <p class="fade-in">B.ed stands for "Bachelor of Education". This is a two year degree course in MDU. The
-                    university offers the following programs to let the aspirants learn an adequate teaching methods and
-                    can work effectively and efficiently in reputed schools in India.</p>
+        <!-- B.Ed Program Overview -->
+        <section id="bed" class="section-modern reveal-zoom">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 mb-4 fade-in">Bachelor of Education (B.Ed) Program 2025-2027</h2>
+                    <p class="lead fade-in">Transform your passion for teaching into a rewarding career with our comprehensive B.Ed program. Affiliated with prestigious universities including MDU, CRSU, KUK, and DCRUST.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="fas fa-clock text-primary mb-2"></i>
+                                <h6>Duration</h6>
+                                <p>2 Years Full-time Program</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="fas fa-certificate text-primary mb-2"></i>
+                                <h6>Recognition</h6>
+                                <p>UGC & NCTE Approved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="B.Ed Students" class="img-fluid rounded-4 shadow-lg">
+                </div>
             </div>
         </section>
 
-        <section class="py-4 reveal-left">
-            <h3 class="scale-in">ELIGIBILITY FOR B.ED ADMISSION:</h3>
-            <ul class="reveal-list">
-                <li>The basic requirements for taking admission in B.Ed colleges.</li>
-                <li>The minimum qualification required for B.Ed course is B.A., B.sc, B.com or bachelor degree any other
-                    field</li>
-                <li>Minimum 50% marks either in graduation or post graduation</li>
-                <li>To impart excellent theoretical and practical education for providing innovative teaching and
-                    training for the personal development of students.</li>
-            </ul>
-            <div class="text-center my-4">
-                <a href="tel:+919871261719" class="btn btn-success btn-lg float-animation">CALL 9871261719</a>
+        <!-- Eligibility Section -->
+        <section class="section-modern reveal-left">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h3 class="display-6 mb-4 scale-in">Eligibility Requirements</h3>
+                    <p class="lead mb-5">Join thousands of successful educators who started their journey with us</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-professional reveal-list">
+                        <li>Bachelor's degree in any discipline (B.A., B.Sc., B.Com., etc.)</li>
+                        <li>Minimum 50% marks in graduation or post-graduation</li>
+                        <li>Age limit as per university norms</li>
+                        <li>Valid entrance test score (where applicable)</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-modern">
+                        <div class="card-body text-center">
+                            <i class="fas fa-phone-alt text-primary mb-3" style="font-size: 2rem;"></i>
+                            <h5>Need Guidance?</h5>
+                            <p>Speak with our admission counselors</p>
+                            <a href="tel:+919871261719" class="btn btn-primary">
+                                <i class="fas fa-phone me-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="py-4 reveal-right">
-            <h3 class="scale-in">DOCUMENTS REQUIRED:</h3>
-            <ul class="reveal-list">
-                <li>10th Marksheet & Certificate.</li>
-                <li>12th Marksheet & Certificate.</li>
-                <li>Graduation Marksheet/Post Graduation Marksheet.</li>
-                <li>Adhaar Card Copy.</li>
-                <li>Original Migration.</li>
-                <li>4 Photographs.</li>
-            </ul>
+        <!-- Documents Required -->
+        <section class="section-modern reveal-right">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Documents" class="img-fluid rounded-4 shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="display-6 mb-4 scale-in">Required Documents</h3>
+                    <p class="lead mb-4">Prepare these documents for a smooth admission process</p>
+                    <ul class="list-professional reveal-list">
+                        <li>10th Standard Marksheet & Certificate</li>
+                        <li>12th Standard Marksheet & Certificate</li>
+                        <li>Graduation/Post-Graduation Marksheet</li>
+                        <li>Aadhaar Card Copy</li>
+                        <li>Original Migration Certificate</li>
+                        <li>Recent Passport-size Photographs (4 copies)</li>
+                    </ul>
+                    <div class="mt-4">
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            <i class="fas fa-file-upload me-2"></i>Start Application
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="py-4 reveal-up">
-            <h3 class="scale-in">Universities B.ed Colleges:</h3>
-            <ul class="reveal-list">
-                <li>GURUGRAM University Gurgaon, Haryana (Recognised by UGC & NCTE).</li>
-                <li>Maharshi Dayanand University Rohtak(MDU), Haryana (Recognised by UGC & NCTE).</li>
-                <li>Chaudhary Ranbir Singh University Jind (CRSU), Haryana (Recognised by UGC & NCTE).</li>
-                <li>DCRUST University Murthal, Haryana (Recognised by UGC & NCTE).</li>
-                <li>Kurukhestra University Kurukhestra, Haryana (Recognised by UGC & NCTE).</li>
-                <li>Indira Gandhi University Meerpur Rewari, Haryana (Recognised by UGC & NCTE).</li>
-            </ul>
+        <!-- University Affiliations -->
+        <section class="section-modern reveal-up">
+            <div class="text-center mb-5">
+                <h3 class="display-6 mb-4 scale-in">Our University Partners</h3>
+                <p class="lead">Choose from prestigious universities recognized by UGC & NCTE</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card card-modern h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <h5 class="mb-0">Maharshi Dayanand University (MDU)</h5>
+                            </div>
+                            <p class="text-muted">Rohtak, Haryana • UGC & NCTE Recognized</p>
+                            <div class="badge bg-success">Most Popular</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-modern h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <h5 class="mb-0">Chaudhary Ranbir Singh University (CRSU)</h5>
+                            </div>
+                            <p class="text-muted">Jind, Haryana • UGC & NCTE Recognized</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-modern h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <h5 class="mb-0">Kurukshetra University (KUK)</h5>
+                            </div>
+                            <p class="text-muted">Kurukshetra, Haryana • UGC & NCTE Recognized</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-modern h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
+                                <h5 class="mb-0">DCRUST University</h5>
+                            </div>
+                            <p class="text-muted">Murthal, Haryana • UGC & NCTE Recognized</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section-modern">
+            <div class="text-center mb-5">
+                <h3 class="display-6 mb-4">Why Choose Saha Institute?</h3>
+                <p class="lead">Experience excellence in teacher education</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-chalkboard-teacher text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Expert Faculty</h5>
+                        <p>Learn from experienced educators and industry professionals</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-laptop text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Modern Infrastructure</h5>
+                        <p>State-of-the-art classrooms and digital learning resources</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-handshake text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>100% Placement Support</h5>
+                        <p>Comprehensive career guidance and job placement assistance</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <!-- Professional Footer -->
+    <footer class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h4>About US</h4>
-                    <p>Welcome to Saha Institute of Management and Technology, a unique name in professional education
-                        offering a genuine choice of pathways for students. We value diversity, creativity, innovation,
-                        relationships and achievement.</p>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h4>Saha Institute</h4>
+                    <p class="mb-4">Transforming lives through quality education since 1994. We are committed to providing excellence in professional education and creating industry-ready professionals.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h4>Courses</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="courses.html" class="text-white">Computer Courses</a></li>
-                        <li><a href="courses.html" class="text-white">University Courses</a></li>
-                        <li><a href="courses.html" class="text-white">B.ed Admission</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-lg-2 col-md-6">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#terms" class="text-white">TERMS OF USE</a></li>
-                        <li><a href="#privacy" class="text-white">PRIVACY POLICY</a></li>
-                        <li><a href="#news" class="text-white">Latest News</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a></li>
+                        <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Our Programs</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="courses.html">B.Ed Admission</a></li>
+                        <li><a href="courses.html">Computer Courses</a></li>
+                        <li><a href="courses.html">Professional Training</a></li>
+                        <li><a href="courses.html">Digital Marketing</a></li>
+                        <li><a href="courses.html">Programming Languages</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Contact Info</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>H.No 2219, Sector 3, Faridabad</li>
+                        <li><i class="fas fa-phone me-2"></i>+91 9871261719</li>
+                        <li><i class="fas fa-phone me-2"></i>0129-4055280</li>
+                        <li><i class="fas fa-envelope me-2"></i>sahaedu@gmail.com</li>
+                        <li><i class="fas fa-clock me-2"></i>Mon - Sat: 9:00 AM - 6:00 PM</li>
                     </ul>
                 </div>
             </div>
-            <div class="text-center mt-3 pt-3 border-top border-secondary">
-                <p>&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#" class="me-3">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
