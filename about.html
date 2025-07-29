@@ -1,322 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Saha Institute of Management and Technology</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/theme.css">
+    <!-- Amity-Style Theme CSS -->
+    <link rel="stylesheet" href="css/amity-style.css">
 </head>
+
 <body>
-    <!-- Professional Contact Bar -->
-    <div class="contact-bar">
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
         <div class="container">
-            <div class="d-flex justify-content-center justify-content-md-around flex-wrap gap-3">
+            <div class="contact-info">
                 <span><i class="fas fa-phone"></i> +91 9871261719</span>
                 <span><i class="fas fa-phone"></i> 0129-4055280</span>
-                <span><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></span>
+                <span><i class="fas fa-envelope"></i> sahaedu@gmail.com</span>
                 <span><i class="fas fa-map-marker-alt"></i> Faridabad, Haryana</span>
+            </div>
+            <div class="top-actions">
+                <a href="https://aalekh.sahaedu.in" target="_blank" class="top-link">
+                    <i class="fas fa-desktop"></i> ERP Login
+                </a>
+                <a href="admin-login.html" class="top-link">
+                    <i class="fas fa-user-lock"></i> Admin Login
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <!-- Main Navigation -->
+    <nav class="main-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Saha Institute</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh09.github.io/student-notes/" target="_blank">Notes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh.sahaedu.in" target="_blank"><i class="fas fa-desktop me-1"></i> ERP Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i> Admin Login</a></li>
-                </ul>
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488"/>
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">Saha Institute</h1>
+                        <p class="brand-tagline">of Management and Technology</p>
+                    </div>
+                </div>
+                
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link active">About Us</a></li>
+                        <li><a href="courses.html" class="nav-link">Courses</a></li>
+                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank" class="nav-link">Notes</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="navbar-actions">
+                        <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            <i class="fas fa-graduation-cap"></i>
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Professional About Hero Section -->
-    <header class="hero-section">
+    <!-- About Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Educational institution" class="hero-bg-image">
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">🏆 30+ Years of Educational Excellence - Your Success Partner!</h1>
-                <p class="hero-subtitle">🚀 From 1994 to 2025: Transforming 5000+ Lives | 100% Placement Record | Government Recognized | Industry Leader</p>
-                <div class="hero-cta">
-                    <a href="#story" class="btn btn-hero btn-hero-primary">
-                        <i class="fas fa-book-open me-2"></i>Our Story
-                    </a>
-                    <a href="#mission" class="btn btn-hero btn-hero-outline">
-                        <i class="fas fa-bullseye me-2"></i>Our Mission
-                    </a>
+                <div class="hero-badge">
+                    <span class="badge-text">🏆 30+ Years of Excellence</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Your Success Partner Since 
+                    <span class="highlight-text">1994</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    From 1994 to 2025: Transforming 5000+ Lives | 100% Placement Record | Government Recognized | Industry Leader
+                </p>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary-hero" onclick="scrollToSection('story')">
+                        <i class="fas fa-book-open"></i>
+                        Our Story
+                    </button>
+                    <button class="btn-secondary-hero" onclick="scrollToSection('mission')">
+                        <i class="fas fa-bullseye"></i>
+                        Our Mission
+                    </button>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="container my-5">
-        <!-- Our Story Section -->
-        <section id="story" class="section-modern reveal-zoom">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="display-5 mb-4 fade-in">Our Story</h2>
-                    <p class="lead fade-in">Since 1994, Saha Institute of Management & Technology (SIMT) has been a beacon of excellence in professional education, transforming aspirations into achievements.</p>
-                    <p class="reveal">As an authorized study center of Maharshi Dayanand University, Rohtak, we inspire students who aspire to be real professionals. Our institution was established with the primary objective of providing the highest quality of education through innovative teaching methodologies.</p>
-                    <p class="reveal">Our dedicated faculty comprises proficient academicians, technocrats, financial experts, and professionals from various fields with proven credentials and rich experience. Through partnerships with numerous organizations, our team has gained practical exposure that helps us visualize the quality and caliber required for future success.</p>
-                    <div class="highlight-box mt-4 p-4 bg-light rounded-4">
-                        <h5><i class="fas fa-users text-primary me-2"></i>1000+ Students Enrolled</h5>
-                        <p class="mb-0">More than a thousand students are currently enrolled across various programs, testament to our commitment to excellence.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern educational institution" class="img-fluid rounded-4 shadow-lg">
-                </div>
-            </div>
-        </section>
-
-        <!-- Mission & Vision Section -->
-        <section id="mission" class="section-modern reveal-left">
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-bullseye text-primary me-3" style="font-size: 2rem;"></i>
-                                <h4 class="mb-0">Our Mission</h4>
-                            </div>
-                            <p class="lead">To provide quality education and create professionals who can contribute effectively to society through their knowledge and skills.</p>
-                            <ul class="list-professional">
-                                <li>Deliver excellence in professional education</li>
-                                <li>Foster innovation and creativity</li>
-                                <li>Provide 100% job placement assistance</li>
-                                <li>Build industry-ready professionals</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-eye text-primary me-3" style="font-size: 2rem;"></i>
-                                <h4 class="mb-0">Our Vision</h4>
-                            </div>
-                            <p class="lead">To be a leading educational institution that nurtures talent and shapes future leaders through innovative teaching methods and practical exposure.</p>
-                            <ul class="list-professional">
-                                <li>Pioneer in educational innovation</li>
-                                <li>Global recognition for excellence</li>
-                                <li>Sustainable impact on society</li>
-                                <li>Lifelong learning partnerships</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Journey & Milestones -->
-        <section class="section-modern reveal-right">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students in classroom" class="img-fluid rounded-4 shadow-lg">
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="display-6 mb-4 scale-in">Our Journey of Excellence</h3>
-                    <p class="lead mb-4">Three decades of transforming lives through quality education</p>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <i class="fas fa-flag"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h6>1994 - Foundation</h6>
-                                <p>Saha Institute established as a pioneer in professional education</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h6>2006 - University Partnership</h6>
-                                <p>Became authorized study center of MDU Rohtak for IT and Management courses (Code: 02266)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <i class="fas fa-child"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h6>2015 - Expansion</h6>
-                                <p>Launched Saha Kids Planet - English medium co-educational play school</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h6>2025 - Present</h6>
-                                <p>Leading institution with 1000+ successful graduates and growing</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="section-modern reveal-up">
-            <div class="text-center mb-5">
-                <h3 class="display-6 mb-4">Why Choose Saha Institute?</h3>
-                <p class="lead">Discover what makes us the preferred choice for professional education</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-award text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>30+ Years Experience</h5>
-                        <p>Three decades of excellence in professional education and training</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-users text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>Expert Faculty</h5>
-                        <p>Experienced professionals and academicians from diverse fields</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-briefcase text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>100% Job Assistance</h5>
-                        <p>Comprehensive career guidance and placement support for all students</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><i class="fas fa-phone"></i> +91 9871261719</p>
-                    <p><i class="fas fa-phone"></i> 0129-4055280</p>
-                    <p><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> H.No 2219 sector 3 faridabad Near pani tanki</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Professional Footer -->
-    <footer class="py-5">
+    <!-- Our Story Section -->
+    <section id="story" class="why-choose-section">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h4>Saha Institute</h4>
-                    <p class="mb-4">Transforming lives through quality education since 1994. We are committed to providing excellence in professional education and creating industry-ready professionals.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="why-choose-content">
+                        <div class="section-badge">Our Story</div>
+                        <h2 class="section-title">30+ Years of Educational Excellence</h2>
+                        <p class="section-description">
+                            Since 1994, Saha Institute of Management & Technology (SIMT) has been a beacon of excellence in professional education, transforming aspirations into achievements.
+                        </p>
+                        
+                        <div class="story-content">
+                            <p>As an authorized study center of Maharshi Dayanand University, Rohtak, we inspire students who aspire to be real professionals. Our institution was established with the primary objective of providing the highest quality of education through innovative teaching methodologies.</p>
+                            
+                            <p>Our dedicated faculty comprises proficient academicians, technocrats, financial experts, and professionals from various fields with proven credentials and rich experience. Through partnerships with numerous organizations, our team has gained practical exposure that helps us visualize the quality and caliber required for future success.</p>
+                            
+                            <div class="highlight-box">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>1000+ Students Enrolled</h5>
+                                    <p>More than a thousand students are currently enrolled across various programs, testament to our commitment to excellence.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a></li>
-                        <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Our Programs</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="courses.html">B.Ed Admission</a></li>
-                        <li><a href="courses.html">Computer Courses</a></li>
-                        <li><a href="courses.html">Professional Training</a></li>
-                        <li><a href="courses.html">Digital Marketing</a></li>
-                        <li><a href="courses.html">Programming Languages</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Contact Info</h4>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i>H.No 2219, Sector 3, Faridabad</li>
-                        <li><i class="fas fa-phone me-2"></i>+91 9871261719</li>
-                        <li><i class="fas fa-phone me-2"></i>0129-4055280</li>
-                        <li><i class="fas fa-envelope me-2"></i>sahaedu@gmail.com</li>
-                        <li><i class="fas fa-clock me-2"></i>Mon - Sat: 9:00 AM - 6:00 PM</li>
-                    </ul>
+                
+                <div class="col-lg-6">
+                    <div class="why-choose-visual">
+                        <div class="visual-grid">
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern educational institution">
+                            </div>
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students in classroom">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission" class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Mission & Vision</div>
+                <h2 class="section-title">Our Purpose & Direction</h2>
+                <p class="section-description">
+                    Guiding principles that drive our commitment to educational excellence
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Our Mission</h3>
+                            <p class="program-description">To provide quality education and create professionals who can contribute effectively to society through their knowledge and skills.</p>
+                            
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Deliver excellence in professional education</li>
+                                    <li><i class="fas fa-check"></i> Foster innovation and creativity</li>
+                                    <li><i class="fas fa-check"></i> Provide 100% job placement assistance</li>
+                                    <li><i class="fas fa-check"></i> Build industry-ready professionals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="me-3">Privacy Policy</a>
-                    <a href="#" class="me-3">Terms of Service</a>
-                    <a href="#">Sitemap</a>
+                
+                <div class="col-lg-6">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Our Vision</h3>
+                            <p class="program-description">To be a leading educational institution that nurtures talent and shapes future leaders through innovative teaching methods and practical exposure.</p>
+                            
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Pioneer in educational innovation</li>
+                                    <li><i class="fas fa-check"></i> Global recognition for excellence</li>
+                                    <li><i class="fas fa-check"></i> Sustainable impact on society</li>
+                                    <li><i class="fas fa-check"></i> Lifelong learning partnerships</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey & Milestones -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="why-choose-visual">
+                        <div class="visual-grid">
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students in classroom">
+                            </div>
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students collaborating">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="why-choose-content">
+                        <div class="section-badge">Our Journey</div>
+                        <h2 class="section-title">Journey of Excellence</h2>
+                        <p class="section-description">
+                            Three decades of transforming lives through quality education
+                        </p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>1994 - Foundation</h4>
+                                    <p>Saha Institute established as a pioneer in professional education</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>2006 - University Partnership</h4>
+                                    <p>Became authorized study center of MDU Rohtak for IT and Management courses (Code: 02266)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-child"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>2015 - Expansion</h4>
+                                    <p>Launched Saha Kids Planet - English medium co-educational play school</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>2025 - Present</h4>
+                                    <p>Leading institution with 1000+ successful graduates and growing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Why Choose Us</div>
+                <h2 class="section-title">What Makes Us Different</h2>
+                <p class="section-description">
+                    Discover what makes us the preferred choice for professional education
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">30+ Years Experience</h3>
+                            <p class="program-description">Three decades of excellence in professional education and training</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Expert Faculty</h3>
+                            <p class="program-description">Experienced professionals and academicians from diverse fields</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">100% Job Assistance</h3>
+                            <p class="program-description">Comprehensive career guidance and placement support for all students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="section-badge">Get in Touch</div>
+                        <h2 class="section-title">Ready to Start Your Journey?</h2>
+                        <p class="section-description">
+                            Our admission counselors are here to guide you through the application process
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Call Us</h4>
+                                    <p>+91 9871261719<br>0129-4055280</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Email Us</h4>
+                                    <p>sahaedu@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Visit Us</h4>
+                                    <p>H.No 2219 sector 3 faridabad<br>Near pani tanki, Haryana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper">
+                        <div class="contact-form">
+                            <h3>Quick Inquiry</h3>
+                            <p>Fill out this form and we'll get back to you within 24 hours</p>
+                            
+                            <form class="inquiry-form">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="course">Interested Course</label>
+                                    <select id="course" name="course" required>
+                                        <option value="">Select a course</option>
+                                        <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                        <option value="LLB">Bachelor of Laws (LLB)</option>
+                                        <option value="MBA">Master of Business Administration (MBA)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message (Optional)</label>
+                                    <textarea id="message" name="message" rows="3"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488"/>
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h3>Saha Institute</h3>
+                        <p>of Management and Technology</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Programs</h4>
+                        <ul>
+                            <li><a href="courses.html">Bachelor of Education (B.Ed)</a></li>
+                            <li><a href="courses.html">Bachelor of Laws (LLB)</a></li>
+                            <li><a href="courses.html">Master of Business Administration (MBA)</a></li>
+                            <li><a href="courses.html">All Courses</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a></li>
+                            <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#story">Our Story</a></li>
+                            <li><a href="#mission">Mission & Vision</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#help">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Professional Enquiry Modal -->
+    <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content professional-modal">
+                <div class="modal-header professional-header">
+                    <div class="header-content">
+                        <div class="header-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="header-text">
+                            <h4 class="modal-title mb-0" id="enquiryModalLabel">Course Admission Application</h4>
+                            <p class="modal-subtitle mb-0">Start your professional career journey with us</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close professional-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body professional-body">
+                    <form class="inquiry-form">
+                        <div class="form-group">
+                            <label for="modalName">Full Name</label>
+                            <input type="text" id="modalName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="modalPhone">Phone Number</label>
+                            <input type="tel" id="modalPhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="modalCourse">Interested Course</label>
+                            <select id="modalCourse" name="course" required>
+                                <option value="">Select a course</option>
+                                <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                <option value="LLB">Bachelor of Laws (LLB)</option>
+                                <option value="MBA">Master of Business Administration (MBA)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-    <script>
-        // Initialize all modals
-        document.addEventListener('DOMContentLoaded', function() {
-            var contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
-            
-            // Add click event listener to contact us link
-            document.querySelector('a[data-bs-target="#contactModal"]').addEventListener('click', function(e) {
-                e.preventDefault();
-                contactModal.show();
-            });
-        });
-    </script>
+    <script src="js/form-handler.js"></script>
+    <script src="js/amity-interactions.js"></script>
 </body>
-</html> 
+
+</html>

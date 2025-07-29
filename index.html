@@ -4,132 +4,611 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.Ed Admission 2025-2027 - Saha Institute of Management and Technology</title>
+    <title>Saha Institute - Transform Your Career | B.Ed, LLB & MBA Programs 2025-27</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/theme.css">
-    <!-- Custom styles (optional, for overrides) -->
-    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+    <!-- Amity-Style Theme CSS -->
+    <link rel="stylesheet" href="css/amity-style.css">
 </head>
 
 <body>
-    <!-- Professional Contact Bar -->
-    <div class="contact-bar">
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
         <div class="container">
-            <div class="d-flex justify-content-center justify-content-md-around flex-wrap gap-3">
+            <div class="contact-info">
                 <span><i class="fas fa-phone"></i> +91 9871261719</span>
                 <span><i class="fas fa-phone"></i> 0129-4055280</span>
-                <span><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></span>
+                <span><i class="fas fa-envelope"></i> sahaedu@gmail.com</span>
                 <span><i class="fas fa-map-marker-alt"></i> Faridabad, Haryana</span>
+            </div>
+            <div class="top-actions">
+                <a href="https://aalekh.sahaedu.in" target="_blank" class="top-link">
+                    <i class="fas fa-desktop"></i> ERP Login
+                </a>
+                <a href="admin-login.html" class="top-link">
+                    <i class="fas fa-user-lock"></i> Admin Login
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <!-- Main Navigation -->
+    <nav class="main-navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">Saha Institute</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh09.github.io/student-notes/"
-                            target="_blank">Notes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-                            data-bs-target="#contactModal">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh.sahaedu.in" target="_blank"><i
-                                class="fas fa-desktop me-1"></i> ERP Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i>
-                            Admin Login</a></li>
-                </ul>
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488"/>
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">Saha Institute</h1>
+                        <p class="brand-tagline">of Management and Technology</p>
+                    </div>
+                </div>
+
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#programs" class="nav-link">Programs</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="courses.html" class="nav-link">Courses</a></li>
+                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank"
+                                class="nav-link">Notes</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="navbar-actions">
+                        <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            <i class="fas fa-graduation-cap"></i>
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Professional Hero Section -->
-    <header id="home" class="hero-section">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                alt="Students in classroom" class="hero-bg-image">
+        </div>
+
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">🎓 Launch Your Dream Career - B.Ed & LLB Admissions Open!</h1>
-                <p class="hero-subtitle">✅ Teaching Excellence with B.Ed | ✅ Legal Career with LLB | ✅ 100% Placement
-                    Support | ✅ Government Approved Programs</p>
-                <div class="hero-programs mb-4">
-                    <div class="program-card">
-                        <div class="program-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="program-info">
-                            <h6>B.Ed Program</h6>
-                            <p>Teaching Excellence • 2025-27</p>
-                        </div>
-                        <div class="program-status">
-                            <span class="status-badge urgent">Limited Seats</span>
-                        </div>
-                    </div>
-                    <div class="program-card">
-                        <div class="program-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div class="program-info">
-                            <h6>LLB Program</h6>
-                            <p>Dr. Ambedkar University, Agra</p>
-                        </div>
-                        <div class="program-status">
-                            <span class="status-badge available">Open Now</span>
-                        </div>
-                    </div>
+                <div class="hero-badge">
+                    <span class="badge-text">🎓 Admissions Open 2025-27</span>
                 </div>
-                <div class="hero-cta">
-                    <button class="btn btn-hero btn-hero-primary" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                        <i class="fas fa-graduation-cap me-2"></i>Apply Now
+
+                <h1 class="hero-title">
+                    Transform Your Career with
+                    <span class="highlight-text">Premium Education</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Join thousands of successful professionals who chose Saha Institute for their career transformation.
+                    Government-approved programs with 100% placement support.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Graduates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Placement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <!-- <div class="stat-card">
+                        <div class="stat-number">₹50K+</div>
+                        <div class="stat-label">Avg. Salary</div>
+                    </div> -->
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-primary-hero" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Journey
                     </button>
-                    <a href="#bed" class="btn btn-hero btn-hero-outline">
-                        <i class="fas fa-info-circle me-2"></i>Learn More
-                    </a>
+                    <button class="btn-secondary-hero" onclick="scrollToSection('programs')">
+                        <i class="fas fa-play-circle"></i>
+                        Explore Programs
+                    </button>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <span class="stat-number">5000+</span>
-                        <span class="stat-label">Successful Teachers Trained</span>
+            <div class="section-header">
+                <div class="section-badge">Our Programs</div>
+                <h2 class="section-title">Choose Your Path to Success</h2>
+                <p class="section-description">
+                    Discover our comprehensive range of professional programs designed to transform your career
+                </p>
+            </div>
+            
+            <div class="programs-grid">
+                <!-- B.Ed Program -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="program-badge urgent">Limited Seats</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Bachelor of Education (B.Ed)</h3>
+                        <p class="program-description">Transform into an inspiring educator with our comprehensive teaching program</p>
+                        
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <span>2 Years Duration</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>UGC & NCTE Approved</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users"></i>
+                                <span>5000+ Alumni</span>
+                            </div>
+                        </div>
+                        
+                        <div class="program-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Teaching Excellence Training</li>
+                                <li><i class="fas fa-check"></i> Practical Teaching Experience</li>
+                                <li><i class="fas fa-check"></i> Government Job Preparation</li>
+                                <li><i class="fas fa-check"></i> 100% Placement Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="program-footer">
+                        <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            Apply Now
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Placement Guarantee</span>
+                
+                <!-- M.Ed Program -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="program-badge available">Open Now</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Master of Education (M.Ed)</h3>
+                        <p class="program-description">Advanced degree for educational leadership and specialized teaching roles</p>
+                        
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <span>2 Years Duration</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-university"></i>
+                                <span>University Affiliated</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-crown"></i>
+                                <span>Advanced Degree</span>
+                            </div>
+                        </div>
+                        
+                        <div class="program-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Educational Leadership</li>
+                                <li><i class="fas fa-check"></i> Research Methodology</li>
+                                <li><i class="fas fa-check"></i> Curriculum Development</li>
+                                <li><i class="fas fa-check"></i> Administrative Roles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="program-footer">
+                        <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            Apply Now
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <span class="stat-number">30+</span>
-                        <span class="stat-label">Years of Excellence</span>
+                
+                <!-- LLB Program -->
+                <div class="program-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="program-badge available">Open Now</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Bachelor of Laws (LLB)</h3>
+                        <p class="program-description">Build a prestigious legal career with our comprehensive law program</p>
+                        
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <span>3 Years Duration</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-university"></i>
+                                <span>Dr. Ambedkar University</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>High Demand Career</span>
+                            </div>
+                        </div>
+                        
+                        <div class="program-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Constitutional Law</li>
+                                <li><i class="fas fa-check"></i> Criminal & Civil Procedures</li>
+                                <li><i class="fas fa-check"></i> Corporate Law Specialization</li>
+                                <li><i class="fas fa-check"></i> Court Practice Training</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="program-footer">
+                        <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            Apply Now
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <span class="stat-number">₹50K+</span>
-                        <span class="stat-label">Average Starting Salary</span>
+                
+                <!-- MBA Program -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="program-badge available">Open Now</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Master of Business Administration (MBA)</h3>
+                        <p class="program-description">Accelerate your business career with advanced management skills</p>
+                        
+                        <div class="program-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <span>2 Years Duration</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-university"></i>
+                                <span>MDU Rohtak</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Career Growth</span>
+                            </div>
+                        </div>
+                        
+                        <div class="program-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Strategic Management</li>
+                                <li><i class="fas fa-check"></i> Financial Analysis</li>
+                                <li><i class="fas fa-check"></i> Marketing & Operations</li>
+                                <li><i class="fas fa-check"></i> Leadership Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="program-footer">
+                        <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            Apply Now
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="why-choose-content">
+                        <div class="section-badge">Why Choose Us</div>
+                        <h2 class="section-title">Excellence in Every Aspect</h2>
+                        <p class="section-description">
+                            We provide comprehensive support to ensure your success from admission to placement
+                        </p>
+
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Government Approved</h4>
+                                    <p>All programs are recognized by UGC, NCTE, and respective universities</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Expert Faculty</h4>
+                                    <p>Learn from experienced professionals and industry experts</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>100% Placement Support</h4>
+                                    <p>Dedicated placement cell with guaranteed job assistance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="why-choose-visual">
+                        <div class="visual-grid">
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Students collaborating">
+                            </div>
+                            <div class="visual-item">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                    alt="Modern classroom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="eligibility-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Eligibility</div>
+                <h2 class="section-title">Check Your Eligibility</h2>
+                <p class="section-description">
+                    95% of applicants meet our requirements! Join thousands of successful educators
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="eligibility-content">
+                        <div class="eligibility-alert">
+                            <i class="fas fa-gift"></i>
+                            <strong>Good News!</strong> We accept students from ALL graduation backgrounds!
+                        </div>
+
+                        <div class="eligibility-requirements">
+                            <h4>Eligibility Requirements:</h4>
+                            <div class="requirements-grid">
+                                <div class="requirement-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Bachelor's degree in any discipline (B.A., B.Sc., B.Com., etc.)</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="fas fa-percentage"></i>
+                                    <span>Minimum 50% marks in graduation or post-graduation</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Age limit as per university norms</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <span>Valid entrance test score (where applicable)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="guidance-card">
+                        <div class="guidance-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Need Guidance?</h4>
+                        <p>Speak with our admission counselors</p>
+                        <a href="tel:+919871261719" class="btn-guidance">
+                            <i class="fas fa-phone"></i>
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="section-badge">Get in Touch</div>
+                        <h2 class="section-title">Ready to Start Your Journey?</h2>
+                        <p class="section-description">
+                            Our admission counselors are here to guide you through the application process
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Call Us</h4>
+                                    <p>+91 9871261719<br>0129-4055280</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Email Us</h4>
+                                    <p>sahaedu@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Visit Us</h4>
+                                    <p>H.No 2219 sector 3 faridabad<br>Near pani tanki, Haryana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper">
+                        <div class="contact-form">
+                            <h3>Quick Inquiry</h3>
+                            <p>Fill out this form and we'll get back to you within 24 hours</p>
+
+                            <form class="inquiry-form">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="course">Interested Course</label>
+                                    <select id="course" name="course" required>
+                                        <option value="">Select a course</option>
+                                        <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                        <option value="LLB">Bachelor of Laws (LLB)</option>
+                                        <option value="MBA">Master of Business Administration (MBA)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Message (Optional)</label>
+                                    <textarea id="message" name="message" rows="3"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488"/>
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h3>Saha Institute</h3>
+                        <p>of Management and Technology</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Programs</h4>
+                        <ul>
+                            <li><a href="#programs">Bachelor of Education (B.Ed)</a></li>
+                            <li><a href="#programs">Master of Education (M.Ed)</a></li>
+                            <li><a href="#programs">Bachelor of Laws (LLB)</a></li>
+                            <li><a href="#programs">Master of Business Administration (MBA)</a></li>
+                            <li><a href="courses.html">All Courses</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a>
+                            </li>
+                            <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#eligibility">Eligibility</a></li>
+                            <li><a href="#admission">Admission Process</a></li>
+                            <li><a href="#placement">Placement Support</a></li>
+                            <li><a href="#help">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Professional Enquiry Modal -->
     <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
@@ -179,58 +658,43 @@
 
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">
+                                    <label for="modalName" class="form-label">
                                         <i class="fas fa-user me-1"></i>
                                         Full Name <span class="required">*</span>
                                     </label>
-                                    <input type="text" class="form-control professional-input" id="name" name="name"
-                                        placeholder="Enter your full name" required>
-                                    <div class="invalid-feedback">Please provide your full name.</div>
+                                    <input type="text" class="form-control professional-input" id="modalName"
+                                        name="name" placeholder="Enter your full name" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="fatherName" class="form-label">
-                                        <i class="fas fa-male me-1"></i>
-                                        Father's Name <span class="required">*</span>
-                                    </label>
-                                    <input type="text" class="form-control professional-input" id="fatherName"
-                                        name="fatherName" placeholder="Enter father's name" required>
-                                    <div class="invalid-feedback">Please provide father's name.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">
+                                    <label for="modalPhone" class="form-label">
                                         <i class="fas fa-phone me-1"></i>
                                         Contact Number <span class="required">*</span>
                                     </label>
-                                    <input type="tel" class="form-control professional-input" id="phone" name="phone"
-                                        pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
-                                    <div class="form-text">We'll use this number for admission updates</div>
-                                    <div class="invalid-feedback">Please provide a valid 10-digit mobile number.</div>
+                                    <input type="tel" class="form-control professional-input" id="modalPhone"
+                                        name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number"
+                                        required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="course" class="form-label">
+                                    <label for="modalCourse" class="form-label">
                                         <i class="fas fa-book me-1"></i>
                                         Course of Interest <span class="required">*</span>
                                     </label>
-                                    <select class="form-select professional-input" id="course" name="course" required>
+                                    <select class="form-select professional-input" id="modalCourse" name="course"
+                                        required>
                                         <option value="">Choose your preferred course</option>
                                         <option value="B.Ed">🎓 Bachelor of Education (B.Ed) - Teaching Career</option>
                                         <option value="LLB">⚖️ Bachelor of Laws (LLB) - Dr. Ambedkar University, Agra
                                         </option>
-                                        <option value="D.Ed">📚 Diploma in Education (D.Ed)</option>
-                                        <option value="M.Ed">🏆 Master of Education (M.Ed)</option>
-                                        <option value="Computer Courses">💻 Computer Courses (Various Programs)</option>
-                                        <option value="Digital Marketing">📱 Digital Marketing Course</option>
-                                        <option value="Other">🔍 Other - Please specify in message</option>
+                                        <option value="MBA">💼 Master of Business Administration (MBA) - MDU Rohtak
+                                        </option>
                                     </select>
-                                    <div class="invalid-feedback">Please select a course.</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 2: Academic Qualifications -->
+                        <!-- Step 2: Academic Records -->
                         <div class="form-step" data-step="2">
                             <div class="step-header">
                                 <h5 class="step-title">
@@ -433,324 +897,10 @@
         </div>
     </div>
 
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><i class="fas fa-phone"></i> +91 9871261719</p>
-                    <p><i class="fas fa-phone"></i> 0129-4055280</p>
-                    <p><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> H.No 2219 sector 3 faridabad Near pani tanki</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Toast -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Success</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Your enquiry has been submitted successfully!
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="container my-5">
-        <!-- Program Selection Tabs -->
-        <section class="section-modern text-center mb-5">
-            <h2 class="display-6 mb-4">Choose Your Career Path</h2>
-            <div class="program-tabs">
-                <button class="program-tab active" data-program="bed">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <span>B.Ed Program</span>
-                    <small>Teaching Career</small>
-                </button>
-                <button class="program-tab" data-program="llb">
-                    <i class="fas fa-balance-scale"></i>
-                    <span>LLB Program</span>
-                    <small>Legal Career</small>
-                </button>
-            </div>
-        </section>
-
-        <!-- B.Ed Program Overview -->
-        <section id="bed-program" class="section-modern reveal-zoom program-content active">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="display-5 mb-4 fade-in">🏆 India's Most Trusted B.Ed Program - Admission Open!</h2>
-                    <p class="lead fade-in">🚀 <strong>Launch Your Dream Teaching Career</strong> with our
-                        Government-Approved B.Ed program. Join 5000+ successful teachers who chose Saha Institute for
-                        their career transformation!</p>
-                    <div class="highlight-box mt-4 p-3 bg-warning bg-opacity-10 rounded-4">
-                        <h6 class="text-warning"><i class="fas fa-star me-2"></i>Special Offer - Limited Time!</h6>
-                        <p class="mb-0">💰 <strong>Save ₹20,000</strong> on fees + Get FREE study materials worth ₹5,000
-                        </p>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="feature-item">
-                                <i class="fas fa-clock text-primary mb-2"></i>
-                                <h6>Duration</h6>
-                                <p>2 Years Full-time Program</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="feature-item">
-                                <i class="fas fa-certificate text-primary mb-2"></i>
-                                <h6>Recognition</h6>
-                                <p>UGC & NCTE Approved</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="B.Ed Students" class="img-fluid rounded-4 shado
-
-        <!-- Eligibility Section -->
-        <section class=" section-modern reveal-left">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto text-center">
-                            <h3 class="display-6 mb-4 scale-in">✅ Check Your Eligibility - Most Students Qualify!</h3>
-                            <p class="lead mb-5">🎯 <strong>95% of applicants meet our requirements!</strong> Join 5000+
-                                successful educators who transformed their careers with us</p>
-                            <div class="alert alert-success d-inline-block">
-                                <i class="fas fa-gift me-2"></i><strong>Good News!</strong> We accept students from ALL
-                                graduation backgrounds!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-professional reveal-list">
-                                <li>Bachelor's degree in any discipline (B.A., B.Sc., B.Com., etc.)</li>
-                                <li>Minimum 50% marks in graduation or post-graduation</li>
-                                <li>Age limit as per university norms</li>
-                                <li>Valid entrance test score (where applicable)</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card card-modern">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-phone-alt text-primary mb-3" style="font-size: 2rem;"></i>
-                                    <h5>Need Guidance?</h5>
-                                    <p>Speak with our admission counselors</p>
-                                    <a href="tel:+919871261719" class="btn btn-primary">
-                                        <i class="fas fa-phone me-2"></i>Call Now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        </section>
-
-        <!-- Documents Required -->
-        <section class="section-modern reveal-right">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Documents" class="img-fluid rounded-4 shadow-lg">
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="display-6 mb-4 scale-in">Required Documents</h3>
-                    <p class="lead mb-4">Prepare these documents for a smooth admission process</p>
-                    <ul class="list-professional reveal-list">
-                        <li>10th Standard Marksheet & Certificate</li>
-                        <li>12th Standard Marksheet & Certificate</li>
-                        <li>Graduation/Post-Graduation Marksheet</li>
-                        <li>Aadhaar Card Copy</li>
-                        <li>Original Migration Certificate</li>
-                        <li>Recent Passport-size Photographs (4 copies)</li>
-                    </ul>
-                    <div class="mt-4">
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-file-upload me-2"></i>Start Application
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- University Affiliations -->
-        <section class="section-modern reveal-up">
-            <div class="text-center mb-5">
-                <h3 class="display-6 mb-4 scale-in">Our University Partners</h3>
-                <p class="lead">Choose from prestigious universities recognized by UGC & NCTE</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
-                                <h5 class="mb-0">Maharshi Dayanand University (MDU)</h5>
-                            </div>
-                            <p class="text-muted">Rohtak, Haryana • UGC & NCTE Recognized</p>
-                            <div class="badge bg-success">Most Popular</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
-                                <h5 class="mb-0">Chaudhary Ranbir Singh University (CRSU)</h5>
-                            </div>
-                            <p class="text-muted">Jind, Haryana • UGC & NCTE Recognized</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
-                                <h5 class="mb-0">Kurukshetra University (KUK)</h5>
-                            </div>
-                            <p class="text-muted">Kurukshetra, Haryana • UGC & NCTE Recognized</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card card-modern h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-university text-primary me-3" style="font-size: 1.5rem;"></i>
-                                <h5 class="mb-0">DCRUST University</h5>
-                            </div>
-                            <p class="text-muted">Murthal, Haryana • UGC & NCTE Recognized</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us Section -->
-        <section class="section-modern">
-            <div class="text-center mb-5">
-                <h3 class="display-6 mb-4">Why Choose Saha Institute?</h3>
-                <p class="lead">Experience excellence in teacher education</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-chalkboard-teacher text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>Expert Faculty</h5>
-                        <p>Learn from experienced educators and industry professionals</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-laptop text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>Modern Infrastructure</h5>
-                        <p>State-of-the-art classrooms and digital learning resources</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-handshake text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h5>100% Placement Support</h5>
-                        <p>Comprehensive career guidance and job placement assistance</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Professional Footer -->
-    <footer class="py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h4>Saha Institute</h4>
-                    <p class="mb-4">Transforming lives through quality education since 1994. We are committed to
-                        providing excellence in professional education and creating industry-ready professionals.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a></li>
-                        <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Our Programs</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="courses.html">B.Ed Admission</a></li>
-                        <li><a href="courses.html">Computer Courses</a></li>
-                        <li><a href="courses.html">Professional Training</a></li>
-                        <li><a href="courses.html">Digital Marketing</a></li>
-                        <li><a href="courses.html">Programming Languages</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Contact Info</h4>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i>H.No 2219, Sector 3, Faridabad</li>
-                        <li><i class="fas fa-phone me-2"></i>+91 9871261719</li>
-                        <li><i class="fas fa-phone me-2"></i>0129-4055280</li>
-                        <li><i class="fas fa-envelope me-2"></i>sahaedu@gmail.com</li>
-                        <li><i class="fas fa-clock me-2"></i>Mon - Sat: 9:00 AM - 6:00 PM</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="me-3">Privacy Policy</a>
-                    <a href="#" class="me-3">Terms of Service</a>
-                    <a href="#">Sitemap</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/form-handler.js"></script>
+    <script src="js/amity-interactions.js"></script>
 </body>
 
 </html>

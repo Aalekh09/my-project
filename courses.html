@@ -1,474 +1,880 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses - Saha Institute of Management and Technology</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/theme.css">
+    <!-- Amity-Style Theme CSS -->
+    <link rel="stylesheet" href="css/amity-style.css">
 </head>
+
 <body>
-    <!-- Professional Contact Bar -->
-    <div class="contact-bar">
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
         <div class="container">
-            <div class="d-flex justify-content-center justify-content-md-around flex-wrap gap-3">
+            <div class="contact-info">
                 <span><i class="fas fa-phone"></i> +91 9871261719</span>
                 <span><i class="fas fa-phone"></i> 0129-4055280</span>
-                <span><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></span>
+                <span><i class="fas fa-envelope"></i> sahaedu@gmail.com</span>
                 <span><i class="fas fa-map-marker-alt"></i> Faridabad, Haryana</span>
+            </div>
+            <div class="top-actions">
+                <a href="https://aalekh.sahaedu.in" target="_blank" class="top-link">
+                    <i class="fas fa-desktop"></i> ERP Login
+                </a>
+                <a href="admin-login.html" class="top-link">
+                    <i class="fas fa-user-lock"></i> Admin Login
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <!-- Main Navigation -->
+    <nav class="main-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Saha Institute</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh09.github.io/student-notes/" target="_blank">Notes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://aalekh.sahaedu.in" target="_blank"><i class="fas fa-desktop me-1"></i> ERP Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-login.html"><i class="fas fa-user-lock"></i> Admin Login</a></li>
-                </ul>
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488" />
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold"
+                                text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">Saha Institute</h1>
+                        <p class="brand-tagline">of Management and Technology</p>
+                    </div>
+                </div>
+
+                <div class="navbar-menu" id="navbarMenu">
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="courses.html" class="nav-link active">Courses</a></li>
+                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank"
+                                class="nav-link">Notes</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="navbar-actions">
+                        <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            <i class="fas fa-graduation-cap"></i>
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Professional Courses Hero Section -->
-    <header class="hero-section">
+    <!-- Courses Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                alt="Professional courses" class="hero-bg-image">
+        </div>
+
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Professional Courses & Programs</h1>
-                <p class="hero-subtitle">Discover industry-relevant courses designed to accelerate your career growth</p>
-                <div class="hero-cta">
-                    <a href="#course-cards" class="btn btn-hero btn-hero-primary">
-                        <i class="fas fa-search me-2"></i>Explore Courses
-                    </a>
-                    <a href="tel:+919871261719" class="btn btn-hero btn-hero-outline">
-                        <i class="fas fa-phone me-2"></i>Get Guidance
-                    </a>
+                <div class="hero-badge">
+                    <span class="badge-text">📚 Professional Courses & Programs</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Discover Industry-Relevant
+                    <span class="highlight-text">Courses</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Designed to accelerate your career growth with practical skills and industry recognition
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn-primary-hero" onclick="scrollToSection('course-categories')">
+                        <i class="fas fa-search"></i>
+                        Explore Courses
+                    </button>
+                    <button class="btn-secondary-hero" onclick="window.open('tel:+919871261719')">
+                        <i class="fas fa-phone"></i>
+                        Get Guidance
+                    </button>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="container my-5">
-        <!-- Course Categories -->
-        <section class="section-modern text-center mb-5">
-            <h2 class="display-6 mb-4">Choose Your Path to Success</h2>
-            <p class="lead mb-5">Select from our comprehensive range of professional courses</p>
+    <!-- Course Categories -->
+    <section id="course-categories" class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Course Categories</div>
+                <h2 class="section-title">Choose Your Path to Success</h2>
+                <p class="section-description">
+                    Select from our comprehensive range of professional courses
+                </p>
+            </div>
+
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="category-card" data-category="computer">
-                        <div class="category-icon">
-                            <i class="fas fa-laptop-code"></i>
+                    <div class="program-card text-center" data-category="computer">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
                         </div>
-                        <h4>Computer Courses</h4>
-                        <p>Master essential computer skills and programming languages</p>
-                        <div class="category-count">8+ Courses</div>
+                        <div class="program-content">
+                            <h3 class="program-title">Computer Courses</h3>
+                            <p class="program-description">Master essential computer skills and programming languages
+                            </p>
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>8+ Courses</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="category-card" data-category="professional">
-                        <div class="category-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h4>Professional Training</h4>
-                        <p>Industry-focused skills for career advancement</p>
-                        <div class="category-count">5+ Courses</div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="category-card" data-category="university">
-                        <div class="category-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h4>University Programs</h4>
-                        <p>Degree programs affiliated with top universities</p>
-                        <div class="category-count">B.Ed & More</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Course Filter Buttons -->
-        <section class="text-center mb-5">
-            <div class="btn-group" role="group" aria-label="Course filters">
-                <button type="button" class="btn btn-outline-primary active" data-filter="all">All Courses</button>
-                <button type="button" class="btn btn-outline-primary" data-filter="computer">Computer</button>
-                <button type="button" class="btn btn-outline-primary" data-filter="professional">Professional</button>
-                <button type="button" class="btn btn-outline-primary" data-filter="university">University</button>
-            </div>
-        </section>
-
-        <!-- Course Cards Section -->
-        <section id="course-cards" class="row g-4">
-            <!-- Computer Courses -->
-            <div class="col-lg-4 col-md-6 course-item" data-category="computer">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Tally Course">
-                        <div class="course-badge">Popular</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 2 Months</span>
-                            <span class="course-level">Beginner</span>
-                        </div>
-                        <h5 class="card-title">Tally ERP 9</h5>
-                        <p class="card-text">Master comprehensive accounting and financial management using Tally ERP 9 with hands-on practical training.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>50 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificate</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-users"></i>
-                                <span>Small Batches</span>
-                            </div>
-                        </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">Accounting</span>
-                            <span class="topic-tag">GST</span>
-                            <span class="topic-tag">Inventory</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 course-item" data-category="computer">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Web Design Course">
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 45 Days</span>
-                            <span class="course-level">Intermediate</span>
-                        </div>
-                        <h5 class="card-title">Web Designing</h5>
-                        <p class="card-text">Learn modern web design and development with industry-standard tools and responsive design principles.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>45 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>5 Projects</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-laptop"></i>
-                                <span>Hands-on</span>
-                            </div>
-                        </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">HTML5</span>
-                            <span class="topic-tag">CSS3</span>
-                            <span class="topic-tag">JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 course-item" data-category="computer">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="C Programming Course">
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 45 Days</span>
-                            <span class="course-level">Beginner</span>
-                        </div>
-                        <h5 class="card-title">C Programming</h5>
-                        <p class="card-text">Master the fundamentals of C programming language with practical coding exercises and projects.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>45 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-code"></i>
-                                <span>Coding Practice</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-trophy"></i>
-                                <span>Assignments</span>
-                            </div>
-                        </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">Syntax</span>
-                            <span class="topic-tag">Functions</span>
-                            <span class="topic-tag">Pointers</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 course-item" data-category="computer">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Java Course">
-                        <div class="course-badge">Advanced</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 3 Months</span>
-                            <span class="course-level">Advanced</span>
-                        </div>
-                        <h5 class="card-title">Java Programming</h5>
-                        <p class="card-text">Comprehensive Java programming course covering core concepts to advanced application development.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>75 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>Real Projects</span>
-                            </div>
-                            <div class="feature-item">
+                    <div class="program-card text-center" data-category="professional">
+                        <div class="program-header">
+                            <div class="program-icon">
                                 <i class="fas fa-briefcase"></i>
-                                <span>Job Ready</span>
                             </div>
                         </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">OOP</span>
-                            <span class="topic-tag">Collections</span>
-                            <span class="topic-tag">Spring</span>
+                        <div class="program-content">
+                            <h3 class="program-title">Professional Training</h3>
+                            <p class="program-description">Industry-focused skills for career advancement</p>
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>5+ Courses</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Professional Courses -->
-            <div class="col-lg-4 col-md-6 course-item" data-category="professional">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Digital Marketing Course">
-                        <div class="course-badge">Trending</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 3 Months</span>
-                            <span class="course-level">Intermediate</span>
-                        </div>
-                        <h5 class="card-title">Digital Marketing</h5>
-                        <p class="card-text">Master the complete digital marketing ecosystem including SEO, SEM, social media, and content marketing.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>60 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Live Projects</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-google"></i>
-                                <span>Google Certified</span>
+                <div class="col-md-4">
+                    <div class="program-card text-center" data-category="university">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
                         </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">SEO</span>
-                            <span class="topic-tag">Social Media</span>
-                            <span class="topic-tag">Analytics</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 course-item" data-category="professional">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Spoken English Course">
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 90 Days</span>
-                            <span class="course-level">All Levels</span>
-                        </div>
-                        <h5 class="card-title">Spoken English</h5>
-                        <p class="card-text">Improve your English communication skills with confidence-building exercises and practical sessions.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-book"></i>
-                                <span>75 Classes</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-microphone"></i>
-                                <span>Speaking Practice</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-users"></i>
-                                <span>Group Activities</span>
+                        <div class="program-content">
+                            <h3 class="program-title">University Programs</h3>
+                            <p class="program-description">Degree programs affiliated with top universities</p>
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-university"></i>
+                                    <span>B.Ed, LLB & MBA</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">Grammar</span>
-                            <span class="topic-tag">Vocabulary</span>
-                            <span class="topic-tag">Fluency</span>
-                        </div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-play me-2"></i>Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- University Programs -->
-            <div class="col-lg-4 col-md-6 course-item" data-category="university">
-                <div class="card card-modern h-100">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="B.Ed Course">
-                        <div class="course-badge">Featured</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 2 Years</span>
-                            <span class="course-level">Degree Program</span>
-                        </div>
-                        <h5 class="card-title">Bachelor of Education (B.Ed)</h5>
-                        <p class="card-text">Comprehensive teacher training program affiliated with MDU, CRSU, KUK, and DCRUST universities.</p>
-                        <div class="course-features">
-                            <div class="feature-item">
-                                <i class="fas fa-university"></i>
-                                <span>4 Universities</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>UGC Approved</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <span>Teaching License</span>
-                            </div>
-                        </div>
-                        <div class="course-topics">
-                            <span class="topic-tag">Pedagogy</span>
-                            <span class="topic-tag">Psychology</span>
-                            <span class="topic-tag">Practice Teaching</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#enquiryModal">
-                            <i class="fas fa-graduation-cap me-2"></i>Apply Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Our Courses -->
-        <section class="section-modern mt-5">
-            <div class="text-center mb-5">
-                <h3 class="display-6 mb-4">Why Choose Our Courses?</h3>
-                <p class="lead">Experience the difference with our industry-focused approach</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-users-cog text-primary" style="font-size: 2.5rem;"></i>
-                        </div>
-                        <h6>Expert Instructors</h6>
-                        <p class="small">Industry professionals with years of experience</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-laptop-code text-primary" style="font-size: 2.5rem;"></i>
-                        </div>
-                        <h6>Hands-on Learning</h6>
-                        <p class="small">Practical projects and real-world applications</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-certificate text-primary" style="font-size: 2.5rem;"></i>
-                        </div>
-                        <h6>Industry Certification</h6>
-                        <p class="small">Recognized certificates to boost your career</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon mb-3">
-                            <i class="fas fa-handshake text-primary" style="font-size: 2.5rem;"></i>
-                        </div>
-                        <h6>Job Placement</h6>
-                        <p class="small">100% placement assistance and career support</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><i class="fas fa-phone"></i> +91 9871261719</p>
-                    <p><i class="fas fa-phone"></i> 0129-4055280</p>
-                    <p><a href="mailto:sahaedu@gmail.com"><i class="fas fa-envelope"></i> sahaedu@gmail.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> H.No 2219, Sector 3, Faridabad</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Enquiry Modal (from index.html) -->
+    <!-- Course Filter Buttons -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="btn-group" role="group" aria-label="Course filters">
+                    <button type="button" class="btn btn-primary active" data-filter="all">All Courses</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="computer">Computer</button>
+                    <button type="button" class="btn btn-outline-primary"
+                        data-filter="professional">Professional</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="university">University</button>
+                </div>
+            </div>
+
+            <!-- Course Cards Section -->
+            <div class="row g-4" id="course-cards">
+                <!-- Computer Courses -->
+                <div class="col-lg-4 col-md-6 course-item" data-category="computer">
+                    <div class="program-card">
+                        <div class="featured-badge">Popular</div>
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="program-badge available">2 Months</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Tally ERP 9</h3>
+                            <p class="program-description">Master comprehensive accounting and financial management
+                                using Tally ERP 9 with hands-on practical training.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>50 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Certificate</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Small Batches</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Accounting Fundamentals</li>
+                                    <li><i class="fas fa-check"></i> GST Implementation</li>
+                                    <li><i class="fas fa-check"></i> Inventory Management</li>
+                                    <li><i class="fas fa-check"></i> Financial Reports</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="computer">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="program-badge available">45 Days</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Web Designing</h3>
+                            <p class="program-description">Learn modern web design and development with
+                                industry-standard tools and responsive design principles.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>45 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span>5 Projects</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>Hands-on</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> HTML5 & CSS3</li>
+                                    <li><i class="fas fa-check"></i> JavaScript Basics</li>
+                                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                                    <li><i class="fas fa-check"></i> Portfolio Creation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="computer">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="program-badge available">45 Days</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">C Programming</h3>
+                            <p class="program-description">Master the fundamentals of C programming language with
+                                practical coding exercises and projects.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>45 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Coding Practice</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Assignments</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Basic Syntax</li>
+                                    <li><i class="fas fa-check"></i> Functions & Arrays</li>
+                                    <li><i class="fas fa-check"></i> Pointers & Structures</li>
+                                    <li><i class="fas fa-check"></i> File Handling</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="computer">
+                    <div class="program-card">
+                        <div class="featured-badge">Advanced</div>
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="program-badge available">3 Months</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Java Programming</h3>
+                            <p class="program-description">Comprehensive Java programming course covering core concepts
+                                to advanced application development.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>75 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span>Real Projects</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Job Ready</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Object-Oriented Programming</li>
+                                    <li><i class="fas fa-check"></i> Collections Framework</li>
+                                    <li><i class="fas fa-check"></i> Spring Framework</li>
+                                    <li><i class="fas fa-check"></i> Database Integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Courses -->
+                <div class="col-lg-4 col-md-6 course-item" data-category="professional">
+                    <div class="program-card">
+                        <div class="featured-badge">Trending</div>
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="program-badge available">3 Months</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Digital Marketing</h3>
+                            <p class="program-description">Master the complete digital marketing ecosystem including
+                                SEO, SEM, social media, and content marketing.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>60 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Live Projects</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google Certified</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Search Engine Optimization</li>
+                                    <li><i class="fas fa-check"></i> Social Media Marketing</li>
+                                    <li><i class="fas fa-check"></i> Google Analytics</li>
+                                    <li><i class="fas fa-check"></i> Content Strategy</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="professional">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="program-badge available">90 Days</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Spoken English</h3>
+                            <p class="program-description">Improve your English communication skills with
+                                confidence-building exercises and practical sessions.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>75 Classes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Speaking Practice</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Group Activities</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Grammar Fundamentals</li>
+                                    <li><i class="fas fa-check"></i> Vocabulary Building</li>
+                                    <li><i class="fas fa-check"></i> Fluency Development</li>
+                                    <li><i class="fas fa-check"></i> Confidence Building</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- University Programs -->
+                <div class="col-lg-4 col-md-6 course-item" data-category="university">
+                    <div class="program-card featured">
+                        <div class="featured-badge">Featured</div>
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="program-badge available">2 Years</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Bachelor of Education (B.Ed)</h3>
+                            <p class="program-description">Comprehensive teacher training program affiliated with MDU,
+                                CRSU, KUK, and DCRUST universities.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-university"></i>
+                                    <span>4 Universities</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>UGC Approved</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                    <span>Teaching License</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Educational Psychology</li>
+                                    <li><i class="fas fa-check"></i> Teaching Methodology</li>
+                                    <li><i class="fas fa-check"></i> Practice Teaching</li>
+                                    <li><i class="fas fa-check"></i> Curriculum Development</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <div class="program-price">
+                                <!-- <span class="price-label">Starting from</span> -->
+                                <!-- <span class="price-amount">₹50,000</span> -->
+                            </div>
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="university">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="program-badge available">3 Years</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Bachelor of Laws (LLB)</h3>
+                            <p class="program-description">Build a prestigious legal career with our comprehensive law
+                                program from Dr. Ambedkar University.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-university"></i>
+                                    <span>Dr. Ambedkar University</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>High Demand</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-gavel"></i>
+                                    <span>Legal Practice</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Constitutional Law</li>
+                                    <li><i class="fas fa-check"></i> Criminal Procedures</li>
+                                    <li><i class="fas fa-check"></i> Corporate Law</li>
+                                    <li><i class="fas fa-check"></i> Court Practice</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <div class="program-price">
+                                <!-- <span class="price-label">Starting from</span> -->
+                                <!-- <span class="price-amount">₹75,000</span> -->
+                            </div>
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 course-item" data-category="university">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="program-badge available">2 Years</div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Master of Business Administration (MBA)</h3>
+                            <p class="program-description">Accelerate your business career with advanced management
+                                skills from MDU Rohtak.</p>
+
+                            <div class="program-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-university"></i>
+                                    <span>MDU Rohtak</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Career Growth</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Leadership</span>
+                                </div>
+                            </div>
+
+                            <div class="program-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Strategic Management</li>
+                                    <li><i class="fas fa-check"></i> Financial Analysis</li>
+                                    <li><i class="fas fa-check"></i> Marketing & Operations</li>
+                                    <li><i class="fas fa-check"></i> Leadership Development</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="program-footer">
+                            <div class="program-price">
+                                <!-- <span class="price-label">Starting from</span> -->
+                                <!-- <span class="price-amount">₹85,000</span> -->
+                            </div>
+                            <button class="btn-program-apply" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our Courses -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Why Choose Us</div>
+                <h2 class="section-title">Experience the Difference</h2>
+                <p class="section-description">
+                    Experience the difference with our industry-focused approach
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Expert Instructors</h3>
+                            <p class="program-description">Industry professionals with years of experience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Hands-on Learning</h3>
+                            <p class="program-description">Practical projects and real-world applications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Industry Certification</h3>
+                            <p class="program-description">Recognized certificates to boost your career</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="program-card text-center">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                        </div>
+                        <div class="program-content">
+                            <h3 class="program-title">Job Placement</h3>
+                            <p class="program-description">100% placement assistance and career support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="section-badge">Get in Touch</div>
+                        <h2 class="section-title">Ready to Start Learning?</h2>
+                        <p class="section-description">
+                            Our course counselors are here to guide you through the selection process
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Call Us</h4>
+                                    <p>+91 9871261719<br>0129-4055280</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Email Us</h4>
+                                    <p>sahaedu@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Visit Us</h4>
+                                    <p>H.No 2219 sector 3 faridabad<br>Near pani tanki, Haryana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper">
+                        <div class="contact-form">
+                            <h3>Course Inquiry</h3>
+                            <p>Get detailed information about our courses</p>
+
+                            <form class="inquiry-form">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="course">Course of Interest</label>
+                                    <select id="course" name="course" required>
+                                        <option value="">Select a course</option>
+                                        <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                        <option value="LLB">Bachelor of Laws (LLB)</option>
+                                        <option value="MBA">Master of Business Administration (MBA)</option>
+                                        <option value="Tally ERP 9">Tally ERP 9</option>
+                                        <option value="Web Designing">Web Designing</option>
+                                        <option value="C Programming">C Programming</option>
+                                        <option value="Java Programming">Java Programming</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Spoken English">Spoken English</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Message (Optional)</label>
+                                    <textarea id="message" name="message" rows="3"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#0d9488" />
+                            <text x="30" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold"
+                                text-anchor="middle" fill="white">SI</text>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h3>Saha Institute</h3>
+                        <p>of Management and Technology</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Programs</h4>
+                        <ul>
+                            <li><a href="#course-cards">Bachelor of Education (B.Ed)</a></li>
+                            <li><a href="#course-cards">Bachelor of Laws (LLB)</a></li>
+                            <li><a href="#course-cards">Master of Business Administration (MBA)</a></li>
+                            <li><a href="#course-cards">Computer Courses</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a>
+                            </li>
+                            <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#course-categories">Course Categories</a></li>
+                            <li><a href="#contact">Course Guidance</a></li>
+                            <li><a href="#contact">Admission Process</a></li>
+                            <li><a href="#help">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Professional Enquiry Modal -->
     <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content professional-modal">
@@ -482,176 +888,104 @@
                             <p class="modal-subtitle mb-0">Get detailed information about our courses</p>
                         </div>
                     </div>
-                    <button type="button" class="btn-close professional-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close professional-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body professional-body">
-                    <form id="courseEnquiryForm" class="professional-form">
+                    <form class="inquiry-form">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label for="enquiryName" class="form-label">
-                                    <i class="fas fa-user me-1"></i>Full Name <span class="required">*</span>
-                                </label>
-                                <input type="text" class="form-control professional-input" id="enquiryName" name="name" required>
+                                <div class="form-group">
+                                    <label for="modalName">Full Name</label>
+                                    <input type="text" id="modalName" name="name" required>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="enquiryPhone" class="form-label">
-                                    <i class="fas fa-phone me-1"></i>Phone Number <span class="required">*</span>
-                                </label>
-                                <input type="tel" class="form-control professional-input" id="enquiryPhone" name="phone" required>
+                                <div class="form-group">
+                                    <label for="modalPhone">Phone Number</label>
+                                    <input type="tel" id="modalPhone" name="phone" required>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="enquiryEmail" class="form-label">
-                                    <i class="fas fa-envelope me-1"></i>Email Address
-                                </label>
-                                <input type="email" class="form-control professional-input" id="enquiryEmail" name="email">
+                                <div class="form-group">
+                                    <label for="modalEmail">Email Address</label>
+                                    <input type="email" id="modalEmail" name="email">
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="enquiryCourse" class="form-label">
-                                    <i class="fas fa-book me-1"></i>Course of Interest <span class="required">*</span>
-                                </label>
-                                <select class="form-select professional-input" id="enquiryCourse" name="course" required>
-                                    <option value="">Select a course</option>
-                                    <option value="B.Ed">Bachelor of Education (B.Ed)</option>
-                                    <option value="Tally ERP 9">Tally ERP 9</option>
-                                    <option value="Web Designing">Web Designing</option>
-                                    <option value="C Programming">C Programming</option>
-                                    <option value="Java Programming">Java Programming</option>
-                                    <option value="Digital Marketing">Digital Marketing</option>
-                                    <option value="Spoken English">Spoken English</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                                <div class="form-group">
+                                    <label for="modalCourse">Course of Interest</label>
+                                    <select id="modalCourse" name="course" required>
+                                        <option value="">Select a course</option>
+                                        <option value="B.Ed">Bachelor of Education (B.Ed)</option>
+                                        <option value="LLB">Bachelor of Laws (LLB)</option>
+                                        <option value="MBA">Master of Business Administration (MBA)</option>
+                                        <option value="Tally ERP 9">Tally ERP 9</option>
+                                        <option value="Web Designing">Web Designing</option>
+                                        <option value="C Programming">C Programming</option>
+                                        <option value="Java Programming">Java Programming</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Spoken English">Spoken English</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="enquiryMessage" class="form-label">
-                                    <i class="fas fa-comment me-1"></i>Message
-                                </label>
-                                <textarea class="form-control professional-input" id="enquiryMessage" name="message" rows="3" placeholder="Tell us about your learning goals..."></textarea>
+                                <div class="form-group">
+                                    <label for="modalMessage">Message</label>
+                                    <textarea id="modalMessage" name="message" rows="3"></textarea>
+                                </div>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Inquiry
+                        </button>
                     </form>
-                </div>
-                <div class="modal-footer professional-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" form="courseEnquiryForm">
-                        <i class="fas fa-paper-plane me-1"></i>Send Enquiry
-                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Professional Footer -->
-    <footer class="py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h4>Saha Institute</h4>
-                    <p class="mb-4">Transforming lives through quality education since 1994. We are committed to providing excellence in professional education and creating industry-ready professionals.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="https://aalekh09.github.io/student-notes/" target="_blank">Student Notes</a></li>
-                        <li><a href="https://aalekh.sahaedu.in" target="_blank">ERP Login</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Our Programs</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="courses.html">B.Ed Admission</a></li>
-                        <li><a href="courses.html">Computer Courses</a></li>
-                        <li><a href="courses.html">Professional Training</a></li>
-                        <li><a href="courses.html">Digital Marketing</a></li>
-                        <li><a href="courses.html">Programming Languages</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>Contact Info</h4>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i>H.No 2219, Sector 3, Faridabad</li>
-                        <li><i class="fas fa-phone me-2"></i>+91 9871261719</li>
-                        <li><i class="fas fa-phone me-2"></i>0129-4055280</li>
-                        <li><i class="fas fa-envelope me-2"></i>sahaedu@gmail.com</li>
-                        <li><i class="fas fa-clock me-2"></i>Mon - Sat: 9:00 AM - 6:00 PM</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2025 Saha Institute of Management and Technology. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="me-3">Privacy Policy</a>
-                    <a href="#" class="me-3">Terms of Service</a>
-                    <a href="#">Sitemap</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/form-handler.js"></script>
+    <script src="js/amity-interactions.js"></script>
+
     <script>
         // Course filtering functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('[data-filter]');
             const courseItems = document.querySelectorAll('.course-item');
-            
+
             filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const filter = this.getAttribute('data-filter');
-                    
+
                     // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.add('btn-outline-primary');
+                        btn.classList.remove('btn-primary');
+                    });
                     this.classList.add('active');
-                    
+                    this.classList.remove('btn-outline-primary');
+                    this.classList.add('btn-primary');
+
                     // Filter courses
                     courseItems.forEach(item => {
-                        const category = item.getAttribute('data-category');
-                        if (filter === 'all' || category === filter) {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
                             item.style.display = 'block';
-                            item.style.animation = 'fadeIn 0.5s ease';
                         } else {
                             item.style.display = 'none';
                         }
                     });
                 });
             });
-            
-            // Category card click functionality
-            const categoryCards = document.querySelectorAll('.category-card');
-            categoryCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    const filterButton = document.querySelector(`[data-filter="${category}"]`);
-                    if (filterButton) {
-                        filterButton.click();
-                        document.getElementById('course-cards').scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
         });
     </script>
 </body>
+
 </html>

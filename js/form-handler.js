@@ -11,6 +11,13 @@ class ProfessionalFormManager {
     }
 
     init() {
+        // Only initialize if the enquiry form exists
+        const enquiryForm = document.getElementById('enquiryForm');
+        if (!enquiryForm) {
+            return; // Exit early if form doesn't exist on this page
+        }
+        
+        this.form = enquiryForm;
         this.bindEvents();
         this.updateUI();
         this.setupValidation();
@@ -19,20 +26,27 @@ class ProfessionalFormManager {
 
     bindEvents() {
         // Navigation buttons
-        document.getElementById('nextBtn').addEventListener('click', () => this.nextStep());
-        document.getElementById('prevBtn').addEventListener('click', () => this.prevStep());
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const enquiryForm = document.getElementById('enquiryForm');
+        const enquiryModal = document.getElementById('enquiryModal');
+        
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextStep());
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prevStep());
         
         // Form submission
-        document.getElementById('enquiryForm').addEventListener('submit', (e) => this.submitForm(e));
+        if (enquiryForm) enquiryForm.addEventListener('submit', (e) => this.submitForm(e));
         
         // Real-time validation
         document.querySelectorAll('.professional-input').forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
-            input.addEventListener('input', () => this.clearFieldError(input));
+            if (input) {
+                input.addEventListener('blur', () => this.validateField(input));
+                input.addEventListener('input', () => this.clearFieldError(input));
+            }
         });
 
         // Modal reset on close
-        document.getElementById('enquiryModal').addEventListener('hidden.bs.modal', () => this.resetForm());
+        if (enquiryModal) enquiryModal.addEventListener('hidden.bs.modal', () => this.resetForm());
     }
 
     nextStep() {
@@ -89,6 +103,10 @@ class ProfessionalFormManager {
 
     validateCurrentStep() {
         const currentStepElement = document.querySelector(`.form-step[data-step="${this.currentStep}"]`);
+        if (!currentStepElement) {
+            return true; // If step doesn't exist, consider it valid
+        }
+        
         const inputs = currentStepElement.querySelectorAll('.professional-input[required]');
         let isValid = true;
 
@@ -167,16 +185,20 @@ class ProfessionalFormManager {
     setupValidation() {
         // Phone number formatting
         const phoneInput = document.getElementById('phone');
-        phoneInput.addEventListener('input', function(e) {
-            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
-        });
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+            });
+        }
 
         // Name fields - only letters and spaces
         ['name', 'fatherName'].forEach(fieldId => {
             const field = document.getElementById(fieldId);
-            field.addEventListener('input', function(e) {
-                this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-            });
+            if (field) {
+                field.addEventListener('input', function(e) {
+                    this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+                });
+            }
         });
     }
 
