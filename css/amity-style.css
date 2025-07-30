@@ -68,46 +68,15 @@ body {
     overflow-x: hidden;
 }
 
-/* Top Contact Bar */
+/* Top Contact Bar - REMOVED - Contact info moved to footer/contact sections */
+/* 
 .top-contact-bar {
     background: var(--primary-blue);
     color: var(--text-white);
     padding: var(--spacing-sm) 0;
     font-size: 0.875rem;
 }
-
-.top-contact-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-}
-
-.contact-info {
-    display: flex;
-    gap: var(--spacing-xl);
-    flex-wrap: wrap;
-}
-
-.contact-info span {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.contact-info i {
-    color: var(--secondary-orange);
-}
-
-.top-actions {
-    display: flex;
-    gap: var(--spacing-lg);
-}
-
-.top-link {
-    color: var(--text-white);
-    text-decoration: none;
+*/
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
@@ -193,6 +162,33 @@ body {
 .navbar-actions {
     display: flex;
     align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-login-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: var(--transition-normal);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    background: rgba(13, 148, 136, 0.05);
+}
+
+.nav-login-link:hover {
+    background: var(--primary-blue);
+    color: var(--text-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-login-link i {
+    font-size: 0.8rem;
 }
 
 .btn-apply {
@@ -1252,11 +1248,21 @@ body {
     .navbar-actions {
         margin-top: var(--spacing-lg);
         width: 100%;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-login-link {
+        width: 100%;
+        justify-content: center;
+        padding: var(--spacing-md);
+        font-size: 0.95rem;
     }
     
     .btn-apply {
         width: 100%;
         justify-content: center;
+        margin-top: var(--spacing-sm);
     }
     
     .hero-title {
@@ -1311,15 +1317,87 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .top-contact-bar {
+        padding: var(--spacing-xs) 0;
+        font-size: 0.8rem;
+    }
+    
     .top-contact-bar .container {
         flex-direction: column;
-        text-align: center;
+        gap: var(--spacing-sm);
     }
     
     .contact-info {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: var(--spacing-sm);
+        width: 100%;
+        justify-items: center;
+    }
+    
+    .contact-info span {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        min-width: 120px;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+    
+    .contact-info span:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .top-actions {
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+    
+    .top-link {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        transition: background 0.3s ease;
+    }
+    
+    .top-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .top-contact-bar {
+        padding: var(--spacing-xs) 0;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+    
+    .contact-info span {
+        font-size: 0.7rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        min-width: auto;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .top-actions {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        width: 100%;
+    }
+    
+    .top-link {
+        font-size: 0.7rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
     }
     
     .hero-title {
@@ -1381,3 +1459,163 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-blue-dark);
 }
+
+/* Enhanced Mobile Contact Bar Styles */
+@media (max-width: 768px) {
+    .top-contact-bar {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .top-contact-bar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, rgba(13, 148, 136, 0.9) 100%);
+        z-index: -1;
+    }
+    
+    .contact-info span a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-info span a:hover,
+    .contact-info span a:active {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-1px);
+    }
+    
+    /* Better touch targets for mobile */
+    .contact-info span {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info span {
+        min-height: 40px;
+        margin-bottom: 2px;
+    }
+    
+    .contact-info span a {
+        padding: var(--spacing-sm);
+        font-weight: 500;
+    }
+    
+    /* Hide less important contact info on very small screens */
+    .contact-info span:nth-child(n+3) {
+        display: none;
+    }
+    
+    /* Show only phone and email on very small screens */
+    .contact-info span:nth-child(1),
+    .contact-info span:nth-child(2) {
+        display: flex;
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* Ultra small screens - show only primary contact */
+@media (max-width: 360px) {
+    .contact-info span:nth-child(n+2) {
+        display: none;
+    }
+    
+    .contact-info span:nth-child(1) {
+        display: flex;
+        width: 100%;
+        font-size: 0.8rem;
+        padding: var(--spacing-sm);
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+    }
+    
+    .top-actions {
+        display: none;
+    }
+}/*
+ Mobile Contact Bar Toggle */
+@media (max-width: 480px) {
+    .top-contact-bar {
+        position: relative;
+    }
+    
+    .contact-toggle {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background 0.3s ease;
+    }
+    
+    .contact-toggle:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .contact-toggle i {
+        font-size: 0.9em;
+    }
+    
+    /* Collapsible contact info for very small screens */
+    .top-contact-bar.collapsed .contact-info {
+        display: none;
+    }
+    
+    .top-contact-bar.collapsed .top-actions {
+        display: none;
+    }
+    
+    .top-contact-bar.collapsed {
+        padding: var(--spacing-xs) 0;
+        text-align: center;
+    }
+    
+    .top-contact-bar.collapsed::after {
+        content: "📞 Contact Info";
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Smooth animations for mobile interactions */
+@media (max-width: 768px) {
+    .contact-info span {
+        animation: fadeInUp 0.6s ease forwards;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    
+    .contact-info span:nth-child(1) { animation-delay: 0.1s; }
+    .contact-info span:nth-child(2) { animation-delay: 0.2s; }
+    .contact-info span:nth-child(3) { animation-delay: 0.3s; }
+    .contact-info span:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}/
+* Note: Old top contact bar styles have been removed as contact info is now in navbar and footer sections */
