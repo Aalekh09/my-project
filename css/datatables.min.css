@@ -1,0 +1,138 @@
+/* DataTables CSS - Basic Styling */
+.dataTables_wrapper {
+  position: relative;
+  clear: both;
+}
+
+.dataTables_controls_top,
+.dataTables_controls_bottom {
+  padding: 0.5rem 0;
+}
+
+.dataTables_length,
+.dataTables_filter {
+  display: inline-block;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.dataTables_length select {
+  width: auto;
+  display: inline-block;
+}
+
+.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+}
+
+.dataTables_info {
+  clear: both;
+  float: left;
+  padding-top: 0.755em;
+}
+
+.dataTables_paginate {
+  float: right;
+  text-align: right;
+  padding-top: 0.25em;
+}
+
+.dataTables_paginate .pagination {
+  margin: 2px 0;
+  white-space: nowrap;
+  justify-content: flex-end;
+}
+
+table.dataTable {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table.dataTable thead th {
+  position: relative;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+table.dataTable thead th.sorting,
+table.dataTable thead th.sorting_asc,
+table.dataTable thead th.sorting_desc {
+  cursor: pointer;
+  position: relative;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: block;
+  font-family: 'Font Awesome 6 Free';
+  opacity: 0.5;
+  transform: translateY(-50%);
+}
+
+table.dataTable thead th.sorting:after {
+  content: "↕️";
+}
+
+table.dataTable thead th.sorting_asc:after {
+  content: "↑";
+  opacity: 1;
+}
+
+table.dataTable thead th.sorting_desc:after {
+  content: "↓";
+  opacity: 1;
+}
+
+table.dataTable tbody tr {
+  background-color: #fff;
+}
+
+table.dataTable tbody tr.selected {
+  background-color: #b0bed9;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+  padding: 8px 10px;
+}
+
+.dataTables_empty {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+  .dataTables_controls_top {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .dataTables_controls_bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .dataTables_info,
+  .dataTables_paginate {
+    float: none;
+    text-align: center;
+  }
+}

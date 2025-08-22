@@ -5,23 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Saha Institute</title>
-    <!-- jQuery first -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Local Resources with CDN Fallbacks -->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.6.0.min.js"><\/script>')</script>
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="none"
+        onload="if(media!='all')media='all'">
+
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="none"
+        onload="if(media!='all')media='all'">
+
     <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>window.bootstrap || document.write('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"><\/script>')</script>
+
     <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+    <script>window.DataTable || document.write('<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"><\/script><script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"><\/script>')</script>
+
     <!-- Excel Export -->
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script>window.JSZip || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"><\/script>')</script>
+
+    <!-- Offline Fallback -->
+    <script src="js/offline-fallback.js"></script>
 
     <style>
         :root {
@@ -152,6 +167,32 @@
         .badge-course {
             background-color: #e3f2fd;
             color: #0d6efd;
+        }
+
+        /* CGPA column styling */
+        .table td:nth-child(7),
+        /* 10th CGPA */
+        .table td:nth-child(9),
+        /* 12th CGPA */
+        .table td:nth-child(11)
+
+        /* Graduation CGPA */
+            {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .table th:nth-child(7),
+        /* 10th CGPA header */
+        .table th:nth-child(9),
+        /* 12th CGPA header */
+        .table th:nth-child(11)
+
+        /* Graduation CGPA header */
+            {
+            background-color: #6c757d !important;
+            color: white !important;
         }
 
         .alert {
@@ -609,16 +650,18 @@
                                 <p class="card-subtitle mb-0">Create a new admission enquiry record</p>
                             </div>
                         </div>
-                        <button class="btn btn-outline-light btn-sm toggle-form" type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#enquiryFormCollapse" aria-expanded="true" aria-controls="enquiryFormCollapse">
+                        <button class="btn btn-outline-light btn-sm toggle-form" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#enquiryFormCollapse" aria-expanded="true"
+                            aria-controls="enquiryFormCollapse">
                             <i class="fas fa-chevron-up" id="toggleIcon"></i>
                         </button>
                     </div>
-                    
+
                     <div class="collapse show" id="enquiryFormCollapse">
                         <div class="professional-card-body">
-                            <form id="adminEnquiryForm" onsubmit="submitAdminEnquiry(event)" class="professional-admin-form">
-                                
+                            <form id="adminEnquiryForm" onsubmit="submitAdminEnquiry(event)"
+                                class="professional-admin-form">
+
                                 <!-- Personal Information Section -->
                                 <div class="form-section">
                                     <div class="section-header">
@@ -630,40 +673,49 @@
                                             <p>Basic student details</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="section-content">
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="adminName" class="professional-label">
-                                                    <i class="fas fa-user me-2"></i>Full Name <span class="required">*</span>
+                                                    <i class="fas fa-user me-2"></i>Full Name <span
+                                                        class="required">*</span>
                                                 </label>
-                                                <input type="text" class="form-control professional-input" id="adminName" 
-                                                       name="name" placeholder="Enter student's full name" required>
+                                                <input type="text" class="form-control professional-input"
+                                                    id="adminName" name="name" placeholder="Enter student's full name"
+                                                    required>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="adminFatherName" class="professional-label">
-                                                    <i class="fas fa-male me-2"></i>Father's Name <span class="required">*</span>
+                                                    <i class="fas fa-male me-2"></i>Father's Name <span
+                                                        class="required">*</span>
                                                 </label>
-                                                <input type="text" class="form-control professional-input" id="adminFatherName" 
-                                                       name="fatherName" placeholder="Enter father's name" required>
+                                                <input type="text" class="form-control professional-input"
+                                                    id="adminFatherName" name="fatherName"
+                                                    placeholder="Enter father's name" required>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="adminPhone" class="professional-label">
-                                                    <i class="fas fa-phone me-2"></i>Contact Number <span class="required">*</span>
+                                                    <i class="fas fa-phone me-2"></i>Contact Number <span
+                                                        class="required">*</span>
                                                 </label>
-                                                <input type="tel" class="form-control professional-input" id="adminPhone" 
-                                                       name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+                                                <input type="tel" class="form-control professional-input"
+                                                    id="adminPhone" name="phone" pattern="[0-9]{10}"
+                                                    placeholder="Enter 10-digit mobile number" required>
                                                 <div class="form-text">
-                                                    <i class="fas fa-info-circle me-1"></i>Primary contact for admission updates
+                                                    <i class="fas fa-info-circle me-1"></i>Primary contact for admission
+                                                    updates
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="adminCourse" class="professional-label">
-                                                    <i class="fas fa-graduation-cap me-2"></i>Course of Interest <span class="required">*</span>
+                                                    <i class="fas fa-graduation-cap me-2"></i>Course of Interest <span
+                                                        class="required">*</span>
                                                 </label>
-                                                <select class="form-select professional-input" id="adminCourse" name="course" required>
+                                                <select class="form-select professional-input" id="adminCourse"
+                                                    name="course" required>
                                                     <option value="">Choose preferred course</option>
                                                     <option value="B.Ed">Bachelor of Education (B.Ed)</option>
                                                     <option value="D.Ed">Diploma in Education (D.Ed)</option>
@@ -685,7 +737,7 @@
                                             <p>Educational background details</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="section-content">
                                         <!-- 10th Qualification -->
                                         <div class="qualification-subsection">
@@ -693,20 +745,36 @@
                                                 <i class="fas fa-school me-2"></i>10th Standard (Secondary) - Optional
                                             </h6>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_tenth_year" class="professional-label">Year of Passing</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_tenth_year" 
-                                                           name="tenth_year" min="1990" max="2030" placeholder="e.g., 2020">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_tenth_year" class="professional-label">Year of
+                                                        Passing</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_tenth_year" name="tenth_year" min="1990" max="2030"
+                                                        placeholder="e.g., 2020">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_tenth_obtained" class="professional-label">Marks Obtained</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_tenth_obtained" 
-                                                           name="tenth_obtained" min="0" placeholder="Marks scored">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_tenth_obtained" class="professional-label">Marks
+                                                        Obtained</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_tenth_obtained" name="tenth_obtained" min="0"
+                                                        placeholder="Marks scored">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_tenth_total" class="professional-label">Total Marks</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_tenth_total" 
-                                                           name="tenth_total" min="0" placeholder="Maximum marks">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_tenth_total" class="professional-label">Total
+                                                        Marks</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_tenth_total" name="tenth_total" min="0"
+                                                        placeholder="Maximum marks">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_tenth_cgpa" class="professional-label">CGPA
+                                                        (Optional)</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_tenth_cgpa" name="tenth_cgpa" min="0" max="10"
+                                                        step="0.01" placeholder="e.g., 8.5">
+                                                    <div class="form-text">
+                                                        <i class="fas fa-info-circle me-1"></i>Out of 10
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -714,23 +782,40 @@
                                         <!-- 12th Qualification -->
                                         <div class="qualification-subsection">
                                             <h6 class="qualification-title">
-                                                <i class="fas fa-graduation-cap me-2"></i>12th Standard (Higher Secondary) - Optional
+                                                <i class="fas fa-graduation-cap me-2"></i>12th Standard (Higher
+                                                Secondary) - Optional
                                             </h6>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_twelfth_year" class="professional-label">Year of Passing</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_year" 
-                                                           name="twelfth_year" min="1990" max="2030" placeholder="e.g., 2022">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_twelfth_year" class="professional-label">Year of
+                                                        Passing</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_twelfth_year" name="twelfth_year" min="1990"
+                                                        max="2030" placeholder="e.g., 2022">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_twelfth_obtained" class="professional-label">Marks Obtained</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_obtained" 
-                                                           name="twelfth_obtained" min="0" placeholder="Marks scored">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_twelfth_obtained" class="professional-label">Marks
+                                                        Obtained</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_twelfth_obtained" name="twelfth_obtained" min="0"
+                                                        placeholder="Marks scored">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_twelfth_total" class="professional-label">Total Marks</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_twelfth_total" 
-                                                           name="twelfth_total" min="0" placeholder="Maximum marks">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_twelfth_total" class="professional-label">Total
+                                                        Marks</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_twelfth_total" name="twelfth_total" min="0"
+                                                        placeholder="Maximum marks">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_twelfth_cgpa" class="professional-label">CGPA
+                                                        (Optional)</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_twelfth_cgpa" name="twelfth_cgpa" min="0" max="10"
+                                                        step="0.01" placeholder="e.g., 8.5">
+                                                    <div class="form-text">
+                                                        <i class="fas fa-info-circle me-1"></i>Out of 10
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -738,23 +823,40 @@
                                         <!-- Graduation Qualification -->
                                         <div class="qualification-subsection">
                                             <h6 class="qualification-title">
-                                                <i class="fas fa-university me-2"></i>Graduation (Bachelor's Degree) - Optional
+                                                <i class="fas fa-university me-2"></i>Graduation (Bachelor's Degree) -
+                                                Optional
                                             </h6>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_graduation_year" class="professional-label">Year of Passing</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_graduation_year" 
-                                                           name="graduation_year" min="1990" max="2030" placeholder="e.g., 2024">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_graduation_year" class="professional-label">Year
+                                                        of Passing</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_graduation_year" name="graduation_year" min="1990"
+                                                        max="2030" placeholder="e.g., 2024">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_graduation_obtained" class="professional-label">Marks Obtained</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_graduation_obtained" 
-                                                           name="graduation_obtained" min="0" placeholder="Marks scored">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_graduation_obtained"
+                                                        class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_graduation_obtained" name="graduation_obtained"
+                                                        min="0" placeholder="Marks scored">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_graduation_total" class="professional-label">Total Marks</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_graduation_total" 
-                                                           name="graduation_total" min="0" placeholder="Maximum marks">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_graduation_total" class="professional-label">Total
+                                                        Marks</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_graduation_total" name="graduation_total" min="0"
+                                                        placeholder="Maximum marks">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_graduation_cgpa" class="professional-label">CGPA
+                                                        (Optional)</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_graduation_cgpa" name="graduation_cgpa" min="0"
+                                                        max="10" step="0.01" placeholder="e.g., 8.5">
+                                                    <div class="form-text">
+                                                        <i class="fas fa-info-circle me-1"></i>Out of 10
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -762,23 +864,41 @@
                                         <!-- Post Graduation Qualification -->
                                         <div class="qualification-subsection">
                                             <h6 class="qualification-title">
-                                                <i class="fas fa-user-graduate me-2"></i>Post Graduation (Master's Degree) - Optional
+                                                <i class="fas fa-user-graduate me-2"></i>Post Graduation (Master's
+                                                Degree) - Optional
                                             </h6>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_postgraduation_year" class="professional-label">Year of Passing</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_year" 
-                                                           name="postgraduation_year" min="1990" max="2030" placeholder="e.g., 2026">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_postgraduation_year"
+                                                        class="professional-label">Year of Passing</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_postgraduation_year" name="postgraduation_year"
+                                                        min="1990" max="2030" placeholder="e.g., 2026">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_postgraduation_obtained" class="professional-label">Marks Obtained</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_obtained" 
-                                                           name="postgraduation_obtained" min="0" placeholder="Marks scored">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_postgraduation_obtained"
+                                                        class="professional-label">Marks Obtained</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_postgraduation_obtained"
+                                                        name="postgraduation_obtained" min="0"
+                                                        placeholder="Marks scored">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="admin_postgraduation_total" class="professional-label">Total Marks</label>
-                                                    <input type="number" class="form-control professional-input" id="admin_postgraduation_total" 
-                                                           name="postgraduation_total" min="0" placeholder="Maximum marks">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_postgraduation_total"
+                                                        class="professional-label">Total Marks</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_postgraduation_total" name="postgraduation_total"
+                                                        min="0" placeholder="Maximum marks">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="admin_postgraduation_cgpa"
+                                                        class="professional-label">CGPA (Optional)</label>
+                                                    <input type="number" class="form-control professional-input"
+                                                        id="admin_postgraduation_cgpa" name="postgraduation_cgpa"
+                                                        min="0" max="10" step="0.01" placeholder="e.g., 8.5">
+                                                    <div class="form-text">
+                                                        <i class="fas fa-info-circle me-1"></i>Out of 10
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -790,15 +910,19 @@
                                             </h6>
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
-                                                    <label for="admin_additional_qualification" class="professional-label">Qualification Name</label>
-                                                    <input type="text" class="form-control professional-input" id="admin_additional_qualification" 
-                                                           name="additional_qualification" placeholder="e.g., B.Ed, M.Ed, Diploma, Certificate">
+                                                    <label for="admin_additional_qualification"
+                                                        class="professional-label">Qualification Name</label>
+                                                    <input type="text" class="form-control professional-input"
+                                                        id="admin_additional_qualification"
+                                                        name="additional_qualification"
+                                                        placeholder="e.g., B.Ed, M.Ed, Diploma, Certificate">
                                                 </div>
                                                 <div class="col-md-6 mb-3">
-                                                    <label for="admin_additional_details" class="professional-label">Details</label>
-                                                    <textarea class="form-control professional-input" id="admin_additional_details" 
-                                                              name="additional_details" rows="3" 
-                                                              placeholder="Institution, year, percentage, or any other relevant details"></textarea>
+                                                    <label for="admin_additional_details"
+                                                        class="professional-label">Details</label>
+                                                    <textarea class="form-control professional-input"
+                                                        id="admin_additional_details" name="additional_details" rows="3"
+                                                        placeholder="Institution, year, percentage, or any other relevant details"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -841,6 +965,9 @@
                     <button class="btn btn-outline-primary" onclick="refreshData()">
                         <i class="fas fa-sync-alt me-2"></i>Refresh
                     </button>
+                    <button class="btn btn-outline-info" onclick="testConnection()">
+                        <i class="fas fa-plug me-2"></i>Test Connection
+                    </button>
                     <button class="btn btn-outline-success" onclick="exportToExcel()">
                         <i class="fas fa-file-excel me-2"></i>Export
                     </button>
@@ -882,8 +1009,8 @@
         // Global variable to store the DataTable instance
         let enquiryTable = null;
 
-        // Google Apps Script Web App URL - Updated to latest deployment
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz5FtYbvX5LH2QJVddOtoMN2h0DTjSivyeDEcXRcZUuFQkseR0spcR4ckwvzKnT6_I/exec';
+        // Google Apps Script Web App URL - Updated with CGPA support
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXvXFw6CxFFWVqKqwKrOQADUQQG5nx98v0nUZEUwXzoBjnMGxMeC-Vgb-Y2sSglv9z/exec';
 
         // Debug function to test the updateStatus action
         function debugStatusUpdate() {
@@ -1027,8 +1154,8 @@
                             defaultContent: 'No',
                             render: function (data, type, row) {
                                 const status = data === 'Yes' || data === true || data === 'true';
-                                return status ? 
-                                    '<span class="badge bg-success">Converted</span>' : 
+                                return status ?
+                                    '<span class="badge bg-success">Converted</span>' :
                                     '<span class="badge bg-warning">Pending</span>';
                             }
                         },
@@ -1108,28 +1235,49 @@
                 fetchDataAlternative();
             }
 
-            // Alternative fetch method using fetch API
+            // Alternative method - retry JSONP with different callback
             function fetchDataAlternative() {
-                console.log('Attempting alternative fetch method...');
-                fetch(`${GOOGLE_SCRIPT_URL}?action=getData&username=${encodeURIComponent('aalekh')}&password=${encodeURIComponent('0001')}`)
-                    .then(response => {
-                        console.log('Fetch response status:', response.status);
-                        if (!response.ok) {
-                            // Try reading response text for more details on non-OK status
-                            return response.text().then(text => {
-                                throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
-                            });
+                console.log('Attempting alternative JSONP method...');
+                const altCallbackName = 'jsonpRetry_' + Math.round(Math.random() * 1000000);
+
+                // Create callback function
+                window[altCallbackName] = function (data) {
+                    console.log('Data received via alternative JSONP:', data);
+                    processData(data);
+                    // Clean up
+                    delete window[altCallbackName];
+                    const script = document.querySelector(`script[src*="${altCallbackName}"]`);
+                    if (script && script.parentNode) {
+                        script.parentNode.removeChild(script);
+                    }
+                };
+
+                // Create and add the script element
+                const script = document.createElement('script');
+                script.src = `${GOOGLE_SCRIPT_URL}?action=getData&username=aalekh&password=0001&callback=${altCallbackName}&_=${Date.now()}`;
+
+                script.onerror = function () {
+                    console.error('Alternative JSONP also failed');
+                    showError('Unable to connect to data source. Please check your internet connection and try again.');
+                    delete window[altCallbackName];
+                    if (script.parentNode) {
+                        script.parentNode.removeChild(script);
+                    }
+                };
+
+                document.head.appendChild(script);
+
+                // Set timeout for alternative method
+                setTimeout(() => {
+                    if (window[altCallbackName]) {
+                        console.error('Alternative JSONP timeout');
+                        showError('Connection timeout. Please try again.');
+                        delete window[altCallbackName];
+                        if (script.parentNode) {
+                            script.parentNode.removeChild(script);
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Data received via fetch:', data);
-                        processData(data);
-                    })
-                    .catch(error => {
-                        console.error('Alternative fetch failed:', error);
-                        showError('Failed to load data via alternative method. Please check the console for details.');
-                    });
+                    }
+                }, 15000);
             }
 
             // Function to process data regardless of fetch method
@@ -1137,62 +1285,102 @@
                 try {
                     console.log('Raw data received:', data);
 
-                    if (data && data.result === 'error') {
+                    if (data && data.status === 'error') {
                         throw new Error(data.message);
                     }
 
-                    if (!Array.isArray(data)) {
-                        console.log('Data is not an array, attempting to convert...');
-                        if (data && typeof data === 'object') {
-                            // If it's an object, try to extract array from it
-                            data = Object.values(data);
-                        } else {
-                            throw new Error('Invalid data format received from server');
-                        }
+                    // Extract the actual data array from the response
+                    let sheetData = data.data || data;
+
+                    if (!Array.isArray(sheetData)) {
+                        throw new Error('Invalid data format received from server');
                     }
 
-                    console.log('Processing array data:', data);
+                    console.log('Sheet data array:', sheetData);
 
-                    // Filter and clean the data
-                    const processedData = data.filter(entry => {
-                        return entry && Object.values(entry).some(value =>
-                            value !== null &&
-                            value !== undefined &&
-                            value !== '' &&
-                            value !== ' '
+                    // Skip header row and process data rows
+                    if (sheetData.length === 0) {
+                        throw new Error('No data available');
+                    }
+
+                    const headers = sheetData[0]; // First row contains headers
+                    const dataRows = sheetData.slice(1); // Skip header row
+
+                    console.log('Headers:', headers);
+                    console.log('Data rows:', dataRows);
+
+                    // Process each data row
+                    const processedData = dataRows.filter(row => {
+                        // Filter out empty rows
+                        return row && row.some(cell =>
+                            cell !== null &&
+                            cell !== undefined &&
+                            cell !== '' &&
+                            String(cell).trim() !== ''
                         );
-                    }).map(entry => {
-                        console.log('Processing entry:', entry);
-                        // Calculate percentages for qualifications - using correct field names
-                        const tenthPercentage = entry['10thyear'] && entry['10thobtained'] && entry['10thtotal'] 
-                            ? ((parseFloat(entry['10thobtained']) / parseFloat(entry['10thtotal'])) * 100).toFixed(1) + '%'
+                    }).map(row => {
+                        console.log('Processing row:', row);
+
+                        // Map array values to object properties based on expected column positions
+                        // Based on the headers from google-apps-script-complete.js
+                        const entry = {
+                            timestamp: row[0] || '',
+                            name: row[1] || '',
+                            fatherName: row[2] || '',
+                            phone: row[3] || '',
+                            course: row[4] || '',
+                            tenthYear: row[5] || '',
+                            tenthObtained: row[6] || '',
+                            tenthTotal: row[7] || '',
+                            tenthCGPA: row[8] || '',
+                            twelfthYear: row[9] || '',
+                            twelfthObtained: row[10] || '',
+                            twelfthTotal: row[11] || '',
+                            twelfthCGPA: row[12] || '',
+                            graduationYear: row[13] || '',
+                            graduationObtained: row[14] || '',
+                            graduationTotal: row[15] || '',
+                            graduationCGPA: row[16] || '',
+                            postGradYear: row[17] || '',
+                            postGradObtained: row[18] || '',
+                            postGradTotal: row[19] || '',
+                            postGradCGPA: row[20] || '',
+                            additionalQualification: row[21] || '',
+                            additionalDetails: row[22] || '',
+                            converted: row[23] || false // Converted status column
+                        };
+
+                        // Calculate percentages for qualifications
+                        const tenthPercentage = entry.tenthObtained && entry.tenthTotal
+                            ? ((parseFloat(entry.tenthObtained) / parseFloat(entry.tenthTotal)) * 100).toFixed(1) + '%'
                             : 'N/A';
-                        const twelfthPercentage = entry['12thyear'] && entry['12thobtained'] && entry['12thtotal']
-                            ? ((parseFloat(entry['12thobtained']) / parseFloat(entry['12thtotal'])) * 100).toFixed(1) + '%'
+                        const twelfthPercentage = entry.twelfthObtained && entry.twelfthTotal
+                            ? ((parseFloat(entry.twelfthObtained) / parseFloat(entry.twelfthTotal)) * 100).toFixed(1) + '%'
                             : 'N/A';
-                        const graduationPercentage = entry['graduationyear'] && entry['graduationobtained'] && entry['graduationtotal']
-                            ? ((parseFloat(entry['graduationobtained']) / parseFloat(entry['graduationtotal'])) * 100).toFixed(1) + '%'
+                        const graduationPercentage = entry.graduationObtained && entry.graduationTotal
+                            ? ((parseFloat(entry.graduationObtained) / parseFloat(entry.graduationTotal)) * 100).toFixed(1) + '%'
                             : 'N/A';
-                        const postgraduationPercentage = entry['postgraduationyear'] && entry['postgraduationobtained'] && entry['postgraduationtotal']
-                            ? ((parseFloat(entry['postgraduationobtained']) / parseFloat(entry['postgraduationtotal'])) * 100).toFixed(1) + '%'
+                        const postgraduationPercentage = entry.postGradObtained && entry.postGradTotal
+                            ? ((parseFloat(entry.postGradObtained) / parseFloat(entry.postGradTotal)) * 100).toFixed(1) + '%'
                             : 'N/A';
-                        
+
                         // Format additional qualification
-                        const additionalQual = entry['additionalqualification'] || entry['additional_qualification'] || '';
-                        const additionalDetails = entry['additionaldetails'] || entry['additional_details'] || '';
-                        const additionalQualDisplay = additionalQual ? 
-                            (additionalDetails ? `${additionalQual} - ${additionalDetails.substring(0, 50)}${additionalDetails.length > 50 ? '...' : ''}` : additionalQual) 
+                        const additionalQualDisplay = entry.additionalQualification ?
+                            (entry.additionalDetails ? `${entry.additionalQualification} - ${entry.additionalDetails.substring(0, 50)}${entry.additionalDetails.length > 50 ? '...' : ''}` : entry.additionalQualification)
                             : 'N/A';
 
                         return {
-                            'timestamp': entry.timestamp || entry['date/time'] || '',
-                            'name': (entry.name || '')?.toString().trim(),
-                            'fatherName': (entry.fatherName || entry.fathersname || entry["father'sname"] || entry["father's name"] || '')?.toString().trim(),
-                            'phone': (entry.phone || entry.phoneno || '')?.toString().trim(),
-                            'course': (entry.course || '')?.toString().trim(),
+                            'timestamp': entry.timestamp || '',
+                            'name': (entry.name || '').toString().trim(),
+                            'fatherName': (entry.fatherName || '').toString().trim(),
+                            'phone': (entry.phone || '').toString().trim(),
+                            'course': (entry.course || '').toString().trim(),
                             'tenthPercentage': tenthPercentage,
+                            'tenthCGPA': entry.tenthCGPA ? `${entry.tenthCGPA}/10` : 'N/A',
                             'twelfthPercentage': twelfthPercentage,
+                            'twelfthCGPA': entry.twelfthCGPA ? `${entry.twelfthCGPA}/10` : 'N/A',
                             'graduationPercentage': graduationPercentage,
+                            'graduationCGPA': entry.graduationCGPA ? `${entry.graduationCGPA}/10` : 'N/A',
                             'postgraduationPercentage': postgraduationPercentage,
                             'additionalQualification': additionalQualDisplay,
                             'converted': entry.converted || 'No'
@@ -1332,9 +1520,11 @@
                                 <th>Phone</th>
                                 <th>Course</th>
                                 <th>10th (%)</th>
+                                <th>10th CGPA</th>
                                 <th>12th (%)</th>
+                                <th>12th CGPA</th>
                                 <th>Graduation (%)</th>
-                                <th>Post Grad (%)</th>
+                                <th>Graduation CGPA</th>
                                 <th>Additional Qual</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -1351,7 +1541,7 @@
                     : '<span class="badge bg-warning">Pending</span>';
 
                 // Format additional qualification for display
-                const additionalQualDisplay = entry.additionalQualification && entry.additionalQualification !== 'N/A' 
+                const additionalQualDisplay = entry.additionalQualification && entry.additionalQualification !== 'N/A'
                     ? `<span title="${entry.additionalQualification}">${entry.additionalQualification.length > 30 ? entry.additionalQualification.substring(0, 30) + '...' : entry.additionalQualification}</span>`
                     : 'N/A';
 
@@ -1363,9 +1553,11 @@
                         <td>${entry.phone || 'N/A'}</td>
                         <td><span class="badge badge-course">${entry.course || 'N/A'}</span></td>
                         <td>${entry.tenthPercentage || 'N/A'}</td>
+                        <td><strong>${entry.tenthCGPA || 'N/A'}</strong></td>
                         <td>${entry.twelfthPercentage || 'N/A'}</td>
+                        <td><strong>${entry.twelfthCGPA || 'N/A'}</strong></td>
                         <td>${entry.graduationPercentage || 'N/A'}</td>
-                        <td>${entry.postgraduationPercentage || 'N/A'}</td>
+                        <td><strong>${entry.graduationCGPA || 'N/A'}</strong></td>
                         <td>${additionalQualDisplay}</td>
                         <td>${statusBadge}</td>
                         <td>
@@ -1410,7 +1602,7 @@
             // Show loading state
             const submitButton = form.querySelector('button[type="submit"]');
             const originalText = submitButton.innerHTML; // Move outside try block
-            
+
             console.log('Admin form data being submitted:', data); // Debug log
 
             try {
@@ -1623,28 +1815,56 @@
             console.log('Testing connection to Google Apps Script...');
             console.log('URL:', GOOGLE_SCRIPT_URL);
 
-            // Test with a simple fetch first
-            fetch(`${GOOGLE_SCRIPT_URL}?action=getData&username=aalekh&password=0001`)
-                .then(response => {
-                    console.log('Test response status:', response.status);
-                    console.log('Test response headers:', response.headers);
-                    return response.text();
-                })
-                .then(text => {
-                    console.log('Test response text:', text);
-                    try {
-                        const data = JSON.parse(text);
-                        console.log('Test parsed data:', data);
-                        alert('Connection test successful! Check console for details.');
-                    } catch (e) {
-                        console.log('Response is not JSON:', e);
-                        alert('Connection successful but response is not JSON. Check console for details.');
+            const testCallbackName = 'testCallback_' + Math.round(Math.random() * 1000000);
+
+            // Create callback function
+            window[testCallbackName] = function (data) {
+                console.log('✅ Test connection successful!');
+                console.log('Test response data:', data);
+
+                if (data && data.status === 'success') {
+                    alert(`✅ Connection test successful!\n\nStatus: ${data.status}\nData rows: ${data.data ? data.data.length : 0}\n\nCheck console for full details.`);
+                } else {
+                    alert(`⚠️ Connection successful but with issues:\n\nStatus: ${data.status || 'unknown'}\nMessage: ${data.message || 'No message'}\n\nCheck console for details.`);
+                }
+
+                // Clean up
+                delete window[testCallbackName];
+                const script = document.querySelector(`script[src*="${testCallbackName}"]`);
+                if (script && script.parentNode) {
+                    script.parentNode.removeChild(script);
+                }
+            };
+
+            // Create and add the script element for JSONP
+            const script = document.createElement('script');
+            script.src = `${GOOGLE_SCRIPT_URL}?action=getData&username=aalekh&password=0001&callback=${testCallbackName}&_=${Date.now()}`;
+
+            script.onerror = function () {
+                console.error('❌ Test connection failed - script load error');
+                alert('❌ Connection test failed!\n\nUnable to load script from Google Apps Script.\n\nPossible issues:\n1. Script URL is incorrect\n2. Script is not deployed\n3. Network connectivity issues\n\nCheck console for details.');
+                delete window[testCallbackName];
+                if (script.parentNode) {
+                    script.parentNode.removeChild(script);
+                }
+            };
+
+            document.head.appendChild(script);
+
+            // Set timeout for test
+            setTimeout(() => {
+                if (window[testCallbackName]) {
+                    console.error('❌ Test connection timeout');
+                    alert('❌ Connection test timeout!\n\nThe script took too long to respond.\n\nCheck console for details.');
+                    delete window[testCallbackName];
+                    const script = document.querySelector(`script[src*="${testCallbackName}"]`);
+                    if (script && script.parentNode) {
+                        script.parentNode.removeChild(script);
                     }
-                })
-                .catch(error => {
-                    console.error('Test connection failed:', error);
-                    alert('Connection test failed. Check console for details.');
-                });
+                }
+            }, 10000);
+
+            console.log('Test connection request sent...');
         }
 
         // Test status update function

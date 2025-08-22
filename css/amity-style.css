@@ -1619,3 +1619,133 @@ html {
     }
 }/
 * Note: Old top contact bar styles have been removed as contact info is now in navbar and footer sections */
+/*
+ Form Grid Layouts for Enquiry Forms */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.form-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+/* Responsive form grids */
+@media (max-width: 1200px) {
+    .form-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .form-grid,
+    .form-grid-3,
+    .form-grid-4 {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+}
+
+/* Form group styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.form-text {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: var(--spacing-xs);
+}
+
+/* Professional input styling */
+.professional-input {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+    background: var(--background-primary);
+}
+
+.professional-input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    outline: none;
+}
+
+.professional-input.is-valid {
+    border-color: var(--accent-green);
+}
+
+.professional-input.is-invalid {
+    border-color: #ef4444;
+}
+
+/* Qualification section styling */
+.qualification-section {
+    background: var(--background-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-light);
+}
+
+.qualification-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.qualification-title i {
+    color: var(--primary-blue);
+}
+
+/* Percentage display */
+.percentage-display {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-blue);
+    font-weight: 600;
+    display: none;
+    transition: var(--transition-normal);
+}
+
+.percentage-display.show {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

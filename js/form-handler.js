@@ -1,5 +1,5 @@
-// Google Apps Script Web App URL - Updated to latest deployment
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz5FtYbvX5LH2QJVddOtoMN2h0DTjSivyeDEcXRcZUuFQkseR0spcR4ckwvzKnT6_I/exec';
+// Google Apps Script Web App URL - Updated with CGPA support
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzii5rC6thMr5mGLd51u5Y3uO1QidSDxjN84rJcYm2FiQXoh8rYC4qa94rNBsPYrHyd/exec';
 
 // Multi-step form management
 class ProfessionalFormManager {
@@ -16,7 +16,7 @@ class ProfessionalFormManager {
         if (!enquiryForm) {
             return; // Exit early if form doesn't exist on this page
         }
-        
+
         this.form = enquiryForm;
         this.bindEvents();
         this.updateUI();
@@ -30,13 +30,13 @@ class ProfessionalFormManager {
         const prevBtn = document.getElementById('prevBtn');
         const enquiryForm = document.getElementById('enquiryForm');
         const enquiryModal = document.getElementById('enquiryModal');
-        
+
         if (nextBtn) nextBtn.addEventListener('click', () => this.nextStep());
         if (prevBtn) prevBtn.addEventListener('click', () => this.prevStep());
-        
+
         // Form submission
         if (enquiryForm) enquiryForm.addEventListener('submit', (e) => this.submitForm(e));
-        
+
         // Real-time validation
         document.querySelectorAll('.professional-input').forEach(input => {
             if (input) {
@@ -74,7 +74,7 @@ class ProfessionalFormManager {
         document.querySelectorAll('.progress-step').forEach((step, index) => {
             const stepNumber = index + 1;
             step.classList.remove('active', 'completed');
-            
+
             if (stepNumber < this.currentStep) {
                 step.classList.add('completed');
             } else if (stepNumber === this.currentStep) {
@@ -106,7 +106,7 @@ class ProfessionalFormManager {
         if (!currentStepElement) {
             return true; // If step doesn't exist, consider it valid
         }
-        
+
         const inputs = currentStepElement.querySelectorAll('.professional-input[required]');
         let isValid = true;
 
@@ -158,18 +158,27 @@ class ProfessionalFormManager {
             }
         }
 
+        // CGPA validation
+        if (field.name.includes('_cgpa') && value) {
+            const cgpa = parseFloat(value);
+            if (cgpa < 0 || cgpa > 10) {
+                isValid = false;
+                errorMessage = 'Please enter a valid CGPA between 0 and 10';
+            }
+        }
+
         this.showFieldValidation(field, isValid, errorMessage);
         return isValid;
     }
 
     showFieldValidation(field, isValid, errorMessage) {
         field.classList.remove('is-valid', 'is-invalid');
-        
+
         if (isValid) {
             field.classList.add('is-valid');
         } else {
             field.classList.add('is-invalid');
-            
+
             // Show custom error message
             let feedback = field.parentNode.querySelector('.invalid-feedback');
             if (feedback && errorMessage) {
@@ -186,7 +195,7 @@ class ProfessionalFormManager {
         // Phone number formatting
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
-            phoneInput.addEventListener('input', function(e) {
+            phoneInput.addEventListener('input', function (e) {
                 this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
             });
         }
@@ -195,7 +204,7 @@ class ProfessionalFormManager {
         ['name', 'fatherName'].forEach(fieldId => {
             const field = document.getElementById(fieldId);
             if (field) {
-                field.addEventListener('input', function(e) {
+                field.addEventListener('input', function (e) {
                     this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
                 });
             }
@@ -204,10 +213,11 @@ class ProfessionalFormManager {
 
     setupPercentageCalculators() {
         const qualifications = ['tenth', 'twelfth', 'graduation', 'postgraduation'];
-        
+
         qualifications.forEach(qual => {
             const obtainedField = document.getElementById(`${qual}_obtained`);
             const totalField = document.getElementById(`${qual}_total`);
+            const cgpaField = document.getElementById(`${qual}_cgpa`);
             const percentageDiv = document.getElementById(`${qual}_percentage`);
 
             [obtainedField, totalField].forEach(field => {
@@ -217,6 +227,13 @@ class ProfessionalFormManager {
                     });
                 }
             });
+
+            // CGPA validation
+            if (cgpaField) {
+                cgpaField.addEventListener('input', () => {
+                    this.validateCGPA(cgpaField);
+                });
+            }
         });
     }
 
@@ -228,7 +245,7 @@ class ProfessionalFormManager {
             const percentage = ((obtained / total) * 100).toFixed(2);
             percentageDiv.innerHTML = `<i class="fas fa-calculator me-2"></i>Percentage: <strong>${percentage}%</strong>`;
             percentageDiv.classList.add('show');
-            
+
             // Add color coding based on percentage
             percentageDiv.className = 'percentage-display show';
             if (percentage >= 75) {
@@ -249,10 +266,24 @@ class ProfessionalFormManager {
         }
     }
 
+    validateCGPA(cgpaField) {
+        const cgpa = parseFloat(cgpaField.value);
+        let isValid = true;
+        let errorMessage = '';
+
+        if (cgpaField.value && (cgpa < 0 || cgpa > 10)) {
+            isValid = false;
+            errorMessage = 'CGPA must be between 0 and 10';
+        }
+
+        this.showFieldValidation(cgpaField, isValid, errorMessage);
+        return isValid;
+    }
+
     saveCurrentStepData() {
         const currentStepElement = document.querySelector(`.form-step[data-step="${this.currentStep}"]`);
         const inputs = currentStepElement.querySelectorAll('.professional-input');
-        
+
         inputs.forEach(input => {
             this.formData[input.name] = input.value;
         });
@@ -294,15 +325,17 @@ class ProfessionalFormManager {
             const obtained = this.formData[`${qual.key}_obtained`];
             const total = this.formData[`${qual.key}_total`];
             const year = this.formData[`${qual.key}_year`];
-            
+            const cgpa = this.formData[`${qual.key}_cgpa`];
+
             // Only show if at least one field has data
-            if (obtained || total || year) {
+            if (obtained || total || year || cgpa) {
                 const percentage = obtained && total ? ((obtained / total) * 100).toFixed(2) : 'N/A';
-                
+                const cgpaText = cgpa ? ` | CGPA: ${cgpa}/10` : '';
+
                 academicHTML += `
                     <div class="review-item">
                         <span class="review-label">${qual.label}:</span>
-                        <span class="review-value">${obtained || 'N/A'}/${total || 'N/A'} (${percentage}%) - ${year || 'N/A'}</span>
+                        <span class="review-value">${obtained || 'N/A'}/${total || 'N/A'} (${percentage}%) - ${year || 'N/A'}${cgpaText}</span>
                     </div>
                 `;
             }
@@ -331,7 +364,7 @@ class ProfessionalFormManager {
 
     async submitForm(event) {
         event.preventDefault();
-        
+
         // Final validation
         if (!this.validateCurrentStep()) {
             return;
@@ -345,17 +378,17 @@ class ProfessionalFormManager {
         }
 
         this.saveCurrentStepData();
-        
+
         // Add timestamp
         this.formData.timestamp = new Date().toLocaleString();
-        
+
         try {
             // Show loading state
             const submitButton = document.getElementById('submitBtn');
             const originalText = submitButton.innerHTML;
             submitButton.disabled = true;
             submitButton.classList.add('btn-loading');
-            
+
             // Send data to Google Sheets
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
@@ -365,15 +398,15 @@ class ProfessionalFormManager {
                 },
                 body: JSON.stringify(this.formData)
             });
-            
+
             // Reset form and close modal
             this.resetForm();
             const modal = bootstrap.Modal.getInstance(document.getElementById('enquiryModal'));
             modal.hide();
-            
+
             // Show enhanced success message
             this.showSuccessMessage();
-            
+
         } catch (error) {
             console.error('Error:', error);
             this.showErrorMessage();
@@ -418,9 +451,9 @@ class ProfessionalFormManager {
                 </div>
             </div>
         `;
-        
+
         document.body.insertAdjacentHTML('beforeend', successHTML);
-        
+
         // Auto-remove after 8 seconds
         setTimeout(() => {
             const toastElement = document.querySelector('.toast-container');
@@ -436,6 +469,6 @@ class ProfessionalFormManager {
 }
 
 // Initialize the professional form manager
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     new ProfessionalFormManager();
 }); 

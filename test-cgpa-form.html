@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .success { color: green; margin-top: 10px; }
+        .error { color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>🧪 CGPA Form Test</h2>
+    <p>Test form to verify CGPA fields are working with your Google Apps Script.</p>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="Test Student" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="9876543210" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="B.Ed">B.Ed</option>
+                <option value="LLB">LLB</option>
+                <option value="MBA">MBA</option>
+            </select>
+        </div>
+        
+        <h3>📚 Academic Details with CGPA</h3>
+        
+        <div class="form-group">
+            <label for="graduation_year">Graduation Year:</label>
+            <input type="number" id="graduation_year" name="graduation_year" value="2024">
+        </div>
+        
+        <div class="form-group">
+            <label for="graduation_obtained">Graduation Marks Obtained:</label>
+            <input type="number" id="graduation_obtained" name="graduation_obtained" value="2100">
+        </div>
+        
+        <div class="form-group">
+            <label for="graduation_total">Graduation Total Marks:</label>
+            <input type="number" id="graduation_total" name="graduation_total" value="2400">
+        </div>
+        
+        <div class="form-group">
+            <label for="graduation_cgpa">Graduation CGPA (NEW FIELD):</label>
+            <input type="number" id="graduation_cgpa" name="graduation_cgpa" value="8.5" step="0.01" min="0" max="10">
+        </div>
+        
+        <div class="form-group">
+            <label for="twelfth_cgpa">12th CGPA (NEW FIELD):</label>
+            <input type="number" id="twelfth_cgpa" name="twelfth_cgpa" value="9.0" step="0.01" min="0" max="10">
+        </div>
+        
+        <button type="submit">🚀 Test CGPA Form Submission</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzii5rC6thMr5mGLd51u5Y3uO1QidSDxjN84rJcYm2FiQXoh8rYC4qa94rNBsPYrHyd/exec';
+        
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>⏳ Testing form submission with CGPA fields...</p>';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.timestamp = new Date().toLocaleString();
+            
+            console.log('Test data being sent:', data);
+            
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Test Successful!</h3>
+                        <p><strong>CGPA fields are working correctly!</strong></p>
+                        <p>Check your Google Sheet to verify the data was saved with CGPA values:</p>
+                        <ul>
+                            <li>Graduation CGPA: ${data.graduation_cgpa}</li>
+                            <li>12th CGPA: ${data.twelfth_cgpa}</li>
+                        </ul>
+                        <p>You can now use your main website forms with confidence!</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Test error:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Test Failed</h3>
+                        <p>Error: ${error.message}</p>
+                        <p>Please check your Google Apps Script deployment.</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
