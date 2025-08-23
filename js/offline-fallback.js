@@ -103,20 +103,36 @@
       sampleData.forEach(function(record, index) {
         var row = document.createElement('tr');
         row.innerHTML = 
-          '<td>' + (index + 1) + '</td>' +
+          '<td>' + record.timestamp + '</td>' +
           '<td>' + record.name + '</td>' +
           '<td>' + record.fatherName + '</td>' +
           '<td>' + record.phone + '</td>' +
           '<td><span class="badge badge-course">' + record.course + '</span></td>' +
-          '<td>' + (record.tenth_year || '-') + '</td>' +
+          '<td>' + (record.tenth_obtained || '-') + '</td>' +
           '<td>' + (record.tenth_cgpa || '-') + '</td>' +
-          '<td>' + (record.twelfth_year || '-') + '</td>' +
+          '<td>' + (record.twelfth_obtained || '-') + '</td>' +
           '<td>' + (record.twelfth_cgpa || '-') + '</td>' +
-          '<td>' + (record.graduation_year || '-') + '</td>' +
+          '<td>' + (record.graduation_obtained || '-') + '</td>' +
           '<td>' + (record.graduation_cgpa || '-') + '</td>' +
-          '<td>' + record.timestamp + '</td>';
+          '<td>' + (record.additionalQualification || 'N/A') + '</td>' +
+          '<td><span class="badge bg-warning">Pending</span></td>' +
+          '<td>' +
+            '<div class="btn-group" role="group">' +
+              '<button class="btn btn-success btn-sm" onclick="alert(\'Offline mode - Convert action\')" title="Mark as Converted">' +
+                '<i class="fas fa-check"></i> Convert' +
+              '</button>' +
+              '<button class="btn btn-danger btn-sm" onclick="alert(\'Offline mode - Delete action\')" title="Delete enquiry">' +
+                '<i class="fas fa-trash"></i> Delete' +
+              '</button>' +
+            '</div>' +
+          '</td>';
         tbody.appendChild(row);
       });
+      
+      // Initialize search functionality for offline mode
+      if (window.initializeTableSearch) {
+        window.initializeTableSearch();
+      }
       
       // Initialize DataTable if available
       if (window.jQuery && window.jQuery.fn.DataTable) {
@@ -124,13 +140,13 @@
           window.jQuery('#enquiryTable').DataTable({
             responsive: true,
             pageLength: 10,
-            order: [[11, 'desc']], // Sort by timestamp
+            order: [[0, 'desc']], // Sort by timestamp
             columnDefs: [
               { targets: [0], orderable: false }
             ]
           });
         } catch (e) {
-          console.log('DataTable initialization failed, using basic table');
+          console.log('DataTable initialization failed, using basic table with search');
         }
       }
     }
@@ -160,8 +176,12 @@
     event.preventDefault();
     
     if (isOffline()) {
-      // Show success message for offline mode
-      alert('Offline Mode: Form data saved locally. Will sync when online.');
+      // Show success message for offline mode using toast if available
+      if (window.showSuccessToast) {
+        window.showSuccessToast('Offline Mode: Form data saved locally. Will sync when online.');
+      } else {
+        alert('Offline Mode: Form data saved locally. Will sync when online.');
+      }
       
       // Reset form
       var form = document.getElementById('adminEnquiryForm');

@@ -38,6 +38,9 @@
     <!-- Offline Fallback -->
     <script src="js/offline-fallback.js"></script>
 
+    <!-- Toast Fallback -->
+    <script src="js/toast-fallback.js"></script>
+
     <style>
         :root {
             --primary-color: #0d6efd;
@@ -179,7 +182,6 @@
         /* Graduation CGPA */
             {
             background-color: #f8f9fa;
-            font-weight: 600;
             color: #495057;
         }
 
@@ -203,6 +205,74 @@
 
         .alert-heading {
             font-weight: 600;
+        }
+
+        /* Action buttons styling */
+        .btn-group .btn {
+            margin-right: 0;
+        }
+
+        .btn-group .btn:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .btn-group .btn:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: -1px;
+        }
+
+        /* Enhanced search styling */
+        .dataTables_filter input {
+            width: 250px !important;
+            margin-left: 0.5rem;
+        }
+
+        .dataTables_filter label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        /* Table action column */
+        .table td:last-child {
+            white-space: nowrap;
+        }
+
+        /* Search and filter controls */
+        .input-group-text {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        #tableSearch {
+            border-left: none;
+        }
+
+        #tableSearch:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* No results message */
+        .no-results-row td {
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+
+        /* Search controls responsive */
+        @media (max-width: 768px) {
+            .row.mb-3 .col-md-5,
+            .row.mb-3 .col-md-2,
+            .row.mb-3 .col-md-3 {
+                margin-bottom: 0.5rem;
+            }
         }
 
         .dataTables_info {
@@ -1162,16 +1232,25 @@
                         {
                             data: null,
                             title: 'Actions',
-                            width: '150px',
+                            width: '200px',
                             orderable: false,
                             render: function (data, type, row) {
                                 const status = row.converted === 'Yes' || row.converted === true || row.converted === 'true';
                                 return `
-                                    <button class="btn btn-sm ${status ? 'btn-warning' : 'btn-success'}" 
-                                            onclick="toggleStatus('${row.name}', '${row.phone}', ${!status})">
-                                        <i class="fas ${status ? 'fa-undo' : 'fa-check'}"></i>
-                                        ${status ? 'Mark Pending' : 'Mark Converted'}
-                                    </button>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm ${status ? 'btn-warning' : 'btn-success'}" 
+                                                onclick="toggleStatus('${row.name}', '${row.phone}', ${!status})"
+                                                title="${status ? 'Mark as Pending' : 'Mark as Converted'}">
+                                            <i class="fas ${status ? 'fa-undo' : 'fa-check'}"></i>
+                                            ${status ? 'Revert' : 'Convert'}
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" 
+                                                onclick="deleteEnquiry(0, '${row.name}', '${row.phone}')"
+                                                title="Delete this enquiry">
+                                            <i class="fas fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </div>
                                 `;
                             }
                         }
@@ -1179,14 +1258,19 @@
                     order: [[0, 'desc']],
                     pageLength: 25,
                     responsive: true,
+                    searching: true,
+                    searchHighlight: true,
                     language: {
-                        search: "Search records:",
+                        search: "🔍 Search all records:",
+                        searchPlaceholder: "Name, phone, course, etc...",
                         lengthMenu: "Show _MENU_ records per page",
                         info: "Showing _START_ to _END_ of _TOTAL_ records",
                         infoEmpty: "No records available",
-                        infoFiltered: "(filtered from _MAX_ total records)"
+                        infoFiltered: "(filtered from _MAX_ total records)",
+                        zeroRecords: "No matching records found"
                     },
-                    dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rtip',
+                    dom: '<"row"<"col-sm-12 col-md-4"l><"col-sm-12 col-md-4 text-center"B><"col-sm-12 col-md-4"f>>rtip',
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     buttons: [
                         {
                             extend: 'excel',
@@ -1499,7 +1583,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mb-0">
                         <i class="fas fa-table me-2"></i>
-                        Enquiry Data (${data.length} records)
+                        Enquiry Data (<span id="recordCount">${data.length}</span> records)
                     </h2>
                     <div class="d-flex gap-2">
                         <button class="btn btn-outline-primary" onclick="refreshData()">
@@ -1508,6 +1592,45 @@
                         <button class="btn btn-outline-info" onclick="testConnection()">
                             <i class="fas fa-plug me-2"></i>Test Connection
                         </button>
+                    </div>
+                </div>
+                
+                <!-- Search and Filter Controls -->
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="tableSearch" 
+                                   placeholder="Search by name, phone, course, etc..." 
+                                   onkeyup="searchTable()">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" id="courseFilter" onchange="filterTable()">
+                            <option value="">All Courses</option>
+                            <option value="B.Ed">B.Ed</option>
+                            <option value="D.Ed">D.Ed</option>
+                            <option value="M.Ed">M.Ed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" id="statusFilter" onchange="filterTable()">
+                            <option value="">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Converted">Converted</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary" onclick="clearFilters()" title="Clear all filters">
+                                <i class="fas fa-times me-1"></i>Clear
+                            </button>
+                            <button class="btn btn-outline-success" onclick="exportTableToCSV()" title="Export filtered data">
+                                <i class="fas fa-download me-1"></i>Export
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -1553,20 +1676,28 @@
                         <td>${entry.phone || 'N/A'}</td>
                         <td><span class="badge badge-course">${entry.course || 'N/A'}</span></td>
                         <td>${entry.tenthPercentage || 'N/A'}</td>
-                        <td><strong>${entry.tenthCGPA || 'N/A'}</strong></td>
+                        <td>${entry.tenthCGPA || 'N/A'}</td>
                         <td>${entry.twelfthPercentage || 'N/A'}</td>
-                        <td><strong>${entry.twelfthCGPA || 'N/A'}</strong></td>
+                        <td>${entry.twelfthCGPA || 'N/A'}</td>
                         <td>${entry.graduationPercentage || 'N/A'}</td>
-                        <td><strong>${entry.graduationCGPA || 'N/A'}</strong></td>
+                        <td>${entry.graduationCGPA || 'N/A'}</td>
                         <td>${additionalQualDisplay}</td>
                         <td>${statusBadge}</td>
                         <td>
-                            <button class="btn ${isConverted ? 'btn-warning' : 'btn-success'} btn-sm" 
-                                    onclick="toggleConversionStatus(${index + 1}, '${entry.name}', '${entry.phone}', ${!isConverted})" 
-                                    title="${isConverted ? 'Mark as Pending' : 'Mark as Converted'}">
-                                <i class="fas ${isConverted ? 'fa-undo' : 'fa-check'}"></i>
-                                ${isConverted ? 'Revert' : 'Convert'}
-                            </button>
+                            <div class="btn-group" role="group">
+                                <button class="btn ${isConverted ? 'btn-warning' : 'btn-success'} btn-sm" 
+                                        onclick="toggleConversionStatus(${index + 1}, '${entry.name}', '${entry.phone}', ${!isConverted})" 
+                                        title="${isConverted ? 'Mark as Pending' : 'Mark as Converted'}">
+                                    <i class="fas ${isConverted ? 'fa-undo' : 'fa-check'}"></i>
+                                    ${isConverted ? 'Revert' : 'Convert'}
+                                </button>
+                                <button class="btn btn-danger btn-sm" 
+                                        onclick="deleteEnquiry(${index + 1}, '${entry.name}', '${entry.phone}')" 
+                                        title="Delete this enquiry">
+                                    <i class="fas fa-trash"></i>
+                                    Delete
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 `;
@@ -1585,6 +1716,9 @@
             console.log('Setting table HTML...');
             tableContainer.innerHTML = tableHTML;
             console.log('Table HTML set successfully');
+            
+            // Initialize search and filter functionality
+            initializeTableSearch();
         }
 
         // Submit admin enquiry function
@@ -1808,6 +1942,272 @@
             }, 10000); // 10 second timeout
 
             document.body.appendChild(script);
+        }
+
+        // Delete enquiry function
+        function deleteEnquiry(rowIndex, name, phone) {
+            // Show confirmation dialog
+            if (!confirm(`Are you sure you want to delete the enquiry for "${name}"?\n\nThis action cannot be undone.`)) {
+                return;
+            }
+
+            // Show loading state
+            const deleteButton = event.target.closest('button');
+            const originalHTML = deleteButton.innerHTML;
+            deleteButton.disabled = true;
+            deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span>';
+
+            // Use JSONP for delete request
+            const callbackName = 'deleteCallback_' + Math.round(Math.random() * 1000000);
+
+            // Define the callback function
+            window[callbackName] = function (data) {
+                console.log('Delete response:', data);
+
+                // Clean up
+                const script = document.querySelector(`script[src*="${callbackName}"]`);
+                if (script) {
+                    document.body.removeChild(script);
+                }
+                delete window[callbackName];
+
+                // Handle response
+                if (data.result === 'success') {
+                    showSuccessToast(`Enquiry for "${name}" deleted successfully!`);
+                    // Refresh the data table after a short delay
+                    setTimeout(() => {
+                        refreshData();
+                    }, 1000);
+                } else {
+                    showErrorToast(data.message || 'Delete operation failed');
+                }
+
+                // Reset button state
+                deleteButton.disabled = false;
+                deleteButton.innerHTML = originalHTML;
+            };
+
+            // Create and add the script element for JSONP
+            const script = document.createElement('script');
+            const requestUrl = `${GOOGLE_SCRIPT_URL}?action=deleteEnquiry&username=aalekh&password=0001&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&callback=${callbackName}`;
+            console.log('Delete request URL:', requestUrl);
+            script.src = requestUrl;
+
+            // Handle script load errors
+            script.onerror = function () {
+                console.error('Delete request failed');
+                showErrorToast('Failed to delete enquiry. Please check your connection.');
+
+                // Clean up
+                delete window[callbackName];
+
+                // Reset button state
+                deleteButton.disabled = false;
+                deleteButton.innerHTML = originalHTML;
+            };
+
+            // Set timeout for the request
+            setTimeout(() => {
+                if (window[callbackName]) {
+                    console.error('Delete request timeout');
+                    showErrorToast('Delete request timed out. Please try again.');
+
+                    // Clean up
+                    const script = document.querySelector(`script[src*="${callbackName}"]`);
+                    if (script) {
+                        document.body.removeChild(script);
+                    }
+                    delete window[callbackName];
+
+                    // Reset button state
+                    deleteButton.disabled = false;
+                    deleteButton.innerHTML = originalHTML;
+                }
+            }, 10000); // 10 second timeout
+
+            document.body.appendChild(script);
+        }
+
+        // Initialize table search functionality
+        function initializeTableSearch() {
+            // Store original table data for filtering
+            const table = document.querySelector('.table-responsive table tbody');
+            if (table) {
+                window.originalTableRows = Array.from(table.querySelectorAll('tr'));
+                console.log('Table search initialized with', window.originalTableRows.length, 'rows');
+            }
+        }
+
+        // Search table function
+        function searchTable() {
+            const searchTerm = document.getElementById('tableSearch').value.toLowerCase();
+            const courseFilter = document.getElementById('courseFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            
+            filterTableRows(searchTerm, courseFilter, statusFilter);
+        }
+
+        // Filter table function
+        function filterTable() {
+            const searchTerm = document.getElementById('tableSearch').value.toLowerCase();
+            const courseFilter = document.getElementById('courseFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            
+            filterTableRows(searchTerm, courseFilter, statusFilter);
+        }
+
+        // Main filter function
+        function filterTableRows(searchTerm, courseFilter, statusFilter) {
+            if (!window.originalTableRows) {
+                console.log('Original table rows not found');
+                return;
+            }
+
+            const tbody = document.querySelector('.table-responsive table tbody');
+            if (!tbody) {
+                console.log('Table body not found');
+                return;
+            }
+
+            let visibleCount = 0;
+            
+            window.originalTableRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length === 0) return;
+
+                // Get cell values
+                const name = cells[1]?.textContent.toLowerCase() || '';
+                const fatherName = cells[2]?.textContent.toLowerCase() || '';
+                const phone = cells[3]?.textContent.toLowerCase() || '';
+                const course = cells[4]?.textContent || '';
+                const status = cells[12]?.textContent || '';
+                const additionalQual = cells[11]?.textContent.toLowerCase() || '';
+
+                // Check search term match
+                const matchesSearch = !searchTerm || 
+                    name.includes(searchTerm) || 
+                    fatherName.includes(searchTerm) || 
+                    phone.includes(searchTerm) || 
+                    course.toLowerCase().includes(searchTerm) ||
+                    additionalQual.includes(searchTerm);
+
+                // Check course filter
+                const matchesCourse = !courseFilter || course.includes(courseFilter);
+
+                // Check status filter
+                const matchesStatus = !statusFilter || status.includes(statusFilter);
+
+                // Show/hide row based on all filters
+                if (matchesSearch && matchesCourse && matchesStatus) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // Update record count
+            const recordCountElement = document.getElementById('recordCount');
+            if (recordCountElement) {
+                recordCountElement.textContent = visibleCount;
+            }
+
+            // Show no results message if needed
+            showNoResultsMessage(visibleCount);
+        }
+
+        // Show no results message
+        function showNoResultsMessage(visibleCount) {
+            const tbody = document.querySelector('.table-responsive table tbody');
+            if (!tbody) return;
+
+            // Remove existing no results row
+            const existingNoResults = tbody.querySelector('.no-results-row');
+            if (existingNoResults) {
+                existingNoResults.remove();
+            }
+
+            // Add no results row if needed
+            if (visibleCount === 0) {
+                const noResultsRow = document.createElement('tr');
+                noResultsRow.className = 'no-results-row';
+                noResultsRow.innerHTML = `
+                    <td colspan="14" class="text-center py-4 text-muted">
+                        <i class="fas fa-search me-2"></i>
+                        No records found matching your search criteria.
+                        <br>
+                        <small>Try adjusting your search terms or filters.</small>
+                    </td>
+                `;
+                tbody.appendChild(noResultsRow);
+            }
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('tableSearch').value = '';
+            document.getElementById('courseFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            filterTableRows('', '', '');
+        }
+
+        // Export filtered table data to CSV
+        function exportTableToCSV() {
+            const table = document.querySelector('.table-responsive table');
+            if (!table) {
+                showErrorToast('No table data to export');
+                return;
+            }
+
+            const rows = table.querySelectorAll('tr');
+            const csvContent = [];
+
+            // Get headers
+            const headers = [];
+            const headerCells = rows[0].querySelectorAll('th');
+            headerCells.forEach((cell, index) => {
+                if (index < headerCells.length - 1) { // Exclude Actions column
+                    headers.push('"' + cell.textContent.trim() + '"');
+                }
+            });
+            csvContent.push(headers.join(','));
+
+            // Get visible data rows
+            const dataRows = Array.from(rows).slice(1); // Skip header
+            dataRows.forEach(row => {
+                if (row.style.display !== 'none' && !row.classList.contains('no-results-row')) {
+                    const cells = row.querySelectorAll('td');
+                    const rowData = [];
+                    cells.forEach((cell, index) => {
+                        if (index < cells.length - 1) { // Exclude Actions column
+                            let cellText = cell.textContent.trim();
+                            // Clean up badge text
+                            cellText = cellText.replace(/\s+/g, ' ');
+                            rowData.push('"' + cellText + '"');
+                        }
+                    });
+                    csvContent.push(rowData.join(','));
+                }
+            });
+
+            // Create and download CSV
+            const csvString = csvContent.join('\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'enquiry_data_' + new Date().toISOString().split('T')[0] + '.csv');
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showSuccessToast('Data exported successfully!');
+            } else {
+                showErrorToast('Export not supported in this browser');
+            }
         }
 
         // Test connection function
